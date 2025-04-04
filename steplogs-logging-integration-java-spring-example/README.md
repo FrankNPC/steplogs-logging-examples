@@ -1,8 +1,6 @@
 
 # For logger-spring-boot-starter integration #
 
-**  Convenient spring wrapper. follow the steps to integrate step logging. **
-
  - 1, introduce the lib with spring, mark your beans with [@Logging](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/annotation/Logging.java)
 
 ```
