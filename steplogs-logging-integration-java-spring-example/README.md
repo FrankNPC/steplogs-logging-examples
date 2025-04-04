@@ -14,7 +14,7 @@
 
  - 2, see the explains in src/*/resource/application.xml, configure your logger and app-node.
     -  import LoggerReaderConfiguration.class to declare Logging and LoggerProvider bean.
-    -  import LoggerAutoConfiguration to proxy the logged beans
+    -  import LoggerAutoConfiguration.class to proxy the logged beans
 
  - 3, configure the http client request to write HTTP_HEADER_STEP_LOG_ID to the header, so the next app/service can catch it into the traces
 
@@ -63,6 +63,7 @@ Object caller(){
 
 Sample:
 > 2025-03-30 19:15:37.151|VirtualThreads--69-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|4-2|JSON|AccountServiceImpl.java#io.steplogs.profile.service.AccountServiceImpl#getBySessionId#51#|[{"session_id":"ZwQwpVLp7Ly26qP9JEu6QI8LqP5ttUgE87la4xDaqqoXB0ir"}]
+
 > 2025-03-30 19:15:37.154|VirtualThreads--69-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|4-3|JSON|AccountServiceImpl.java#io.steplogs.profile.service.AccountServiceImpl#getBySessionId#51#R|[[{"code":0,"entity":{"email":"test@steplogs.io","id":1,"login":"test@steplogs.io","organizationId":1,"password":null,"retries":0,"sessionId":"ZwQwpVLp7Ly26qP9JEu6QI8LqP5ttUgE87la4xDaqqoXB0ir","status":1,"timeCreated":1741873352},"message":null,"reason":null,"token":null}]]
 
 > 2025-03-30 19:15:37.165|VirtualThreads--70-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|6-2|JSON|OrganizationServiceImpl.java#io.steplogs.profile.service.OrganizationServiceImpl#getById#26#|[{"id":1}]
@@ -98,11 +99,12 @@ Sample:
 
 > 2025-03-30 18:58:52.738|VirtualThreads--62-5|6xKDi88XSMMNlUdVDEuWwah3Tydcc59V|7|JSON|SearchController.java#io.steplogs.web.portal.controller.SearchController#fetchTrace#160R|[[{"code":0,"entity":{"accountId":1,"encryptionKey":"Tmy3v0djPw8JlkUTlfIsu79dv4RMY4jo5XdN9ScvErUXp4xD","id":1,"name":"steplogs","status":1,"timeCreated":1741873392},"message":null,"reason":null,"token":null}]]
 
-`Tips: take in mind of the sentanizer, in case it needs for encryptionKey to the SearchController`
+`Tips: take in mind of the sentanizer, in case it needs for encryptionKey to the SearchController in case`
 
 ---
 
- - For PII  or sensitive info protection
+### PII or sensitive info protection ###
+
  - de-sensetiver : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
  - Always start with /, not end with /; can place multiple groups
  
