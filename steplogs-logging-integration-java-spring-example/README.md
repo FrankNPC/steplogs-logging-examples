@@ -110,7 +110,7 @@ Sample:
  
 > Step: support wildcard match:
 
-> placeholder: should be always base 62, could be the vector of md5/sha1; key for AES; to the mask, or leave it empty
+> placeholder: should be base 62 for [vector of md5/sha1 and key for AES]; may leave it empty then it will use default *
 
 > /JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)
 
