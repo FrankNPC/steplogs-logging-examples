@@ -1,4 +1,43 @@
 
+
+# For logger-spring-boot-starter integration #
+
+**  Convenient spring wrapper. follow the steps to integrate step logging. **
+
+ - 1, introduce the lib with spring, mark your beans with [@Logging](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/annotation/Logging.java)
+
+```
+	<dependency>
+		<groupId>io.steplogs</groupId>
+		<artifactId>steplogs-logger-spring-boot-starter</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</dependency>
+```
+
+
+ - 2, see the explains in src/*/resource/application.xml, configure your logger and app-node.
+    -  import LoggerReaderConfiguration.class to declare Logging and [LoggerProvider](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/provider/LoggerProvider.java) bean.
+    -  import LoggerAutoConfiguration to proxy the logged beans
+
+ - 3, configure the http client request to write [HTTP_HEADER_STEP_LOG_ID](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/PreDefinition.java) to the header, so the next app/service can catch it into the traces: LoggingHeaderClientHttpRequestInterceptor
+
+ - 4, configure web server to pick up [HTTP_HEADER_STEP_LOG_ID](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/PreDefinition.java) from the http request header, and setup to the logger: LoggingHttpHeaderHandlerInterceptor
+
+ - 5, configure [steplogs-log-client-native/src/main/resource/application.xml](https://github.com/FrankNPC/steplogs-log-client-native/blob/main/src/main/resources/application.yml), to upload the logs into steplogs.io for traces
+
+ - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
+
+
+`Tips: `
+
+`If the target beans are not marked @Logging, try LoggingMethodPointcut`
+
+`Print X-Step-Trace-Id to the http response header might be helpful, see LoggingHttpHeaderResponseAdvice`
+
+
+See Sample: ![Screenshot trace](./Screenshot-trace.png)
+
+
 # For logger usage #
 
 ** There are two types of logging. **
@@ -84,41 +123,3 @@ Sample:
 
 You can search by keywords in through the portal, or get the id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja
 
-
-
-# For logger-spring-boot-starter integration #
-
-**  Convenient spring wrapper. follow the steps to integrate step logging. **
-
- - 1, introduce the lib with spring, mark your beans with [@Logging](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/annotation/Logging.java) as explains in [steplogs-logger/README.md](https://github.com/FrankNPC/steplogs-logger)
-
-```
-	<dependency>
-		<groupId>io.steplogs</groupId>
-		<artifactId>steplogs-logger-spring-boot-starter</artifactId>
-		<version>1.8-SNAPSHOT</version>
-	</dependency>
-```
-
-
- - 2, see the explains in src/test/resource/application.xml, configure your logger and app-node.
-    -  import LoggerReaderConfiguration.class as @Configuration to declare Logging and [LoggerProvider](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/provider/LoggerProvider.java) bean.
-    -  import LoggerAutoConfiguration as @Configuration to proxy the logged beans
-
- - 3, configure the http request to write [HTTP_HEADER_STEP_LOG_ID](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/PreDefinition.java) to the header, so the next app/service can catch it into the traces: LoggingHeaderClientHttpRequestInterceptor
-
- - 4, configure web server to pick up [HTTP_HEADER_STEP_LOG_ID](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/PreDefinition.java) from the http request header, and setup to the logger: LoggingHttpHeaderHandlerInterceptor
-
- - 5, configure the [steplogs-log-client-native/src/main/resource/application.xml](https://github.com/FrankNPC/steplogs-log-client-native/blob/main/src/main/resources/application.yml), to upload the logs into steplogs.io for traces
-
- - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
-
-
-`Tips: `
-
-`If the target beans are not marked @Logging, try LoggingMethodPointcut`
-
-`Print X-Step-Trace-Id to the http response header might be helpful, see LoggingHttpHeaderResponseAdvice`
-
-
-See Sample: ![Screenshot trace](./Screenshot-trace.png)
