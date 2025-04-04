@@ -119,6 +119,6 @@ Sample:
 
 ** parameters and returns are separated logging. **
 
-
-You can search by keywords in through the portal, or get the id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja
+### After all, ###
+You can search by keywords through the portal, or get the id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja
 
