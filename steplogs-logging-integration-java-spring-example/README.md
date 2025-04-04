@@ -1,5 +1,4 @@
 
-
 # For logger-spring-boot-starter integration #
 
 **  Convenient spring wrapper. follow the steps to integrate step logging. **
@@ -16,12 +15,12 @@
 
 
  - 2, see the explains in src/*/resource/application.xml, configure your logger and app-node.
-    -  import LoggerReaderConfiguration.class to declare Logging and [LoggerProvider](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/provider/LoggerProvider.java) bean.
+    -  import LoggerReaderConfiguration.class to declare Logging and LoggerProvider bean.
     -  import LoggerAutoConfiguration to proxy the logged beans
 
- - 3, configure the http client request to write [HTTP_HEADER_STEP_LOG_ID](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/PreDefinition.java) to the header, so the next app/service can catch it into the traces: LoggingHeaderClientHttpRequestInterceptor
+ - 3, configure the http client request to write HTTP_HEADER_STEP_LOG_ID to the header, so the next app/service can catch it into the traces
 
- - 4, configure web server to pick up [HTTP_HEADER_STEP_LOG_ID](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/PreDefinition.java) from the http request header, and setup to the logger: LoggingHttpHeaderHandlerInterceptor
+ - 4, configure web server to pick up HTTP_HEADER_STEP_LOG_ID from the http request header, and setup to the logger
 
  - 5, configure [steplogs-log-client-native/src/main/resource/application.xml](https://github.com/FrankNPC/steplogs-log-client-native/blob/main/src/main/resources/application.yml), to upload the logs into steplogs.io for traces
 
