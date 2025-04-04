@@ -20,7 +20,7 @@
 
  - 4, configure web server to pick up HTTP_HEADER_STEP_LOG_ID from the http request header, and setup to the logger
 
- - 5, configure [steplogs-log-client-native/src/main/resource/application.xml](https://github.com/FrankNPC/steplogs-log-client-native/blob/main/src/main/resources/application.yml), to upload the logs into steplogs.io for traces
+ - 5, configure [steplogs-logging-agent/src/main/resource/application.xml](https://github.com/FrankNPC/steplogs-logging-agent/blob/main/src/main/resources/application.yml), to upload the logs into steplogs.io for traces
 
  - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
 
