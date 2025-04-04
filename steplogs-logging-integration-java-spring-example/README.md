@@ -33,10 +33,8 @@ Sample:
 
 > 2025-03-30 19:15:37.167|VirtualThreads--70-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|6-3|JSON|OrganizationServiceImpl.java#io.steplogs.profile.service.OrganizationServiceImpl#getById#26#R|[[{"code":0,"entity":{"accountId":1,"encryptionKey":"************************************************","id":1,"name":"steplogs","status":1,"timeCreated":1741873392},"message":null,"reason":null,"token":null}]]
 
-`Tips: Due to the natural of java byte code, there might or not have a line number shift depend on the method declaration. So keep it the next line to the method might solve the issue`
+`Tips: Due to the natural of java byte code, there might or not have a line number shift depend on the method declaration. So keep it the next line to the method will not trigger the issue`
 
- - desensetive : placeholder/MASK(key1|key2); 
- 
 - 2, In method
 
 > `Mark @Logging with catchLogging=true on the method to log the parameters/returns for the methods.`
@@ -68,18 +66,24 @@ Sample:
 
 ---
 
- - desensetive : /TYPE/Step/placeholder/MASK(key1|key2); 
+ - For PII  or sensitive info protection
+ - de-sensetiver : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
+ - Always start with /, not end with /; can place multiple groups
  
 > Step: support wildcard match:
 
-> placeholder: should be always base 62, could be the verctor of md5/sha1; key for AES; to the mask, or leave it empty if unecessary
+> placeholder: should be always base 62, could be the vector of md5/sha1; key for AES; to the mask, or leave it empty
 
-> /JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)//MD5(sessionId|session_id)
+> /JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)
 
 
 ** No quotas in configurations. **
 
 ** parameters and returns are separated logging. **
+
+
+You can search by keywords in through the portal, or get the id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja
+
 
 
 # For logger-spring-boot-starter integration #
@@ -112,12 +116,9 @@ Sample:
 
 `Tips: `
 
-`For PII info sanitizing, see DeSensetiver and JsonNode, now we support skip, mask, sha and md5, and aes encryption, it's encouraging to apply any sanitizer to protect info.`
-
 `If the target beans are not marked @Logging, try LoggingMethodPointcut`
 
 `Print X-Step-Trace-Id to the http response header might be helpful, see LoggingHttpHeaderResponseAdvice`
 
 
 See Sample: ![Screenshot trace](./Screenshot-trace.png)
-
