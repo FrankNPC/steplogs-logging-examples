@@ -24,7 +24,7 @@ steplogs:
     log-thread: true
     log-compress: false
     log-version: 1.0
-    log-desensetive-patterns: >
+    log-sanitizer-patterns: >
       /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK_2(name)//SKIP(birthday),
       /JSON/*Service.java*.service.MedicService*#*/*/MASK(driverLisenceId)/*/MASK_4(name),
       

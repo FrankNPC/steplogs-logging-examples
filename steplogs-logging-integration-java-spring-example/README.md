@@ -99,13 +99,13 @@ Sample:
 
 > 2025-03-30 18:58:52.738|VirtualThreads--62-5|6xKDi88XSMMNlUdVDEuWwah3Tydcc59V|7|JSON|SearchController.java#io.steplogs.web.portal.controller.SearchController#fetchTrace#160R|[[{"code":0,"entity":{"accountId":1,"encryptionKey":"Tmy3v0djPw8JlkUTlfIsu79dv4RMY4jo5XdN9ScvErUXp4xD","id":1,"name":"steplogs","status":1,"timeCreated":1741873392},"message":null,"reason":null,"token":null}]]
 
-`Tips: take in mind of the sentanizer, in case it needs for encryptionKey to the SearchController in case`
+`Tips: take in mind of the sanitizer, in case it needs for encryptionKey to the SearchController in case`
 
 ---
 
 ### PII or sensitive info protection ###
 
- - de-sensetiver : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
+ - sanitizer : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
  - Always start with /, not end with /; can place multiple groups
  
 > Step: support wildcard match:
@@ -121,4 +121,3 @@ Sample:
 
 ### After all, ###
 You can search by keywords through the portal, or get the id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja
-
