@@ -27,7 +27,7 @@ import jakarta.annotation.Resource;
 
 	LoggingHttpHeaderResponseAdvice.class, // so you can see the trace id in the http response of the web browser.
 	LoggerReaderConfiguration.class, // to read the configs from application.xml
-	LoggerAutoConfiguration.class // to load the beans
+	LoggerAutoConfiguration.class // to load the logging related beans
 })
 public class ExampleWebServerConfiguration {
 
