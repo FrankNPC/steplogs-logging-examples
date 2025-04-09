@@ -99,7 +99,7 @@ Sample:
 
 > 2025-03-30 18:58:52.738|VirtualThreads--62-5|6xKDi88XSMMNlUdVDEuWwah3Tydcc59V|7|JSON|SearchController.java#io.steplogs.web.portal.controller.SearchController#fetchTrace#160R|[[{"code":0,"entity":{"accountId":1,"encryptionKey":"Tmy3v0djPw8JlkUTlfIsu79dv4RMY4jo5XdN9ScvErUXp4xD","id":1,"name":"steplogs","status":1,"timeCreated":1741873392},"message":null,"reason":null,"token":null}]]
 
-`Tips: take in mind of the sanitizer, in case it needs for encryptionKey to the SearchController in case`
+`Tips: take in mind of the sanitizer, in case SearchController needs encryptionKey`
 
 ---
 
@@ -115,9 +115,11 @@ Sample:
 > /JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)
 
 
+
+### After all, ###
+** Search by keywords through the portal, or get the id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja **
+
 ** No quotas in configurations. **
 
 ** parameters and returns are separated logging. **
 
-### After all, ###
-You can search by keywords through the portal, or get the id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja
