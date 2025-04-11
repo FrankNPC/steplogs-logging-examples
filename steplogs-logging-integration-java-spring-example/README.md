@@ -46,7 +46,7 @@ See Sample: ![Screenshot trace](./Screenshot-trace.png)
 
 ```java
 @Logging
-TypeABC func(String str) { // line 233
+TypeABC func(String str) { // line ~233
   // first line better right next
   //do some work
   return TypeABC
@@ -70,7 +70,8 @@ Sample:
 
 > 2025-03-30 19:15:37.167|VirtualThreads--70-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|6-3|JSON|OrganizationServiceImpl.java#io.steplogs.profile.service.OrganizationServiceImpl#getById#26#R|[[{"code":0,"entity":{"accountId":1,"encryptionKey":"************************************************","id":1,"name":"steplogs","status":1,"timeCreated":1741873392},"message":null,"reason":null,"token":null}]]
 
-`Tips: Due to the natural of java byte code, there might or not have a line number shift depend on the method declaration. So keep it the next line to the method will not trigger the issue`
+`Tips 1: Due to the natural of java byte code, there might or not have a line number shift depend on the method declaration. So keep it the next line to the method will not trigger the issue`
+`Tips 2: it doesn't work on interface and abstract methods, eg the RPC only has interfaces. will have to use option 2`
 
 - 2, In method
 
