@@ -1,43 +1,35 @@
 
-# For logger-spring-boot-starter integration #
+# For logger usage #
 
- - 1, introduce the lib with spring, mark your beans with [@Logging](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/annotation/Logging.java)
+** There are two types of logging. **
+
+
+Introduce in maven
 
 ```
 	<dependency>
 		<groupId>io.steplogs</groupId>
-		<artifactId>steplogs-logger-spring-boot-starter</artifactId>
-		<version>1.0-SNAPSHOT</version>
+		<artifactId>steplogs-logger</artifactId>
+		<version>1.0.1</version>
 	</dependency>
+	
+	...
+	
+	<repositories>
+		<repository>
+			<id>steplogs-public</id>
+			<url>https://dl.cloudsmith.io/public/steplogs/public/maven/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
 ```
-
-
- - 2, see the explains in src/*/resource/application.xml, configure your logger and app-node.
-    -  import LoggerReaderConfiguration.class to declare Logging and LoggerProvider bean.
-    -  import LoggerAutoConfiguration.class to proxy the logged beans
-
- - 3, configure the http client request to write HTTP_HEADER_STEP_LOG_ID to the header, so the next app/service can catch it into the traces
-
- - 4, configure web server to pick up HTTP_HEADER_STEP_LOG_ID from the http request header, and setup to the logger
-
- - 5, configure [steplogs-logging-agent/src/main/resource/application.xml](https://github.com/FrankNPC/steplogs-logging-agent/blob/main/src/main/resources/application.yml), to upload the logs into steplogs.io for traces
-
- - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
-
-
-`Tips: `
-
-`If the target beans are not marked @Logging, try LoggingMethodPointcut`
-
-`Print X-Step-Trace-Id to the http response header might be helpful, see LoggingHttpHeaderResponseAdvice`
-
-
-See Sample: ![Screenshot trace](./Screenshot-trace.png)
-
-
-# For logger usage #
-
-** There are two types of logging. **
 
 
 - 1, On method
@@ -116,11 +108,67 @@ Sample:
 > `/JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)`
 
 
-
 ### After all, ###
 ** Search by keywords through the portal, or get the id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja **
+
+** If beans are not marked @Logging, try LoggingMethodPointcut with steplogs-logger-spring-boot-starter **
 
 ** No quotas in configurations. **
 
 ** parameters and returns are separated logging. **
 
+
+
+# For steplogs-logger-spring-boot-starter integration #
+
+ - 1, introduce the lib with spring, mark beans with [@Logging](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/annotation/Logging.java)
+
+```
+	<dependency>
+		<groupId>io.steplogs</groupId>
+		<artifactId>steplogs-logger-spring-boot-starter</artifactId>
+		<version>1.0.1</version>
+	</dependency>
+	
+	...
+	
+	<repositories>
+		<repository>
+			<id>steplogs-public</id>
+			<url>https://dl.cloudsmith.io/public/steplogs/public/maven/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
+	</repositories>
+```
+
+
+ - 2, see the explains in src/*/resource/application.xml, configure logger and app-node.
+    -  import LoggerReaderConfiguration.class to declare Logging and LoggerProvider bean.
+    -  import LoggerAutoConfiguration.class to proxy the logged beans
+
+ - 3, configure the http client request to write HTTP_HEADER_STEP_LOG_ID to the header, so the next app/service can catch it into the traces
+
+ - 4, configure web server to pick up HTTP_HEADER_STEP_LOG_ID from the http request header, and setup to the logger
+
+ - 5, configure [steplogs-logging-agent/src/main/resource/application.xml](https://github.com/FrankNPC/steplogs-logging-agent/blob/main/src/main/resources/application.yml), to upload the logs into steplogs.io for traces
+
+ - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
+
+
+`Tips: `
+
+`The key point is it requires padding X-Step-Log-Id to the next service so the traces can form`
+
+`If the target beans are not marked @Logging, try LoggingMethodPointcut in spring`
+
+`Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
+
+
+See Sample: ![Screenshot trace](./Screenshot-trace.png)
