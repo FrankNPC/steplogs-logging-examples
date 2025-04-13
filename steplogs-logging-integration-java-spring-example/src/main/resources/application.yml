@@ -1,0 +1,55 @@
+server:
+  port: 80
+  http2.enabled: true
+  shutdown: graceful
+  forward-headers-strategy: native
+
+spring:
+  application:
+    name: steplogs-logging-integration-sample
+  servlet.multipart.max-request-size: 0
+    
+example:
+  service:
+    user.host: http://localhost
+
+steplogs:
+  logger:
+    file-name: ./logs/${spring.application.name}
+    file-max-length: 536870912
+    print-stdout: true
+    print-file: true
+    log-date-time-format: yyyy-MM-dd HH:mm:ss.SSS
+    log-async: true
+    log-thread: true
+    log-compress: false
+    log-version: 1.0
+    log-sanitizer-patterns: >
+      /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK_2(name)//SKIP(birthday),
+      /JSON/*Service.java*.service.MedicService*#*/*/MASK(driverLisenceId)/*/MASK_4(name),
+      
+  app-node:
+    http-header-id-type: 1
+    application-name: ${spring.application.name}
+    version: 1.2.3
+    program: 1.2.2-1231321.jar
+    host-id: node-123.test.test
+    internal-ip: 12.2.2.2
+    external-ip: 12.2.2.2
+    github: 
+      source-paths: > 
+        src/main/java
+      repository: FrankNPC/${spring.application.name}
+      branch: main
+      commit: xxxxxxx
+      
+logging:
+  file.name: log/${spring.application.name}.log
+  file.attern: log/${spring.application.name}-%d{yyyy-MM-dd-HH-mm}-%i.log
+  level: 
+    root: DEBUG
+    org.apache.coyote.http11: OFF
+    jdk.event.security: OFF
+    org.apache.http: OFF
+    org.apache.hc: OFF
+
