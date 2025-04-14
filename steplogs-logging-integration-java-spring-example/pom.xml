@@ -143,5 +143,18 @@
 				<updatePolicy>always</updatePolicy>
 			</snapshots>
 		</repository>
+		
+		<repository>
+			<id>steplogs-private</id>
+			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
+		</repository>
 	</repositories>
 </project>
