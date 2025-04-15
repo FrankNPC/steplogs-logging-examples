@@ -109,7 +109,7 @@ Sample:
 	}
 ```
 
- * 3: Integrate steplogs-logger-spring-boot-starter lib, will automatically start the LoggerAgent
+ * 3: Integrate steplogs-logger-spring-boot-starter lib, place a file src/main/resources/META-INF/spring.factories with org.springframework.boot.SpringApplicationRunListener=io.steplogs.logger.spring.LoggerAgentSpringApplicationRunListener
 
 
  * X: For methods on classes not annotated with @Logging, or on interface, use AOP proxy and pointcut: io.steplogs.logger.spring.LoggingMethodPointcut
