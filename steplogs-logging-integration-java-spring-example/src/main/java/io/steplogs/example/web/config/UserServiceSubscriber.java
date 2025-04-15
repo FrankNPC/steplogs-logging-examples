@@ -21,6 +21,7 @@ import io.steplogs.logger.annotation.LoggingUnit;
 import io.steplogs.logger.provider.LoggerProvider;
 import io.steplogs.logger.spring.LoggingHeaderClientHttpRequestInterceptor;
 import io.steplogs.logger.spring.LoggingMethodPointcut;
+import io.steplogs.logger.spring.LoggingTraceMethodInterceptor;
 import io.steplogs.spring.rmi.http.subscriber.AbstractServiceSubscriber;
 import io.steplogs.spring.rmi.http.subscriber.ServiceClientTemplate;
 import jakarta.annotation.Resource;
@@ -44,13 +45,12 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 	@Override
 	public Advisor[] getAdvisors() {
 		if (advisors==null) {
-			// Pointcut to intercept the methods if want to log before sending out. 
-			LoggingMethodPointcut loggingMethodPointcut = new LoggingMethodPointcut(steplogsLoggerProvider);
-
-			loggingMethodPointcut.getLoggingTraceMethodInterceptor().addClasses(
+			LoggingTraceMethodInterceptor.addClasses(
 					LoggingUnit.Builder().catchPackages("io.steplogs.example.web.service").build(), 
 					UserService.class);
-			advisors = new Advisor [] { loggingMethodPointcut };
+
+			// Pointcut to intercept the methods if want to log before sending out http requests and save the response as bean IO. 
+			advisors = new Advisor [] { new LoggingMethodPointcut(steplogsLoggerProvider) };
 		}
 		return advisors;
 	}

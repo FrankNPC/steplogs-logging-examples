@@ -17,6 +17,8 @@ import io.steplogs.example.web.model.MedicConditionDO;
 import io.steplogs.example.web.model.Page;
 import io.steplogs.example.web.service.MedicService;
 import io.steplogs.example.web.service.rpc.UserService;
+import io.steplogs.example.web.test.ForStaticMethod;
+import io.steplogs.logger.Logger;
 import jakarta.annotation.Resource;
 
 @RestController
@@ -32,6 +34,9 @@ public class MedicConditionController {
 	@Resource
 	UserService userService;
 	
+	@Resource
+	Logger logger;
+	
 	// Hit the api with URL: http://localhost/api/medic/query?session_id=xxx&offset=0&size=123
 	@RequestMapping(value = "/medic/query", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> query(@RequestParam(value = "callback", defaultValue="") String callback,
@@ -42,6 +47,7 @@ public class MedicConditionController {
 		Page page = new Page();
 		page.setOffset(offset);
 		page.setSize(size);
+		ForStaticMethod.runStatic(System.currentTimeMillis());
 		List<MedicConditionDO> queryRet = medicService.query(session_id, page);
 		return JsonToString(queryRet, callback);
 	}
@@ -50,6 +56,8 @@ public class MedicConditionController {
 	@RequestMapping(value = "/medic/save", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<String> save(@RequestParam(value = "callback", defaultValue="") String callback,
 			MedicCondition medicCondition) throws JsonProcessingException {
+		logger.log("save request paylod, should be with trace", medicCondition);
+		new ForStaticMethod().query(System.currentTimeMillis(), null);//should not print log
 		MedicConditionDO medicRet = medicService.save(medicCondition);
 		return JsonToString(medicRet, callback);
 	}

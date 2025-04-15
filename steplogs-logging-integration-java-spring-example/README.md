@@ -3,7 +3,6 @@
 
 ** There are two types of logging. **
 
-
 Introduce in maven
 
 ```
@@ -31,10 +30,11 @@ Introduce in maven
 	</repositories>
 ```
 
+** For Logging, there are two ways to use **
 
 - 1, On method
 
-> `Mark @Logging on the method to log the parameters/returns for the methods, by default`
+> `Annotate @Logging on the method/class to log the parameters/returns for the methods, by default`
 
 ```java
 @Logging
@@ -49,9 +49,9 @@ Object caller(){
 }
 ```
 
-> log: ...|package.class#func#234#|[str123]
+> log: ...|package.class#func#233#|[str123]
 
-> log: ...|package.class#func#234#R|[TypeABC->toJson]
+> log: ...|package.class#func#233#R|[TypeABC->toJson]
 
 Sample:
 > 2025-03-30 19:15:37.151|VirtualThreads--69-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|4-2|JSON|AccountServiceImpl.java#io.steplogs.profile.service.AccountServiceImpl#getBySessionId#51#|[{"session_id":"ZwQwpVLp7Ly26qP9JEu6QI8LqP5ttUgE87la4xDaqqoXB0ir"}]
@@ -65,9 +65,10 @@ Sample:
 `Tips 1: Due to the natural of java byte code, there might or not have a line number shift depend on the method declaration. So keep it the next line to the method will not trigger the issue`
 `Tips 2: it doesn't work on interface and abstract methods, eg the RPC only has interfaces. will have to use option 2`
 
+
 - 2, In method
 
-> `Mark @Logging with catchLogging=true on the method to log the parameters/returns for the methods.`
+> `Annotate @Logging with catchLogging=true on the method/class to log the parameters/returns for the methods.`
 
 ```java
 @Logging(catchLogging=true) 
@@ -94,6 +95,27 @@ Sample:
 
 `Tips: take in mind of the sanitizer, in case SearchController needs encryptionKey`
 
+
+## There are three ways to turn on the logging: ##
+
+ * There are three ways to turn on the LoggerAgent for logging:
+ * 1: For methods on classes annotated with @Logging, to load the jar with javaagent: java -javaagent:steplogs-logger-1.0.1.jar= -jar your-app.jar
+ * 2: For methods on classes annotated with @Logging, to load agent before your classes: 
+ 
+ ```
+	public static void main(String[] args) {
+		io.steplogs.logger.boostrap.LoggerAgent.premain(null); // must load before everything
+		new SpringApplicationBuilder(ServerBootApplication.class).run(args);
+	}
+```
+
+ * 3: Integrate steplogs-logger-spring-boot-starter lib, will automatically start the LoggerAgent
+
+
+ * X: For methods on classes not annotated with @Logging, or on interface, use AOP proxy and pointcut: io.steplogs.logger.spring.LoggingMethodPointcut
+ * Y: For methods on classes not annotated with @Logging, manually add methods: io.steplogs.logger.boostrap.addTargetMethods/addTargetMethod/addClasses
+
+
 ---
 
 ### PII or sensitive info protection ###
@@ -101,6 +123,8 @@ Sample:
  - sanitizer : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
  - Always start with /, not end with /; can place multiple groups
  
+> Type: in general JSON, could be ERROR or TEXT 
+
 > Step: support wildcard match:
 
 > placeholder: should be base 62 for [vector of md5/sha1 and key for AES]; may leave it empty then it will use default *
@@ -113,9 +137,9 @@ Sample:
 
 ** If beans are not marked @Logging, try LoggingMethodPointcut with steplogs-logger-spring-boot-starter **
 
-** No quotas in configurations. **
+** No quotas in configurations **
 
-** parameters and returns are separated logging. **
+** parameters and returns are separated logging **
 
 
 
@@ -124,6 +148,11 @@ Sample:
  - 1, introduce the lib with spring, mark beans with [@Logging](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/annotation/Logging.java)
 
 ```
+	<dependency>
+		<groupId>io.steplogs</groupId>
+		<artifactId>steplogs-logger</artifactId>
+		<version>1.0.1</version>
+	</dependency>
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger-spring-boot-starter</artifactId>
@@ -149,26 +178,25 @@ Sample:
 ```
 
 
- - 2, see the explains in src/*/resource/application.xml, configure logger and app-node.
-    -  import LoggerReaderConfiguration.class to declare Logging and LoggerProvider bean.
-    -  import LoggerAutoConfiguration.class to proxy the logged beans
+ - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
+    -  import LoggerAutoConfiguration.class to declare Logging and LoggerProvider bean etc.
+    -  more configuration see [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example)
 
- - 3, configure the http client request to write HTTP_HEADER_STEP_LOG_ID to the header, so the next app/service can catch it into the traces
+ - 3, configure web server to pick up HTTP_HEADER_STEP_LOG_ID from the http request header, and setup to the logger as log id
+ 
+ - 4, configure the http client request to write HTTP_HEADER_STEP_LOG_ID to the header, so the next app/service can catch it into the traces
 
- - 4, configure web server to pick up HTTP_HEADER_STEP_LOG_ID from the http request header, and setup to the logger
-
- - 5, configure [steplogs-logging-agent/src/main/resource/application.xml](https://github.com/FrankNPC/steplogs-logging-agent/blob/main/src/main/resources/application.yml), to upload the logs into steplogs.io for traces
+ - 5, configure [steplogs-logging-agent/application.xml](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent), to upload the logs into steplogs.io for traces
 
  - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
 
 
 `Tips: `
 
-`The key point is it requires padding X-Step-Log-Id to the next service so the traces can form`
-
-`If the target beans are not marked @Logging, try LoggingMethodPointcut in spring`
-
 `Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
+
+`The key point is it requires picking up and passing X-Step-Log-Id to the prev/next service so the traces can form as screenshot:`
 
 
 See Sample: ![Screenshot trace](./Screenshot-trace.png)
+

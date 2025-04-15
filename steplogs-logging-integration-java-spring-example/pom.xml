@@ -44,13 +44,13 @@
 		<dependency>
 			<groupId>io.steplogs</groupId>
 			<artifactId>steplogs-logger</artifactId>
-			<version>1.0.1</version>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>io.steplogs</groupId>
 			<artifactId>steplogs-logger-spring-boot-starter</artifactId>
-			<version>1.0.1</version>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		
 		<dependency>

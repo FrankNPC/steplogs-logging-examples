@@ -11,6 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class SteplogsIntegrationExampleBootApplication {
 
 	public static void main(String[] args) {
-		new SpringApplicationBuilder(SteplogsIntegrationExampleBootApplication.class).run(args);
+		io.steplogs.logger.boostrap.LoggerAgent.premain(null);// ensure the first to run if don't use javaagent. but in spring it's not needed. For troubleshooting, it's still an option to try
+		new SpringApplicationBuilder(SteplogsIntegrationExampleBootApplication.class).run(args);//, args);
 	}
 }
