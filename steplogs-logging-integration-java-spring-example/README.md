@@ -98,18 +98,18 @@ Sample:
 
 ## There are three ways to turn on the logging: ##
 
- * There are three ways to turn on the LoggerAgent for logging:
+ * There are three ways to turn on the LoggingInitiation for logging:
  * 1: For methods on classes annotated with @Logging, to load the jar with javaagent: java -javaagent:steplogs-logger-1.0.1.jar= -jar your-app.jar
  * 2: For methods on classes annotated with @Logging, to load agent before your classes: 
  
  ```
 	public static void main(String[] args) {
-		io.steplogs.logger.boostrap.LoggerAgent.premain(null); // must load before everything
+		io.steplogs.logger.boostrap.LoggingInitiation.premain(null); // must load before everything
 		new SpringApplicationBuilder(ServerBootApplication.class).run(args);
 	}
 ```
 
- * 3: Integrate steplogs-logger-spring-boot-starter lib, place a file src/main/resources/META-INF/spring.factories with org.springframework.boot.SpringApplicationRunListener=io.steplogs.logger.spring.LoggerAgentSpringApplicationRunListener
+ * 3: Integrate steplogs-logger-spring-boot-starter lib, place a file src/main/resources/META-INF/spring.factories with org.springframework.boot.SpringApplicationRunListener=io.steplogs.logger.spring.LoggingInitiationSpringApplicationRunListener
 
 
  * X: For methods on classes not annotated with @Logging, or on interface, use AOP proxy and pointcut: io.steplogs.logger.spring.LoggingMethodPointcut

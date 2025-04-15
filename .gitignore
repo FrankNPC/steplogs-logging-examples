@@ -7,7 +7,4 @@
 /backup
 /docs
 /node_modules
-/log
 /logs
-**/*.gz
-**/*.log

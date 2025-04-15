@@ -6,7 +6,7 @@ server:
 
 spring:
   application:
-    name: steplogs-logging-integration-java-spring-sample
+    name: steplogs-logging-integration-java-spring-example
   servlet.multipart.max-request-size: 0
     
 example:
