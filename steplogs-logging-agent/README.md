@@ -7,9 +7,9 @@ Or each hour/30 seconds to scan log files that changed in recent 1 hour/30 secon
 [Experimental] once the termination signal reaches the agent, it will scan all file and upload for a last try. 
 > kill -SIGTERM < pid >     --no force kill
 
-`Tips: clean up the log folder once they are uploaded; leave a few seconds after sending termination signal to the agent`
+`Tips: clean up the logs folder once they are uploaded; leave a few seconds after sending termination signal to the agent`
 
-The jar is executable: nohup ./openjdk-21.0.2/bin/java -Dspring.profiles.active=dev -jar steplogs-logging-agent-1.0.1.jar
+The jar is executable: nohup ./openjdk-8/bin/java -Dspring.profiles.active=dev -jar steplogs-logging-agent-1.0.1.jar
 
 
 With spring's configuration, override it through:
