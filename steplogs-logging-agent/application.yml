@@ -1,0 +1,24 @@
+spring:
+  shutdown: graceful
+  application:
+    name: steplogs-logging-agent
+
+spring.task.scheduling.pool.size: 3
+
+steplogs:
+  logging:
+    server:
+      ws-url: ws://localhost:8080/  #optional. in prd it's prd-logging-ingest-server...
+    agent:
+      app-key: 3qQcAGvOLysLJh0T4fHXMFvbttcB2WsVT0EOqpZ3On8IRxpy #required. active the application in portal first then will see the app-key
+      host-id: please-change-to-your-unique-host-id #required. to help the log files' uniqueness. 
+      watch-dirs:  /Users/administrator/Documents/workspace/FrankNPC/Java/Steplogs/steplogs-web-portal/logs # point to the folder of the app/service
+      retry-cycle-timeout: 3600000	# optional. after the time, it won't retry files. [the client retries the file if session or file exceptions or errors occur.]
+      file-idle-timeout: 60000		# optional. after the time, the file to wait for new data writes will be removed from the queue. [The file watcher will always watch for the new data.]
+
+logging: # log4j
+  file.name: log/${spring.application.name}.log
+  pattern:
+    console: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+  level: 
+    root: DEBUG
