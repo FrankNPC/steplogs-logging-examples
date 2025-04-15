@@ -26,5 +26,4 @@ With spring's configuration, override it through:
 
 > steplogs.logging.agent.host-id=3600000 #optional. after the time, it won't retry files. [the client retries the file if session or file exceptions or errors occur.]
 
-> steplogs.logging.agent.host-id=60000 #optional. after the time, the file to wait for new data writes will be removed from the queue. [The file watcher will always watch for the new data.]
-      
+> steplogs.logging.agent.host-id=60000 #optional. after the time, the file to wait for new data writes will be removed from the queue. [There is a hourly/30 seconds and pre-shutdown scan to catch changes after it]
