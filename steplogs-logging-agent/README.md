@@ -9,6 +9,8 @@ Or each hour/30 seconds to scan log files that changed in recent 1 hour/30 secon
 
 `Tips: clean up the log folder once they are uploaded; leave a few seconds after sending termination signal to the agent`
 
+The jar is executable: nohup ./openjdk-21.0.2/bin/java -Dspring.profiles.active=dev -jar steplogs-logging-agent-1.0.1.jar
+
 
 With spring's configuration, override it through:
 
