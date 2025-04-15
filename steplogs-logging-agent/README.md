@@ -5,7 +5,7 @@ Or each hour/30 seconds to scan log files that changed in recent 1 hour/30 secon
 
 
 [Experimental] once the termination signal reaches the agent, it will scan all file and upload for a last try. 
-> kill -SIGTERM <pid>
+> kill -SIGTERM < pid >     --no force kill
 
 `Tips: clean up the log folder once they are uploaded; leave a few seconds after sending termination signal to the agent`
 
