@@ -1,8 +1,6 @@
 
 # For logger usage #
 
-** There are two types of logging. **
-
 Introduce in maven
 
 ```

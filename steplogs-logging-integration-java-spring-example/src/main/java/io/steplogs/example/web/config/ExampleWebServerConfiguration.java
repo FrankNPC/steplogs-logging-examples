@@ -43,7 +43,7 @@ public class ExampleWebServerConfiguration {
 	public void sendEmails() {
 		for(int i=0; i<10; i++) {
 			smtpEmailService.sendVerificationUrl("somebodyemailnotknowhoisabcdxxx@whoismail.unknown", "http://localhost/verifyyouremail");
-			//logger.reset();	
+			//logger.reset();
 		}
 		logger.reset();
 	}
@@ -54,9 +54,4 @@ public class ExampleWebServerConfiguration {
 		return new LoggingWebMvcConfigurer(List.of(PreDefinition.HTTP_HEADER_STEP_LOG_ID), "/api", "/api/**");
 	}
 
-	// In case if there are interfaces delegations like DAO or RPC interfaces not fully managed by spring
-//	@Bean
-//	public LoggingMethodPointcut getLoggingMethodPointcut() {
-//		return new LoggingMethodPointcut(steplogsLoggerProvider);
-//	}
 }

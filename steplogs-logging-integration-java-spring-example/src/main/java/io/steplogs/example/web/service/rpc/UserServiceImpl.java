@@ -13,10 +13,10 @@ import jakarta.annotation.Resource;
 @Provider // RPC service
 @Service
 @Logging
-public class UserServiceImpl { 
+public class UserServiceImpl { // impelements UserService {
 	// In general it should implement UserService, but there will be duplicated beans.
 	// So use the same name UserService to mock the service provider to match the service subscriber
-
+	// it provide a service endpoint at http://localhost/api/user/get_by_id.
 	@Resource
 	Logger logger;
 	

@@ -49,7 +49,7 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 					LoggingUnit.Builder().catchPackages("io.steplogs.example.web.service").build(), 
 					UserService.class);
 
-			// Pointcut to intercept the methods if want to log before sending out http requests and save the response as bean IO. 
+			// Pointcut to intercept the methods if want to log on interfaces or class without @Logging, before sending out http requests and save the response as bean IO. 
 			advisors = new Advisor [] { new LoggingMethodPointcut(steplogsLoggerProvider) };
 		}
 		return advisors;
