@@ -36,7 +36,11 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 	public String getBaseUrl() {
 		return profileHost;
 	}
-	
+
+	@Resource
+	@Lazy
+	LoggingMethodPointcut loggingMethodPointcut;
+
 	@Resource
 	@Lazy
 	LoggerProvider steplogsLoggerProvider;
@@ -50,7 +54,7 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 					UserService.class);
 
 			// Pointcut to intercept the methods if want to log on interfaces or class without @Logging, before sending out http requests and save the response as bean IO. 
-			advisors = new Advisor [] { new LoggingMethodPointcut(steplogsLoggerProvider) };
+			advisors = new Advisor [] { loggingMethodPointcut };
 		}
 		return advisors;
 	}
