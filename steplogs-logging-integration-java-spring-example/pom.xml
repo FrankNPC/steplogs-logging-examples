@@ -133,7 +133,7 @@
 	<repositories>
 		<repository>
 			<id>steplogs-public</id>
-			<url>https://dl.cloudsmith.io/public/steplogs/public/maven/</url>
+			<url>https://dl.cloudsmith.io/public/steplogs/public/maven/</url><!-- The link may subjecto change-->
 			<releases>
 				<enabled>true</enabled>
 				<updatePolicy>never</updatePolicy>
@@ -146,7 +146,7 @@
 		
 		<repository>
 			<id>steplogs-private</id>
-			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url>
+			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url><!-- The link may subjecto change-->
 			<releases>
 				<enabled>true</enabled>
 				<updatePolicy>never</updatePolicy>

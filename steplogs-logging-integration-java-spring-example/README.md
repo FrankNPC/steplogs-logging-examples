@@ -14,8 +14,8 @@ Introduce in maven
 	
 	<repositories>
 		<repository>
-			<id>steplogs-public</id>
-			<url>https://dl.cloudsmith.io/public/steplogs/public/maven/</url>
+			<id>steplogs-private</id>
+			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url><!-- The repo url may change -->
 			<releases>
 				<enabled>true</enabled>
 				<updatePolicy>always</updatePolicy>
@@ -146,6 +146,8 @@ Sample:
  - 1, introduce the lib with spring, mark beans with [@Logging](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/annotation/Logging.java)
 
 ```
+pom.xml:
+
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger</artifactId>
@@ -161,8 +163,8 @@ Sample:
 	
 	<repositories>
 		<repository>
-			<id>steplogs-public</id>
-			<url>https://dl.cloudsmith.io/public/steplogs/public/maven/</url>
+			<id>steplogs-private</id>
+			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url><!-- The repo url may change -->
 			<releases>
 				<enabled>true</enabled>
 				<updatePolicy>always</updatePolicy>
@@ -173,6 +175,21 @@ Sample:
 			</snapshots>
 		</repository>
 	</repositories>
+```
+
+```
+settings.xml:
+
+	<servers>
+
+		<server>
+			<id>cloudsmith</id>
+      		<username>${cloudsmith.username}</username><!-- see it in portal under your organization, also may change -->
+			<password>${cloudsmith.password}</password><!-- see it in portal under your organization, also may change -->
+		</server>
+		
+	</servers>
+	
 ```
 
 
