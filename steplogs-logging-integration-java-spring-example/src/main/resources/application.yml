@@ -22,7 +22,6 @@ steplogs:
     log-async: true # blocking IO or NIO write files
     log-light: false
     log-compress: false # not supported yet
-    log-version: 1.0  # will supported in the future
     log-sanitizer-patterns: >
       /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK_2(name)//SKIP(birthday),
       /JSON/*Service.java*.service.MedicService*#*/*/MASK(driverLisenceId)/*/MASK_4(name),

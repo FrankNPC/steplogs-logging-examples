@@ -112,7 +112,7 @@ Sample:
 
  * X: For methods on classes not annotated with @Logging, or on interface, use AOP proxy and pointcut: io.steplogs.logger.spring.LoggingMethodPointcut
  * Y: For methods on classes not annotated with @Logging, manually add methods: io.steplogs.logger.boostrap.addTargetMethods/addTargetMethod/addClasses
-
+ * Z: Only public and static methods supported except to AOP/proxy in honor of private, protected and final
 
 ---
 
