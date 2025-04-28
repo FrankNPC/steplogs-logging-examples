@@ -15,7 +15,7 @@ Introduce in maven
 	<repositories>
 		<repository>
 			<id>steplogs-private</id>
-			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url><!-- The repo url may change -->
+			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url><!-- The repo url may subject to change -->
 			<releases>
 				<enabled>true</enabled>
 				<updatePolicy>always</updatePolicy>
@@ -27,6 +27,7 @@ Introduce in maven
 		</repository>
 	</repositories>
 ```
+
 
 ** For Logging, there are two ways to use **
 
@@ -60,8 +61,7 @@ Sample:
 
 > 2025-03-30 19:15:37.167|VirtualThreads--70-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|6-3|JSON|OrganizationServiceImpl.java#io.steplogs.profile.service.OrganizationServiceImpl#getById#26#R|[[{"code":0,"entity":{"accountId":1,"encryptionKey":"************************************************","id":1,"name":"steplogs","status":1,"timeCreated":1741873392},"message":null,"reason":null,"token":null}]]
 
-`Tips 1: Due to the natural of java byte code, there might or not have a line number shift depend on the method declaration. So keep it the next line to the method will not trigger the issue`
-`Tips 2: it doesn't work on interface and abstract methods, eg the RPC only has interfaces. will have to use option 2`
+`Tips for interface it needs AOP or proxy like spring pointcut`
 
 
 - 2, In method
@@ -91,28 +91,28 @@ Sample:
 
 > 2025-03-30 18:58:52.738|VirtualThreads--62-5|6xKDi88XSMMNlUdVDEuWwah3Tydcc59V|7|JSON|SearchController.java#io.steplogs.web.portal.controller.SearchController#fetchTrace#160R|[[{"code":0,"entity":{"accountId":1,"encryptionKey":"Tmy3v0djPw8JlkUTlfIsu79dv4RMY4jo5XdN9ScvErUXp4xD","id":1,"name":"steplogs","status":1,"timeCreated":1741873392},"message":null,"reason":null,"token":null}]]
 
-`Tips: take in mind of the sanitizer, in case SearchController needs encryptionKey`
+`Tips: take in mind of the sanitizer, in case SearchController requires encryptionKey to be masked`
 
 
 ## There are three ways to turn on the logging: ##
 
- * There are three ways to turn on the LoggingInitiation for logging:
- * 1: For methods on classes annotated with @Logging, to load the jar with javaagent: java -javaagent:steplogs-logger-1.0.1.jar= -jar your-app.jar
+ * There are three options to turn on logging:
+ * 1: Integrate steplogs-logger-spring-boot-starter
  * 2: For methods on classes annotated with @Logging, to load agent before your classes: 
  
  ```
 	public static void main(String[] args) {
-		io.steplogs.logger.boostrap.LoggingInitiation.premain(null); // must load before everything
+		io.steplogs.logger.boostrap.LoggingInitiation.premain(null); // must load before everything, no need in steplogs-logger-spring-boot-starter
 		new SpringApplicationBuilder(ServerBootApplication.class).run(args);
 	}
 ```
+ * 3: For methods on classes annotated with @Logging, to load the jar with javaagent: java -javaagent:steplogs-logger-1.0.1.jar= -jar your-app.jar
 
- * 3: Integrate steplogs-logger-spring-boot-starter lib, place a file src/main/resources/META-INF/spring.factories with org.springframework.boot.SpringApplicationRunListener=io.steplogs.logger.spring.LoggingInitiationSpringApplicationRunListener
 
 
- * X: For methods on classes not annotated with @Logging, or on interface, use AOP proxy and pointcut: io.steplogs.logger.spring.LoggingMethodPointcut
+ * X: For methods on classes not annotated with @Logging, or on interface, or with JUnit, try AOP proxy, and pointcut io.steplogs.logger.spring.LoggingMethodPointcut
  * Y: For methods on classes not annotated with @Logging, manually add methods: io.steplogs.logger.boostrap.addTargetMethods/addTargetMethod/addClasses
- * Z: Only public and static methods supported except to AOP/proxy in honor of private, protected and final
+ * Z: Only public and static methods supported in honor of private, protected and final
 
 ---
 
@@ -141,13 +141,12 @@ Sample:
 
 
 
+
 # For steplogs-logger-spring-boot-starter integration #
 
- - 1, introduce the lib with spring, mark beans with [@Logging](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/annotation/Logging.java)
+ - 1, introduce the jar, annotate beans with [@Logging](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/annotation/Logging.java)
 
 ```
-pom.xml:
-
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger</artifactId>
@@ -164,7 +163,7 @@ pom.xml:
 	<repositories>
 		<repository>
 			<id>steplogs-private</id>
-			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url><!-- The repo url may change -->
+			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url><!-- The repo url may subject to change -->
 			<releases>
 				<enabled>true</enabled>
 				<updatePolicy>always</updatePolicy>
@@ -177,24 +176,9 @@ pom.xml:
 	</repositories>
 ```
 
-```
-settings.xml:
-
-	<servers>
-
-		<server>
-			<id>cloudsmith</id>
-      		<username>${cloudsmith.username}</username><!-- see it in portal under your organization, also may change -->
-			<password>${cloudsmith.password}</password><!-- see it in portal under your organization, also may change -->
-		</server>
-		
-	</servers>
-	
-```
-
 
  - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
-    -  import LoggerAutoConfiguration.class to declare Logging and LoggerProvider bean etc.
+    -  import LoggerAutoConfiguration.class to declare default Logging, LoggerProvider and LoggingMethodPointcut bean etc.
     -  more configuration see [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example)
 
  - 3, configure web server to pick up HTTP_HEADER_STEP_LOG_ID from the http request header, and setup to the logger as log id
@@ -210,7 +194,7 @@ settings.xml:
 
 `Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
 
-`The key point is it requires picking up and passing X-Step-Log-Id to the prev/next service so the traces can form as screenshot:`
+`The point is it requires picking up and passing X-Step-Log-Id to the prev/next service so the traces can form as screenshot:`
 
 
 See Sample: ![Screenshot trace](./Screenshot-trace.png)
