@@ -129,6 +129,10 @@ Sample:
 
 > `/JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)`
 
+### Trace ###
+
+It's critical to pass the step_log_id to the next service to form the trace. See steplogs-logger-spring-boot-starter/README.md
+
 
 ### After all, ###
 ** Search by keywords through the portal, or get the id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja **
@@ -190,11 +194,9 @@ Sample:
  - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
 
 
-`Tips: `
+`Tip 1: Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
 
-`Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
-
-`The point is it requires picking up and passing X-Step-Log-Id to the prev/next service so the traces can form as screenshot:`
+`Tip 2: The point is it requires picking up and passing X-Step-Log-Id to the prev/next service so the traces can form as screenshot:`
 
 
 See Sample: ![Screenshot trace](./Screenshot-trace.png)
