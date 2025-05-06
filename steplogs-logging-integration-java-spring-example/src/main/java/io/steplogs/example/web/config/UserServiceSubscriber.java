@@ -21,7 +21,6 @@ import io.steplogs.logger.annotation.LoggingUnit;
 import io.steplogs.logger.provider.LoggerProvider;
 import io.steplogs.logger.spring.LoggingHeaderClientHttpRequestInterceptor;
 import io.steplogs.logger.spring.LoggingMethodPointcut;
-import io.steplogs.logger.spring.LoggingTraceMethodInterceptor;
 import io.steplogs.spring.rmi.http.subscriber.AbstractServiceSubscriber;
 import io.steplogs.spring.rmi.http.subscriber.ServiceClientTemplate;
 import jakarta.annotation.Resource;
@@ -49,11 +48,11 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 	@Override
 	public Advisor[] getAdvisors() {
 		if (advisors==null) {
-			LoggingTraceMethodInterceptor.addClasses(
+			loggingMethodPointcut.getLoggingTraceMethodInterceptor().addClasses(
 					LoggingUnit.Builder().catchPackages("io.steplogs.example.web.service").build(), 
 					UserService.class);
 
-			// Pointcut to intercept the methods if want to log on interfaces or class without @Logging, before sending out http requests and save the response as bean IO. 
+			// Pointcut to intercept the methods if log on interfaces or class without @Logging. 
 			advisors = new Advisor [] { loggingMethodPointcut };
 		}
 		return advisors;
@@ -84,7 +83,7 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 			.builder(new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient())))
 			.baseUrl(getBaseUrl())
 			
-			// Pass the log id to the next service to form traces through HTTP request header
+			// Pass the log id to the next app/service to form traces through HTTP request header
 			.requestInterceptor(new LoggingHeaderClientHttpRequestInterceptor(steplogsLoggerProvider))
 			.build();
 	}

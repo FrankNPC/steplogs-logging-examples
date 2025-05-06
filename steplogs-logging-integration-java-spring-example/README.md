@@ -94,11 +94,12 @@ Sample:
 `Tips: take in mind of the sanitizer, in case SearchController requires encryptionKey to be masked`
 
 
-## There are three ways to turn on the logging: ##
+## There are two ways to turn on the logging: ##
 
- * There are three options to turn on logging:
- * 1: Integrate steplogs-logger-spring-boot-starter
- * 2: For methods on classes annotated with @Logging, to load agent before your classes: 
+ * There are two ways to turn on the logging:
+ * 1: Integrate steplogs-logger-spring-boot-starter with LoggerAutoConfiguration for AOP and proxy.
+ * 2: To log methods on class instance not proxy, add LoggingInitiationSpringApplicationRunListener to META-INF/spring.factories
+ * Or, load agent before any classes: 
  
  ```
 	public static void main(String[] args) {
@@ -106,13 +107,12 @@ Sample:
 		new SpringApplicationBuilder(ServerBootApplication.class).run(args);
 	}
 ```
- * 3: For methods on classes annotated with @Logging, to load the jar with javaagent: java -javaagent:steplogs-logger-1.0.1.jar= -jar your-app.jar
+ * Or, load the jar with javaagent: java -javaagent:steplogs-logger-1.0.1.jar= -jar your-app.jar
 
+ * In general, above is enough,
+ * X: For methods on interface with @Logging, or with JUnit, try proxy and AOP pointcut
+ * Y: Annotate methods/classes/interfaces with @Logging, or manually add methods: io.steplogs.logger.boostrap.addTargetMethods/addTargetMethod/addClasses
 
-
- * X: For methods on classes not annotated with @Logging, or on interface, or with JUnit, try AOP proxy, and pointcut io.steplogs.logger.spring.LoggingMethodPointcut
- * Y: For methods on classes not annotated with @Logging, manually add methods: io.steplogs.logger.boostrap.addTargetMethods/addTargetMethod/addClasses
- * Z: Only public and static methods supported in honor of private, protected and final
 
 ---
 
@@ -121,7 +121,7 @@ Sample:
  - sanitizer : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
  - Always start with /, not end with /; can place multiple groups
  
-> Type: in general JSON, could be ERROR or TEXT 
+> Type: in general it's JSON, could be ERROR or TEXT etc.
 
 > Step: support wildcard match:
 
@@ -131,13 +131,11 @@ Sample:
 
 ### Trace ###
 
-It's critical to pass the step_log_id to the next service to form the trace. See steplogs-logger-spring-boot-starter/README.md
+It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the next service to form the trace. See steplogs-logger-spring-boot-starter/README.md
 
 
 ### After all, ###
-** Search by keywords through the portal, or get the id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja **
-
-** If beans are not marked @Logging, try LoggingMethodPointcut with steplogs-logger-spring-boot-starter **
+** Search by keywords through the portal, or get X-Step-Trace-Id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja **
 
 ** No quotas in configurations **
 
@@ -183,20 +181,21 @@ It's critical to pass the step_log_id to the next service to form the trace. See
 
  - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
     -  import LoggerAutoConfiguration.class to declare default Logging, LoggerProvider and LoggingMethodPointcut bean etc.
-    -  more configuration see [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example)
 
- - 3, configure web server to pick up HTTP_HEADER_STEP_LOG_ID from the http request header, and setup to the logger as log id
+ - 3, configure the http client request to pass HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) to the header, so the next app/service can catch it into the traces
  
- - 4, configure the http client request to write HTTP_HEADER_STEP_LOG_ID to the header, so the next app/service can catch it into the traces
+ - 4, configure web server to read HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header, and setup to the logger as log id. No need If with LoggerAutoConfiguration.
 
  - 5, configure [steplogs-logging-agent/application.xml](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent), to upload the logs into steplogs.io for traces
 
  - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
+ 
+** see example [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) **
 
 
 `Tip 1: Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
 
-`Tip 2: The point is it requires picking up and passing X-Step-Log-Id to the prev/next service so the traces can form as screenshot:`
+`Tip 2: It's required to pass and read X-Step-Log-Id to/from the prev/next service so the traces can form as screenshot:`
 
 
 See Sample: ![Screenshot trace](./Screenshot-trace.png)
