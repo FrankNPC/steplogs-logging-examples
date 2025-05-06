@@ -11,19 +11,19 @@ Or each hour/30 seconds to scan log files that changed in recent 1 hour/30 secon
 
 The jar is executable: nohup ./openjdk-8/bin/java -Dspring.profiles.active=dev -jar steplogs-logging-agent-1.0.1.jar
 
+The file name should be less than 256, not blank and '"<>[]{}@&\
 
 With spring's configuration, override it through:
 
-> -Dspring.profiles.active=dev # required; dev: points to steplogs' dev, stg or qat should be in; prd: to steplogs' prd.
 
-> steplogs.logging.server.ws-url=wss://dev-logging-ingest-server.steplogs.io/ #optional. prd: wss://prd-logging-ingest-server.steplogs.io/
+> steplogs.logging.server.ws-url=wss://dev-logging-ingest-server.steplogs.io/ #required. prd: wss://prd-logging-ingest-server.steplogs.io/
 
 > steplogs.logging.agent.app-key=gwI718pjfZO7LpGW1INf9ME0cnYnjeE9dfnaN4c2VqZgW4ce #required. active the application in portal then will see the app-key
 
-> steplogs.logging.agent.host-id=please-change-to-your-unique-host-id #required. to help the log files' uniqueness. 
+> steplogs.logging.agent.host-id=please-change-to-your-unique-host-id #required. to help the log files' uniqueness. should be less than 256, not blank and '"<>[]{}@&\
 
-> steplogs.logging.agent.watch-dirs=./xyz-service/logs #required. point to the folder of the app/service
+> steplogs.logging.agent.watch-dirs=./xyz-service/logs #required. point to the folder of the app/service. 
 
-> steplogs.logging.agent.host-id=3600000 #optional. after the time, it won't retry files. [the client retries the file if session or file exceptions or errors occur.]
+> steplogs.logging.agent.retry-cycle-timeout=3600000 #optional. after the time, it won't retry files. [the agent retries the file if session or file exceptions or errors occur.]
 
-> steplogs.logging.agent.host-id=60000 #optional. after the time, the file to wait for new data writes will be removed from the queue. [There is a hourly/30 seconds and pre-shutdown scan to catch changes after it]
+> steplogs.logging.agent.file-idle-timeout=60000 #optional. after the time, the file to wait for new data writes will be removed from the queue. [There is a hourly/30 seconds and pre-shutdown scan to catch changes after it]
