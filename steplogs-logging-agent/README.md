@@ -11,7 +11,7 @@ Or each hour/30 seconds to scan log files that changed in recent 1 hour/30 secon
 
 The jar is executable: nohup ./openjdk-8/bin/java -Dspring.profiles.active=dev -jar steplogs-logging-agent-1.0.1.jar
 
-The file name should be less than 256, not blank and '"<>[]{}@&\
+The file name should be less than 256, not blank and not one of '"<>[]{}@&\
 
 With spring's configuration, override it through:
 
@@ -26,4 +26,4 @@ With spring's configuration, override it through:
 
 > steplogs.logging.agent.retry-cycle-timeout=3600000 #optional. after the time, it won't retry files. [the agent retries the file if session or file exceptions or errors occur.]
 
-> steplogs.logging.agent.file-idle-timeout=60000 #optional. after the time, the file to wait for new data writes will be removed from the queue. [There is a hourly/30 seconds and pre-shutdown scan to catch changes after it]
+> steplogs.logging.agent.file-idle-timeout=60000 #optional. after the time, the file to wait for new data writes will be removed from the queue. [There is a 5 seconds and pre-shutdown scan to catch changes after it, in order to ensure the logs uploaded, just keep the agent more seconds will in generally good enough]
