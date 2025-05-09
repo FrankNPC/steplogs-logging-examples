@@ -1,8 +1,6 @@
 The logging agent is to keep scanning and uploading the log files to steplogs.
 
 After launch the agent, it will scan all log files and upload.
-Or each hour/30 seconds to scan log files that changed in recent 1 hour/30 seconds.
-
 
 [Experimental] once the termination signal reaches the agent, it will scan all file and upload for a last try. 
 > kill -SIGTERM < pid >     --no force kill
@@ -26,4 +24,4 @@ With spring's configuration, override it through:
 
 > -Dsteplogs.logging.agent.retry-cycle-timeout=3600000 #optional. after the time, it won't retry files. [the agent retries the file if session or file exceptions or errors occur.]
 
-> -Dsteplogs.logging.agent.file-idle-timeout=60000 #optional. after the time, the file to wait for new data writes will be removed from the queue. [There is a 5 seconds and pre-shutdown scan to catch changes after it, in order to ensure the logs uploaded, just keep the agent more seconds will in generally good enough]
+> -Dsteplogs.logging.agent.file-idle-timeout=60000 #optional. after the time, the file to wait for new data writes will be removed from the queue. 
