@@ -3,7 +3,9 @@
 
 Why steplogs?
 
-1: logging in general could be much ambiguous leading the troubleshoot very exhausted. with steplogs, just configuration can cover all of necessary logs. steplogs also support writing logs by your own.
+steplogs provides seamless way to print logs and sanitize sensitive/PII content, highly controllable traces.] to reduce dev-ops burden.
+
+1: logging/logger could be much ambiguous leading the troubleshoot very exhausted. with steplogs, just configuration can cover all of necessary logs. steplogs also support writing logs your own but keep tracing.
 
 2: When you have complicated business logic, tracing the payloads cross services would be much challenging. steplogs provides logging in language (No need http proxy/servers) to capture the entire logic traces - you don't need to search logs any more although we provide.
 
@@ -12,7 +14,8 @@ Why steplogs?
 The detail please check out [www.steplogs.io](https://www.steplogs.io) and [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example)
 
 
-Introduce in maven
+
+** Introduce in maven **
 
 ```
 	<dependency>
@@ -38,6 +41,10 @@ Introduce in maven
 		</repository>
 	</repositories>
 ```
+
+** Configure Logger **
+
+It's better to start with spring, eee the example in spring [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) 
 
 
 ** For Logging, there are two ways to use **
@@ -109,7 +116,7 @@ Sample:
 
  * There are two ways to turn on the logging:
  * 1: Integrate steplogs-logger-spring-boot-starter with LoggerAutoConfiguration for AOP and proxy.
- * 2: To log methods on class instance not proxy, add LoggingInitiationSpringApplicationRunListener to META-INF/spring.factories
+ * 2: To log methods on class instance not proxy, add io.steplogs.logger.spring.LoggingInitiationSpringApplicationRunListener to META-INF/spring.factories
  * Or, load agent before any classes: 
  
  ```
@@ -132,13 +139,28 @@ Sample:
  - sanitizer : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
  - Always start with /, not end with /; can place multiple groups
  
-> Type: in general it's JSON, could be ERROR or TEXT etc.
+> TYPE: in general it's JSON, could be ERROR or TEXT etc.
 
 > Step: support wildcard match:
+>> `/JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)`
 
 > placeholder: should be base 62 for [vector of md5/sha1 and key for AES]; may leave it empty then it will use default *
 
-> `/JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)`
+> Currently supported
+
+```java
+		EMPTY, -- set the string value of the keys to empty string
+		SKIP, -- skip the value of the key so the log doesn't print it.
+		POPULAR, -- capture it then scan the entire log to replace all. can use with others: POPULAR(MASK(key1))
+		AES, -- AES encryption.
+		MD5, -- MD5(key1) -> XWvr4b7h0XBFB79Irz1ny; MD5_1(key1) -> XWvr4b7h0XBFB79Irz1ny-423; 423 is the length of the original text
+		SHA1, -- similar with MD5
+		SHA256, -- similar with MD5
+		MASK, -- Mask the value of the key:
+			 */MASK(key1) -> ***123456 -> *****; 
+			 */MASK_3(key1) -> 12345678 ->123***678; 12345 -> 123***45
+```
+
 
 ### Trace ###
 
