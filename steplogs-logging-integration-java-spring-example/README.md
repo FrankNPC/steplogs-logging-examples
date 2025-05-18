@@ -15,7 +15,7 @@ More details please check out [www.steplogs.io](https://www.steplogs.io) and [st
 
 
 
-** Introduce in maven **
+#### Introduce in maven ####
 
 ```
 	<dependency>
@@ -42,12 +42,12 @@ More details please check out [www.steplogs.io](https://www.steplogs.io) and [st
 	</repositories>
 ```
 
-** Configure Logger **
+#### Configure Logger ####
 
 It's better to start with spring, eee the example in spring [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) 
 
 
-** For Logging, there are two ways to use **
+### For Logging, there are two ways to use ###
 
 - 1, On method
 
