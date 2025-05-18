@@ -3,11 +3,11 @@
 
 Why steplogs?
 
-1: logging in general could be much ambiguous leading the troubleshoot very exhausted. with steplogs, configuration is enough to cover all of necessary logs. steplogs also support writing logs.
+1: logging in general could be much ambiguous leading the troubleshoot very exhausted. with steplogs, just configuration can cover all of necessary logs. steplogs also support writing logs by your own.
 
-2: When you have complicated business logic, tracing the payloads cross services would be much challenging. steplogs provides logging on methods so it captures the entire logic traces - you don't need to search though we provide the search.
+2: When you have complicated business logic, tracing the payloads cross services would be much challenging. steplogs provides logging on methods (No need http proxy/servers) and captures the entire logic traces - you don't need to search though we provide the search.
 
-3: when you sanitize sensitive/PII in the logs, the difficulty is you may need do it before write into logs. With steplogs configurations, you don't need to customize it any more.
+3: when you sanitize sensitive/PII in the logs, the difficulty is you may do it before write into logs. Simple steplogs configurations can convert the desired mask or encryption.
 
 The detail please check out [www.steplogs.io](https://www.steplogs.io) and [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example)
 
