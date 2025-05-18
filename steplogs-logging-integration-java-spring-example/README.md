@@ -3,7 +3,7 @@
 
 Why steplogs?
 
-steplogs provides seamless way to print logs and sanitize sensitive/PII content, highly controllable traces.] to reduce dev-ops burden.
+steplogs provides seamless way to print logs and sanitize sensitive/PII content, highly controllable traces.
 
 1: logging/logger could be much ambiguous leading the troubleshoot very exhausted. with steplogs, just configuration can cover all of necessary logs. steplogs also support writing logs your own but keep tracing.
 
