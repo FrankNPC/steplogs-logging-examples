@@ -5,11 +5,13 @@ Why steplogs?
 
 steplogs provides seamless way to print logs and sanitize sensitive/PII content, highly controllable traces.
 
-1: logging/logger could be much ambiguous leading the troubleshoot very exhausted. with steplogs, just configuration can cover all of necessary logs. steplogs also support writing logs your own but keep tracing.
+1: logging/logger could be much ambiguous leading the troubleshoot very exhausted. with steplogs, just configuration can cover all of necessary logs. steplogs also support writing logs to the tracing by your own. -- even no need to write logs with proper configure.
 
-2: When you have complicated business logic, tracing the payloads cross services would be much challenging. steplogs provides logging in language (No need http proxy/servers) to capture the entire logic traces - you don't need to search logs any more although we provide.
+2: When you have complicated business logic cross services, tracing the payloads would be much challenging. steplogs provides logging in language support(No need http proxy/servers) to capture the entire logic traces - no need to search logs any more although we provide.
 
-3: when you sanitize sensitive/PII in the logs, the difficulty is you may do it before write into logs, or other assistances. Simple steplogs configurations can convert it to the desired mask or encryption.
+3: when you sanitize sensitive/PII in the logs, the difficulty is you may do it before write into logs, or other assistances. Simple steplogs configurations can convert to the desired mask or encryption.
+
+4: steplogs can co-exist with any logger like log4j, or no longer need these loggers.
 
 More details please check out [www.steplogs.io](https://www.steplogs.io) and [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) 
 
@@ -21,7 +23,7 @@ More details please check out [www.steplogs.io](https://www.steplogs.io) and [st
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.9</version>
 	</dependency>
 	
 	...
@@ -185,12 +187,12 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the next service to
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.9</version>
 	</dependency>
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger-spring-boot-starter</artifactId>
-		<version>1.0.1</version>
+		<version>1.0.10</version>
 	</dependency>
 	
 	...
@@ -213,17 +215,17 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the next service to
 
 
  - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
-    -  import LoggerAutoConfiguration.class to declare default Logging, LoggerProvider and LoggingMethodPointcut bean etc.
+    -  import LoggerAutoConfiguration.class to declare default Logging.
 
- - 3, configure the http client request to pass HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) to the header, so the next app/service can catch it into the traces
+ - 3, configure web server to pick up HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header. No need If with LoggerAutoConfiguration in spring web.
  
- - 4, configure web server to read HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header, and setup to the logger as log id. No need If with LoggerAutoConfiguration.
-
+ - 4, configure the http client request to write HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) header, so the next app/service can catch it into the traces
+ 
  - 5, configure [steplogs-logging-agent/application.xml](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent), to upload the logs into steplogs.io for traces
 
  - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
  
-** see example [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) **
+#### see example [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) ####
 
 
 `Tip 1: Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
