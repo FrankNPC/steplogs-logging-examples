@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.Lazy;
 
+import io.steplogs.example.web.service.SMTPEmailScheduler;
 import io.steplogs.example.web.service.SMTPEmailService;
 import io.steplogs.logger.Logger;
 import io.steplogs.logger.PreDefinition;
@@ -34,20 +35,28 @@ public class ExampleWebServerConfiguration {
 	LoggerProvider steplogsLoggerProvider;
 
 	@Resource
-	SMTPEmailService smtpEmailService;
+	SMTPEmailScheduler emailScheduler;
 
+	@Resource
+	SMTPEmailService smtpEmailService;
+	
 	@Resource
 	Logger logger;
 	
 	@Scheduled(fixedDelay = 15 * 1000) 
 	public void sendEmails() {
 		for(int i=0; i<10; i++) {
-			smtpEmailService.sendVerificationUrl("somebodyemailnotknowhoisabcdxxx@whoismail.unknown", "http://localhost/verifyyouremail");
+//			smtpEmailService.sendVerificationUrl("somebodyemailnotknowhoisabcdxxx@whoismail.unknown", "http://localhost/verifyyouremail");
 			//logger.reset();
 		}
 		logger.reset();
 	}
-
+	
+	@Scheduled(initialDelay = 5*1000, fixedDelay = 5*1000) 
+	public void runEmailRunnable() {
+		emailScheduler.runMailRunnable();
+	}
+	
 	// to log headers and http payload
 	@Bean
 	LoggingWebMvcConfigurer getLoggingWebMvcConfigurer() {

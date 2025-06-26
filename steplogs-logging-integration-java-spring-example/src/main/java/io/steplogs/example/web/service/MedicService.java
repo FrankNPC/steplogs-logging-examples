@@ -55,5 +55,4 @@ public class MedicService {
 		medicConditionDO.setUser(userRet);
 		return medicConditionDO;
 	}
-
 }

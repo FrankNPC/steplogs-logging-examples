@@ -40,7 +40,7 @@
 	</dependencyManagement>
 
 	<dependencies>
-		
+
 		<dependency>
 			<groupId>io.steplogs</groupId>
 			<artifactId>steplogs-logger</artifactId>
@@ -56,7 +56,7 @@
 		<dependency>
 			<groupId>io.steplogs</groupId>
 			<artifactId>steplogs-spring-rmi-http</artifactId>
-			<version>1.0.1</version>
+			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		
 		<dependency>
@@ -129,32 +129,4 @@
 		</plugins>
 			
 	</build>
-
-	<repositories>
-		<repository>
-			<id>steplogs-public</id>
-			<url>https://dl.cloudsmith.io/public/steplogs/public/maven/</url><!-- The link may subjecto change-->
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
-		</repository>
-		
-		<repository>
-			<id>steplogs-private</id>
-			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url><!-- The link may subjecto change-->
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
 </project>

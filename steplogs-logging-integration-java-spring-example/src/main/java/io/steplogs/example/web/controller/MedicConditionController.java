@@ -16,6 +16,7 @@ import io.steplogs.example.web.model.MedicCondition;
 import io.steplogs.example.web.model.MedicConditionDO;
 import io.steplogs.example.web.model.Page;
 import io.steplogs.example.web.service.MedicService;
+import io.steplogs.example.web.service.SMTPEmailScheduler;
 import io.steplogs.example.web.service.rpc.UserService;
 import io.steplogs.example.web.test.ForStaticMethod;
 import io.steplogs.logger.Logger;
@@ -36,6 +37,9 @@ public class MedicConditionController {
 	
 	@Resource
 	Logger logger;
+	
+	@Resource
+	SMTPEmailScheduler emailScheduler;
 	
 	// Hit the api with URL: http://localhost/api/medic/query?session_id=xxx&offset=0&size=123
 	@RequestMapping(value = "/medic/query", produces=MediaType.APPLICATION_JSON_VALUE)
@@ -60,6 +64,14 @@ public class MedicConditionController {
 		new ForStaticMethod().query(System.currentTimeMillis(), null);//should not print log
 		MedicConditionDO medicRet = medicService.save(medicCondition);
 		return JsonToString(medicRet, callback);
+	}
+	
+	// Hit the api with URL: http://localhost/api/medic/test_async_email
+	@RequestMapping(value = "/medic/test_async_email", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> testAsyncEmail() throws JsonProcessingException{
+//		emailScheduler.childThreadDelivery("test@email.email", "http://localhost/childThreadDelivery/"+System.currentTimeMillis());
+		emailScheduler.unHookedThreadDelivery("test@email.email", "http://localhost/unHookedThreadDelivery/"+System.currentTimeMillis());
+		return JsonToString(new MedicConditionDO(), "");
 	}
 	
 	protected <T> ResponseEntity<String> JsonToString(T result, String callback) throws JsonProcessingException {

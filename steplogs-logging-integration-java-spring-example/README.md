@@ -23,25 +23,8 @@ More details please check out [www.steplogs.io](https://www.steplogs.io) and [st
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger</artifactId>
-		<version>1.0.9</version>
+		<version>?</version>
 	</dependency>
-	
-	...
-	
-	<repositories>
-		<repository>
-			<id>steplogs-private</id>
-			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url><!-- The repo url may subject to change -->
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
 ```
 
 #### Configure Logger ####
@@ -187,30 +170,13 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the next service to
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger</artifactId>
-		<version>1.0.9</version>
+		<version>?</version>
 	</dependency>
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger-spring-boot-starter</artifactId>
-		<version>1.0.10</version>
+		<version>?</version>
 	</dependency>
-	
-	...
-	
-	<repositories>
-		<repository>
-			<id>steplogs-private</id>
-			<url>https://dl.cloudsmith.io/private/steplogs/private/maven/</url><!-- The repo url may subject to change -->
-			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-				<updatePolicy>always</updatePolicy>
-			</snapshots>
-		</repository>
-	</repositories>
 ```
 
 
