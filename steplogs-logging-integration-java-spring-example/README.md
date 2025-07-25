@@ -149,7 +149,7 @@ Sample:
 
 ### Trace ###
 
-It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the next service to form the trace. See steplogs-logger-spring-boot-starter/README.md
+It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next service to form the trace. See steplogs-logger-spring-boot-starter/README.md
 
 
 ### After all, ###
@@ -185,7 +185,7 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the next service to
 
  - 3, configure web server to pick up HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header. No need If with LoggerAutoConfiguration in spring web.
  
- - 4, configure the http client request to write HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) header, so the next app/service can catch it into the traces
+ - 4, configure the http client request to write HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) header, so the next app/service can pick it up for the traces
  
  - 5, configure [steplogs-logging-agent/application.xml](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent), to upload the logs into steplogs.io for traces
 
