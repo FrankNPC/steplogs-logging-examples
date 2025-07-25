@@ -138,12 +138,15 @@ Sample:
 		SKIP, -- skip the value of the key so the log doesn't print it.
 		POPULAR, -- capture it then scan the entire log to replace all. can use with others: POPULAR(MASK(key1))
 		AES, -- AES encryption.
-		MD5, -- MD5(key1) -> XWvr4b7h0XBFB79Irz1ny; MD5_1(key1) -> XWvr4b7h0XBFB79Irz1ny-423; 423 is the length of the original text
+		MD5, -- MD5(key1) -> XWvr4b7h0XBFB79Irz1ny; MD5$1(key1) -> XWvr4b7h0XBFB79Irz1ny-423; 423 is the length of the original text
 		SHA1, -- similar with MD5
 		SHA256, -- similar with MD5
 		MASK, -- Mask the value of the key:
 			 */MASK(key1) -> ***123456 -> *****; 
-			 */MASK_3(key1) -> 12345678 ->123***678; 12345 -> 123***45
+			 */MASK$3(key1) -> 12345678 ->123***678; 12345 -> 123***45
+		DATE_FORMATER: -- yyyy-hh-mm HH:MM:ss.ssss\/DATE_FORMATER(key); the placeholder is the formatter. See java.text.SimpleDateFormat
+		FLOAT_FORMATER: -- #,##0.00\/FLOAT_FORMATER(key); the placeholder is the formatter. See java.text.DecimalFormat
+		DECIMAL_FORMATER: -- same with FLOAT_FORMATER
 ```
 
 

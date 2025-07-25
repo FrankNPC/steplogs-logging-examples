@@ -12,7 +12,7 @@ public class SMTPEmailService {
 	@Resource
 	Logger logger;
 
-	@Logging(sanitizerPatterns="*/MASK_3(recipient)")// mask the recipient JSON/*EmailService.sendByNoRepply*
+	@Logging(sanitizerPatterns="*/MASK$3(recipient)")// mask the recipient JSON/*EmailService.sendByNoRepply*
 	public String sendVerificationUrl(String recipient, String verificationUrl) {
 		recipient = recipient.trim();
 		String htmlContent = 

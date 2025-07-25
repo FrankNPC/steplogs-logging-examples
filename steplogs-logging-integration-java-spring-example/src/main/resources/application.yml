@@ -23,8 +23,8 @@ steplogs:
     log-light: false
     log-compress: false # not supported yet
     log-sanitizer-patterns: >
-      /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK_2(name)//SKIP(birthday),
-      /JSON/*Service.java*.service.MedicService*#*/*/MASK(driverLisenceId)/*/MASK_4(name),
+      /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),
+      /JSON/*Service.java*.service.MedicService*#*/*/MASK(driverLisenceId)/*/MASK$4(name),
       
   app-node:
     http-header-id-type: 1 # for http headers give log/trace id to the clients
