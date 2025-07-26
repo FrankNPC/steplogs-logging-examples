@@ -113,7 +113,7 @@ Sample:
  * Or, load the jar with javaagent: java -javaagent:steplogs-logger-1.0.1.jar= -jar your-app.jar
 
  * In general, above is enough,
- * X: For methods on interface with @Logging, or with JUnit, try proxy and AOP pointcut
+ * X: It may not work on final methods, or interface with @Logging, or with JUnit, try proxy and AOP pointcut
  * Y: Annotate methods/classes/interfaces with @Logging, or manually add methods: io.steplogs.logger.boostrap.addTargetMethods/addTargetMethod/addClasses
 
 
