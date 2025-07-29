@@ -152,7 +152,7 @@ Sample:
 
 ### Trace ###
 
-It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next service to form the trace, reset the log id(trace id+sequence id) before or after a thread process. See steplogs-logger-spring-boot-starter/README.md
+It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next service to form the trace, reset the log id(trace id+sequence id etc.) before or after a thread process. See steplogs-logger-spring-boot-starter/README.md
 
 
 ### After all, ###
@@ -186,7 +186,7 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next servi
  - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
     -  import LoggerAutoConfiguration.class to declare default Logging.
 
- - 3, configure web server to pick up HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header. reset log id(trace id+sequence id) before or after all. No need If with LoggerAutoConfiguration in spring web. 
+ - 3, configure web server to pick up HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header. reset log id(trace id+sequence id etc.) before or after all. No need If with LoggerAutoConfiguration in spring web. 
  
  - 4, configure the http client request to write HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) header, so the next app/service can pick it up for the traces
  
