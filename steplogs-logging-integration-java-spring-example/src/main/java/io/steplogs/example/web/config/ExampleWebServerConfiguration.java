@@ -14,7 +14,7 @@ import io.steplogs.example.web.service.SMTPEmailService;
 import io.steplogs.logger.Logger;
 import io.steplogs.logger.PreDefinition;
 import io.steplogs.logger.provider.LoggerProvider;
-import io.steplogs.logger.spring.LoggerAutoConfiguration;
+import io.steplogs.logger.spring.SteplogsLoggerAutoConfiguration;
 import io.steplogs.logger.spring.LoggingHttpHeaderResponseAdvice;
 import io.steplogs.logger.spring.LoggingWebMvcConfigurer;
 import io.steplogs.spring.rmi.http.prodiver.ServiceProviderConfiguration;
@@ -26,7 +26,7 @@ import jakarta.annotation.Resource;
 	ServiceProviderConfiguration.class, // Turn on RPC service provider
 
 	LoggingHttpHeaderResponseAdvice.class, // so you can see the trace id in the http response of the web browser.
-	LoggerAutoConfiguration.class // to read the configs from application.xml and load the logging related beans
+	SteplogsLoggerAutoConfiguration.class // to read the configs from application.xml and load the logging related beans
 })
 public class ExampleWebServerConfiguration {
 
