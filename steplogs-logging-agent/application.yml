@@ -2,19 +2,31 @@ spring:
   shutdown: graceful
   application:
     name: steplogs-logging-agent
-
-spring.task.scheduling.pool.size: 3
+  task.scheduling.pool.size: 5
 
 steplogs:
   logging:
-    server:
-      ws-url: ws://localhost:8080/  #optional. in prd it's prd-logging-ingest-server...
     agent:
-      app-key: 3qQcAGvOLysLJh0T4fHXMFvbttcB2WsVT0EOqpZ3On8IRxpy #required. active the application in portal first then will see the app-key
-      host-id: please-change-to-your-unique-host-id #required. to help the log files' uniqueness. 
-      watch-dirs:  /Users/administrator/Documents/workspace/FrankNPC/Java/Steplogs/steplogs-web-portal/logs # point to the folder of the app/service
-      retry-cycle-timeout: 3600000	# optional. after the time, it won't retry files. [the client retries the file if session or file exceptions or errors occur.]
-      file-idle-timeout: 60000		# optional. after the time, the file to wait for new data writes will be removed from the queue. [The file watcher will always watch for the new data.]
+      server-url: ws://localhost:8080/ 
+      app-key: LFgbD1qOsdKOOS4Cqutmb5L2as5EYDNec6BF2sTSv0eTVr2m
+      host-id: please-change-to-your-unique-host-id  
+      watch-dirs: ./logs
+      retry-cycle-timeout: 3600000
+      file-idle-timeout: 60000
+      file-concurrency: 4
+
+      log-convertor:
+        target-dir: ./logs
+        watch-dirs: ./log
+        seperator: "\n"
+        log-date-time-format: yyyy-MM-dd HH:mm:ss.SSS
+        log-head: '{"AppNodeConfig":{"version":"1.2.3","hostId":"node-123.test.test","program":"1.2.2-1231321.jar","github":{"commit":"8dd90aef05c25fd89bc92ba74ce70cab6f1f3916","sourcePaths":["src/main/java"],"branch":"main","repository":"repo/test-project"},"internalIp":"12.2.2.2","externalIp":"12.2.2.2","httpHeaderIdType":1,"applicationName":"test-service"},"LoggerConfig":{"fileName":"./logs/test-service","printFile":true,"printStdout":true,"logAsync":true,"logVersion":null,"logLight":true,"logDateTimeFormat":"yyyy-MM-dd HH:mm:ss.SSS","fileMaxLength":536870912,"logSanitizerPatterns":["/JSON/*.*Service*#*/*/SKIP(appKey|encryptionKey|password|sessionId)","/JSON/*Service*/*/MD5$1(longText)"]}}'
+
+        extractor: 
+          time: "^(\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}\\.\\d{3}[+-]\\d{2}:\\d{2})"
+          time_parser: yyyy-MM-dd'T'HH:mm:ss.SSSXXX
+          thread-info: "--- \\[.*\\]\\s*\\[(.*?)\\]\\s+"
+          step: "--- \\[.*\\]\\s*\\[.*\\]\\s+(.*?)\\s+:"
 
 logging: # log4j
   file.name: log/${spring.application.name}.log
