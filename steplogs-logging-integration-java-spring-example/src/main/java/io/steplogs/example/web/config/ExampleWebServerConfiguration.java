@@ -62,5 +62,5 @@ public class ExampleWebServerConfiguration {
 	LoggingWebMvcConfigurer getLoggingWebMvcConfigurer() {
 		return new LoggingWebMvcConfigurer(List.of(PreDefinition.HTTP_HEADER_STEP_LOG_ID), "/api", "/api/**");
 	}
-
+	
 }
