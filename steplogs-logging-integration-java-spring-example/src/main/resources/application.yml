@@ -20,8 +20,7 @@ steplogs:
     print-file: true # write to file
     log-date-time-format: yyyy-MM-dd HH:mm:ss.SSS # the time on the head of the log. Leave blank will print timestamp
     log-async: true # blocking IO or NIO write files
-    log-light: false
-    log-compress: false # not supported yet
+    log-light: false # right step or light. true: MedicController.java#io.steplogs.web.controller.MedicController#query#123, false: #.MedicController#query#123
     log-sanitizer-patterns: >
       /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),
       /JSON/*Service.java*.service.MedicService*#*/*/MASK(driverLisenceId)/*/MASK$4(name),
@@ -34,13 +33,14 @@ steplogs:
     host-id: node-123.test.test # not functioning yet
     internal-ip: 12.2.2.2 # not functioning yet
     external-ip: 12.2.2.2  # not functioning yet
+
     github: # not functioning yet
       source-paths: > 
         src/main/java
       repository: RepoOwner/${spring.application.name}
       branch: main
       commit: xxxxxxx
-      
+
 logging:
   file.name: log/${spring.application.name}.log
   file.attern: log/${spring.application.name}-%d{yyyy-MM-dd-HH-mm}-%i.log
