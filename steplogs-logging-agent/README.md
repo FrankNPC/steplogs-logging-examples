@@ -1,4 +1,4 @@
-The logging agent is to keep scanning and uploading the log files to steplogs.
+The logging agent is to keep scanning and uploading local log files to steplogs portal server.
 
 To download the executable jar: https://repo1.maven.org/maven2/io/steplogs/steplogs-logging-agent/
 
