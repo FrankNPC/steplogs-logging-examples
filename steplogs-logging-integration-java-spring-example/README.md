@@ -11,10 +11,7 @@ steplogs provides seamless way to print logs and sanitize sensitive/PII content,
 
 3: when you sanitize sensitive/PII in the logs, the difficulty is you may do it before write into logs, or other assistances. Simple steplogs configurations can convert to the desired mask or encryption.
 
-4: steplogs can co-exist with any logger like log4j, or no longer need these loggers.
-
-More details please check out [www.steplogs.io](https://www.steplogs.io) and [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) 
-
+4: steplogs can co-exist with any logger like log4j.
 
 
 #### Introduce in maven ####
@@ -23,18 +20,18 @@ More details please check out [www.steplogs.io](https://www.steplogs.io) and [st
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger</artifactId>
-		<version>?</version>
+		<version>1.0-SNAPSHOT</version> <!-- https://repo1.maven.org/maven2/io/steplogs/steplogs-logger -->
 	</dependency>
 ```
 
 #### Configure Logger ####
 
-It's better to start with spring, eee the example in spring [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) 
+It's better to start with spring, see [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) 
 
 
 ### For Logging, there are two ways to use ###
 
-- 1, On method
+- 1, On method (Recommended, supporting log sample test)
 
 > `Annotate @Logging on the method/class to log the parameters/returns for the methods, by default`
 
@@ -122,14 +119,15 @@ Sample:
 ### PII or sensitive info protection ###
 
  - sanitizer : /TYPE/Step/[placeholder: *]/MASK(key1|key2)/[placeholder: KEY-base62]/AES(key1|key2)
- - Always start with /, not end with /; can place multiple groups
+ - start with /, not end with /; can place multiple groups; $ is to pass parameters.
+ - Or, start without / to match specified method by @Logging;
  
 > TYPE: in general it's JSON, could be ERROR or TEXT etc.
 
 > Step: support wildcard match:
 >> `/JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)`
 
-> placeholder: should be base 62 for [vector of md5/sha1 and key for AES]; may leave it empty then it will use default *
+> placeholder: should be base 62 for [vector of MD5/SHA1/SHA256 and key for AES]; may leave it empty then it will use default *
 
 > Currently supported
 
@@ -144,10 +142,14 @@ Sample:
 		MASK, -- Mask the value of the key:
 			 */MASK(key1) -> ***123456 -> *****; 
 			 */MASK$3(key1) -> 12345678 ->123***678; 12345 -> 123***45
-		DATE_FORMATER: -- yyyy-hh-mm HH:MM:ss.ssss\/DATE_FORMATER(key); the placeholder is the formatter. See java.text.SimpleDateFormat
-		FLOAT_FORMATER: -- #,##0.00\/FLOAT_FORMATER(key); the placeholder is the formatter. See java.text.DecimalFormat
+		DATE_FORMATER: -- yyyy-hh-mm HH:MM:ss.ssss/DATE_FORMATER(key); the placeholder is the formatter. See java.text.SimpleDateFormat
+		FLOAT_FORMATER: -- #,##0.00/FLOAT_FORMATER(key); the placeholder is the formatter. See java.text.DecimalFormat
 		DECIMAL_FORMATER: -- same with FLOAT_FORMATER
 ```
+
+>> `For TYPE=TEXT: The param should be a regexp to capture text: MASK(license=[a-z0-9]+)`
+
+>> `For TYPE=JSON/ERROR: the param should be the key names: MASK(bean/property/map_key_name)`
 
 
 ### Trace ###
@@ -160,8 +162,6 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next servi
 
 ** No quotas in configurations **
 
-** parameters and returns are separated logging **
-
 
 
 
@@ -170,16 +170,11 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next servi
  - 1, introduce the jar, annotate beans with [@Logging](https://github.com/FrankNPC/steplogs-logger/blob/main/src/main/java/io/steplogs/logger/annotation/Logging.java)
 
 ```
-	<dependency>
-		<groupId>io.steplogs</groupId>
-		<artifactId>steplogs-logger</artifactId>
-		<version>?</version>
-	</dependency>
-	<dependency>
-		<groupId>io.steplogs</groupId>
-		<artifactId>steplogs-logger-spring-boot-starter</artifactId>
-		<version>?</version>
-	</dependency>
+		<dependency>
+			<groupId>io.steplogs</groupId>
+			<artifactId>steplogs-logger-spring-boot-starter</artifactId>
+			<version>1.0-SNAPSHOT</version> <!-- https://repo1.maven.org/maven2/io/steplogs/steplogs-logger-spring-boot-starter -->
+		</dependency>
 ```
 
 
@@ -199,8 +194,5 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next servi
 
 `Tip 1: Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
 
-`Tip 2: It's required to pass and read X-Step-Log-Id to/from the prev/next service so the traces can form as screenshot:`
-
-
-See Sample: ![Screenshot trace](./Screenshot-trace.png)
+`Tip 2: It's required to pass and read X-Step-Log-Id to/from the prev/next service so the traces can form as ![Screenshot trace](./Screenshot-trace.png)`
 

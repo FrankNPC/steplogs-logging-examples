@@ -32,7 +32,7 @@
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-dependencies</artifactId>
-				<version>3.2.4</version>
+				<version>3.5.4</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -40,22 +40,15 @@
 	</dependencyManagement>
 
 	<dependencies>
-
-		<dependency>
-			<groupId>io.steplogs</groupId>
-			<artifactId>steplogs-logger</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		
 		<dependency>
 			<groupId>io.steplogs</groupId>
 			<artifactId>steplogs-logger-spring-boot-starter</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<version>1.0.36</version> <!-- https://repo1.maven.org/maven2/io/steplogs/steplogs-logger-spring-boot-starter -->
 		</dependency>
 		
 		<dependency>
 			<groupId>io.steplogs</groupId>
-			<artifactId>steplogs-spring-rmi-http</artifactId>
+			<artifactId>steplogs-spring-rmi-http</artifactId><!-- https://github.com/FrankNPC/steplogs-spring-rmi-http -->
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		
