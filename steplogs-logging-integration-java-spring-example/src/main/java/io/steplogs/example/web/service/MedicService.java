@@ -11,6 +11,7 @@ import io.steplogs.example.web.model.MedicConditionDO;
 import io.steplogs.example.web.model.Page;
 import io.steplogs.example.web.model.User;
 import io.steplogs.example.web.service.rpc.UserService;
+import io.steplogs.example.web.test.ForStaticMethod;
 import io.steplogs.logger.annotation.Logging;
 import jakarta.annotation.Resource;
 
@@ -54,5 +55,12 @@ public class MedicService {
 		medicConditionDO.setMedicConditionDO(medicCondition);
 		medicConditionDO.setUser(userRet);
 		return medicConditionDO;
+	}
+	
+	public User saveUser(User user) {// UserService is a RPC service.
+		ForStaticMethod.runStatic(user.getId());
+		User savedUser = userService.save(user);
+		ForStaticMethod.runStatic(savedUser.getId());
+		return savedUser;
 	}
 }

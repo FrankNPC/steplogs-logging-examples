@@ -26,7 +26,7 @@ import jakarta.annotation.Resource;
 	ServiceProviderConfiguration.class, // Turn on RPC service provider
 
 	LoggingHttpHeaderResponseAdvice.class, // so you can see the trace id in the http response of the web browser.
-	SteplogsLoggerAutoConfiguration.class // to read the configs from application.xml and load the logging related beans
+	SteplogsLoggerAutoConfiguration.class // to load the configs from application.xml for logging related beans
 })
 public class ExampleWebServerConfiguration {
 

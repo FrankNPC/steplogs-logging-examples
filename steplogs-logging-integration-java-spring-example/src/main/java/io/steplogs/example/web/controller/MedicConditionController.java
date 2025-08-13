@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import io.steplogs.example.web.model.MedicCondition;
 import io.steplogs.example.web.model.MedicConditionDO;
 import io.steplogs.example.web.model.Page;
+import io.steplogs.example.web.model.User;
 import io.steplogs.example.web.service.MedicService;
 import io.steplogs.example.web.service.SMTPEmailScheduler;
 import io.steplogs.example.web.service.rpc.UserService;
@@ -64,6 +65,16 @@ public class MedicConditionController {
 		new ForStaticMethod().query(System.currentTimeMillis(), null);//should not print log
 		MedicConditionDO medicRet = medicService.save(medicCondition);
 		return JsonToString(medicRet, callback);
+	}
+
+	// Hit the api with URL: http://localhost/api/user/save?name=broking&driverLisenceId=123456&age=1001
+	@RequestMapping(value = "/user/save", produces=MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<String> save(@RequestParam(value = "callback", defaultValue="") String callback,
+			User user) throws JsonProcessingException {
+		ForStaticMethod.runStatic(user.getId());
+		User savedUser = userService.save(user);
+		ForStaticMethod.runStatic(savedUser.getId());
+		return JsonToString(savedUser, callback);
 	}
 	
 	// Hit the api with URL: http://localhost/api/medic/test_async_email

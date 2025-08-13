@@ -1,5 +1,7 @@
 package io.steplogs.example.web.model;
 
+import java.util.Objects;
+
 public class MedicCondition {
 	
 	private long id;
@@ -10,6 +12,18 @@ public class MedicCondition {
 	
 	private long userId;
 
+	public int hashCode() {
+		return Objects.hash(id, timeCreated, deceases, userId);
+	}
+	public boolean equals(Object target) {
+		if (target==null || !(target instanceof MedicCondition) || target.hashCode()!=this.hashCode()) {return false;}
+		MedicCondition object = (MedicCondition) target;
+		return Objects.equals(id, object.id)
+				&& Objects.equals(timeCreated, object.timeCreated)
+				&& Objects.equals(deceases, object.deceases)
+				&& Objects.equals(userId, object.userId);
+	}
+	
 	public long getId() {
 		return id;
 	}

@@ -13,7 +13,7 @@ public class ForStaticMethod {
 	}
 
 	public static String runStatic(long userId){
-		return UUID.randomUUID().toString();
+		return "e1d2fb44-c29c-4925-93cc-99081578eaf8";
 	}
 	
 }

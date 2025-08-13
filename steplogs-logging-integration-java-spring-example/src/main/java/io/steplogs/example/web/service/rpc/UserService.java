@@ -8,4 +8,6 @@ public interface UserService {
 
 	public User getBySessionId(String sessionId);
 	
+	public User save(User user);
+	
 }

@@ -3,16 +3,21 @@
 
 Why steplogs?
 
-steplogs provides seamless way to print logs and sanitize sensitive/PII content, highly controllable traces.
+steplogs provides seamless way to print logs and sanitize sensitive/PII content, highly controllable traces and tests against models.
 
 1: logging/logger could be much ambiguous leading the troubleshoot very exhausted. with steplogs, just configuration can cover all of necessary logs. steplogs also support writing logs to the tracing by your own. -- even no need to write logs with proper configure.
 
-2: When you have complicated business logic cross services, tracing the payloads would be much challenging. steplogs provides logging in language support(No need http proxy/servers) to capture the entire logic traces - no need to search logs any more although we provide.
+2: When you access complicated business logic cross services, tracing the payloads would be much challenging. steplogs provides logging in language support(No need http proxy/servers) to capture the entire logic traces - no need to search logs any more although we provide.
 
-3: when you sanitize sensitive/PII in the logs, the difficulty is you may do it before write into logs, or other assistances. Simple steplogs configurations can convert to the desired mask or encryption.
+3: when you sanitize sensitive/PII in the logs, the difficulty is you may do it before writing into logs, or other assistances. Simple steplogs configurations can convert to the desired mask or encryption. Which workflow exposes the vulnerability.
 
-4: steplogs can co-exist with any logger like log4j.
+4: with well preserved logs, in batch basis painlessly testing or re-entering the methods that were failed due to bugs or errors turns debug and datafix.
 
+5: steplogs can co-exist with any logger like log4j.
+
+More details please check out [www.steplogs.io](https://www.steplogs.io) and [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) 
+
+more language supports coming soon
 
 #### Introduce in maven ####
 
@@ -20,7 +25,7 @@ steplogs provides seamless way to print logs and sanitize sensitive/PII content,
 	<dependency>
 		<groupId>io.steplogs</groupId>
 		<artifactId>steplogs-logger</artifactId>
-		<version>1.0-SNAPSHOT</version> <!-- https://repo1.maven.org/maven2/io/steplogs/steplogs-logger -->
+		<version>1.0-SNAPSHOT</version> <!-- new version https://repo1.maven.org/maven2/io/steplogs/steplogs-logger -->
 	</dependency>
 ```
 
@@ -157,10 +162,42 @@ Sample:
 It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next service to form the trace, reset the log id(trace id+sequence id etc.) before or after a thread process. See steplogs-logger-spring-boot-starter/README.md
 
 
+### Unit Test / QA improvement ###
+check out LocalCasesTest and LogLineInvokerHelper to run unit test by logs.
+The test case file contains a pair(separated by \3\n) of log, parameters and returns samples of the method as the input to invoke the method, and output to match the return of the method invoke.
+Do this in spring will automatically bring up the methods from beans and run the invokes. Or checkout LogLineHelperTest.
+
+> Full match
+
+```java
+
+	@Test
+	public void test_case5() throws Exception {
+		String fileName = "sample/test_case5.log";
+		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
+		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
+		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Assertions.assertEquals(retVals[0], logLineInvoke.getReturnAndParameter()[0]);
+	}
+```
+
+> contain subset
+
+```java
+
+	@Test
+	public void test_case8() throws Exception {
+		String fileName = "sample/test_case8.log";
+		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
+		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
+		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Assertions.assertTrue(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
+		Assertions.assertFalse(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
+	}
+```
+
 ### After all, ###
 ** Search by keywords through the portal, or get X-Step-Trace-Id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja **
-
-** No quotas in configurations **
 
 
 
@@ -173,7 +210,7 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next servi
 		<dependency>
 			<groupId>io.steplogs</groupId>
 			<artifactId>steplogs-logger-spring-boot-starter</artifactId>
-			<version>1.0-SNAPSHOT</version> <!-- https://repo1.maven.org/maven2/io/steplogs/steplogs-logger-spring-boot-starter -->
+			<version>1.0-SNAPSHOT</version> <!-- new version https://repo1.maven.org/maven2/io/steplogs/steplogs-logger-spring-boot-starter -->
 		</dependency>
 ```
 
