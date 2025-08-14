@@ -167,6 +167,8 @@ check out LocalCasesTest and LogLineInvokerHelper to run unit test by logs.
 The test case file contains a pair(separated by \3\n) of log, parameters and returns samples of the method as the input to invoke the method, and output to match the return of the method invoke.
 Do this in spring will automatically bring up the methods from beans and run the invokes. Or checkout LogLineHelperTest.
 
+`Tips: the tests won't run with sanitizers.`
+
 > Full match
 
 ```java

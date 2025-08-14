@@ -24,8 +24,10 @@ steplogs:
     log-pretty: true # print pretty json, by new line and intends. close it in prd.
     log-sanitizer-patterns: >
       /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),
-      /JSON/*Service.java*.service.MedicService*#*/*/MASK(driverLisenceId)/*/MASK$4(name),
-      
+      /JSON/*Service*.java*.service.*MedicService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),
+      /JSON/*.java*.Medic*#*/*/MASK$4(deceases)/yyyy-MM-dd HH:mm:ss.ssss/DATE_FORMATER(timeCreated),
+      /HTTP/LoggingHttpHeaderHandlerInterceptor.java#io.steplogs.logger.spring.LoggingHttpHeaderHandlerInterceptor#preHandle*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)
+
   app-node:
     http-header-id-type: 1 # for http headers give log/trace id to the clients
     application-name: ${spring.application.name}

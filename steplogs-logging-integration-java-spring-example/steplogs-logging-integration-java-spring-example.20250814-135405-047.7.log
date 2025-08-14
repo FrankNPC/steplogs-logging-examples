@@ -1,0 +1,202 @@
+[2025-08-14 17:54:05.0051][WH9eoxbBSMJXXLIl]
+[
+    {
+        "AppNodeConfig": {
+            "version": "1.2.3",
+            "applicationName": "steplogs-logging-integration-java-spring-example",
+            "httpHeaderIdType": 1,
+            "program": "1.2.2-1231321.jar",
+            "github": {
+                "repository": "RepoOwner/steplogs-logging-integration-java-spring-example",
+                "branch": "main",
+                "commit": "xxxxxxx",
+                "sourcePaths": [
+                    "src/main/java"
+                ]
+            },
+            "internalIp": "12.2.2.2",
+            "externalIp": "12.2.2.2",
+            "hostId": "node-123.test.test"
+        },
+        "LoggerConfig": {
+            "fileName": "./logs/steplogs-logging-integration-java-spring-example",
+            "fileMaxLength": 536870912,
+            "logDateTimeFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+            "logLight": false,
+            "logVersion": null,
+            "logPretty": true,
+            "printFile": true,
+            "printStdout": true,
+            "logAsync": true,
+            "logSanitizerPatterns": [
+                "/JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)",
+                "/JSON/*Service*.java*.service.*MedicService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)",
+                "/JSON/*.java*.Medic*#*/*/MASK$4(deceases)/yyyy-MM-dd HH:mm:ss.ssss/DATE_FORMATER(timeCreated)",
+                "/HTTP/*.java*.LoggingHttpHeaderHandlerInterceptor*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)"
+            ]
+        }
+    }
+]
+2025-08-14 17:54:09.406|main-http-nio-80-exec-1-43-5|48MivWUB6T92u5zTmF309pR7A3qB6fs8|1|HTTP|
+LoggingHttpHeaderHandlerInterceptor.java#io.steplogs.logger.spring.LoggingHttpHeaderHandlerInterceptor#preHandle#59|
+[
+    {
+        "remoteHost": "0:0:0:0:0:0:0:1"
+    },
+    {
+        "method": "GET"
+    },
+    {
+        "requestURL": "http://localhost/api/user/save"
+    },
+    {},
+    {
+        "name": [
+            "br***ng"
+        ],
+        "driverLisenceId": [
+            "******"
+        ],
+        "age": [
+            "1001"
+        ]
+    }
+]
+2025-08-14 17:54:09.614|main-http-nio-80-exec-1-43-5|48MivWUB6T92u5zTmF309pR7A3qB6fs8|2|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#|
+[
+    {
+        "userId": 0
+    }
+]
+2025-08-14 17:54:09.615|main-http-nio-80-exec-1-43-5|48MivWUB6T92u5zTmF309pR7A3qB6fs8|3|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#R|
+[
+    "e1d2fb44-c29c-4925-93cc-99081578eaf8"
+]
+2025-08-14 17:54:09.627|main-http-nio-80-exec-1-43-5|48MivWUB6T92u5zTmF309pR7A3qB6fs8|4|JSON|
+UserService.java#io.steplogs.example.web.service.rpc.UserService#save#-2#|
+[
+    {
+        "user": {
+            "name": "br***ng",
+            "id": 0,
+            "driverLisenceId": "******",
+            "age": 1001
+        }
+    }
+]
+2025-08-14 17:54:10.333|main-http-nio-80-exec-1-43-5|48MivWUB6T92u5zTmF309pR7A3qB6fs8|5|JSON|
+UserService.java#io.steplogs.example.web.service.rpc.UserService#save#-2#R|
+[
+    {
+        "name": "br***ng",
+        "id": 789,
+        "driverLisenceId": "******",
+        "age": 1001
+    }
+]
+2025-08-14 17:54:10.334|main-http-nio-80-exec-1-43-5|48MivWUB6T92u5zTmF309pR7A3qB6fs8|6|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#|
+[
+    {
+        "userId": 789
+    }
+]
+2025-08-14 17:54:10.334|main-http-nio-80-exec-1-43-5|48MivWUB6T92u5zTmF309pR7A3qB6fs8|7|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#R|
+[
+    "e1d2fb44-c29c-4925-93cc-99081578eaf8"
+]
+2025-08-14 17:54:10.265|main-http-nio-80-exec-2-44-5|48MivWUB6T92u5zTmF309pR7A3qB6fs8|4-1|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#|
+[
+    {
+        "user": {
+            "name": "br***ng",
+            "id": 0,
+            "driverLisenceId": "******",
+            "age": 1001
+        }
+    }
+]
+2025-08-14 17:54:10.265|main-http-nio-80-exec-2-44-5|48MivWUB6T92u5zTmF309pR7A3qB6fs8|4-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#R|
+[
+    {
+        "name": "br***ng",
+        "id": 789,
+        "driverLisenceId": "******",
+        "age": 1001
+    }
+]
+2025-08-14 17:54:11.267|main-scheduling-1-55-5|6nNiqCwp4OmkttsUmrp0UIpTWdxVWz6M|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-14 17:54:11.267|main-scheduling-1-55-5|6nNiqCwp4OmkttsUmrp0UIpTWdxVWz6M|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-08-14 17:54:16.269|main-scheduling-1-55-5|3EKDw0KD4YNTl7UYYxJPz5cPXk2tv9FE|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-14 17:54:16.269|main-scheduling-1-55-5|3EKDw0KD4YNTl7UYYxJPz5cPXk2tv9FE|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-08-14 17:54:21.275|main-scheduling-1-55-5|1bFTL1kGHhlSRV3Hft05ax1XhVCF5Q2X|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-14 17:54:21.276|main-scheduling-1-55-5|1bFTL1kGHhlSRV3Hft05ax1XhVCF5Q2X|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-08-14 17:54:26.282|main-scheduling-1-55-5|4dmUXlKkziN8WmqdHMmasmVJSZMdQsAd|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-14 17:54:26.282|main-scheduling-1-55-5|4dmUXlKkziN8WmqdHMmasmVJSZMdQsAd|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-08-14 17:54:31.291|main-scheduling-1-55-5|uLQDeq8aNrDSzBBuu7khCPkfdsKhSx0z|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-14 17:54:31.292|main-scheduling-1-55-5|uLQDeq8aNrDSzBBuu7khCPkfdsKhSx0z|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-08-14 17:54:36.295|main-scheduling-1-55-5|1yC5r2MwnCWv0UG24KuiVP0qiZOSlMWY|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-14 17:54:36.296|main-scheduling-1-55-5|1yC5r2MwnCWv0UG24KuiVP0qiZOSlMWY|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-08-14 17:54:41.301|main-scheduling-1-55-5|7D6AUGuKfPjSI6QFU8Bd8r1bjAB6bdGX|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-14 17:54:41.302|main-scheduling-1-55-5|7D6AUGuKfPjSI6QFU8Bd8r1bjAB6bdGX|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-08-14 17:54:46.307|main-scheduling-1-55-5|61aGJcjtXh5VhjTzMNpIKdKmfRwgx6L4|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-14 17:54:46.307|main-scheduling-1-55-5|61aGJcjtXh5VhjTzMNpIKdKmfRwgx6L4|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-08-14 17:54:51.309|main-scheduling-1-55-5|5qcblyVSKaKfV8lv1CxnAEmEnC8zGXd5|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-14 17:54:51.309|main-scheduling-1-55-5|5qcblyVSKaKfV8lv1CxnAEmEnC8zGXd5|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-08-14 17:54:56.315|main-scheduling-1-55-5|q0HWkULkRFqT1sSAr4XMSJ0c4v0uL9ni|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-14 17:54:56.315|main-scheduling-1-55-5|q0HWkULkRFqT1sSAr4XMSJ0c4v0uL9ni|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
