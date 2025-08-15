@@ -163,7 +163,9 @@ It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next servi
 
 
 ### Unit Test / QA improvement ###
-check out LocalCasesTest and LogLineInvokerHelper to run unit test by logs.
+the idea is to check if the values appear in the sample payload with the method calls' return. For some unit tests, we don't need to exam all of returned values and json-structure exactly matched. Therefore the sample must be a subset of the returned objects. eventually we can manipulate unit tests by logs.
+
+check out LocalCasesTest and LogLineInvokerHelper how do they run unit test by logs.
 The test case file contains a pair(separated by \3\n) of log, parameters and returns samples of the method as the input to invoke the method, and output to match the return of the method invoke.
 Do this in spring will automatically bring up the methods from beans and run the invokes. Or checkout LogLineHelperTest.
 

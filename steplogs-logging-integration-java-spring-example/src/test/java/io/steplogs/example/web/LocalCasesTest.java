@@ -80,7 +80,7 @@ public final class LocalCasesTest {
 	
 	@Test
 	public void test_case2() throws Exception {
-		String fileName = "sample/test_case2.log";
+		String fileName = "sample/test_case2.log";//simple style
 		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
 		Assertions.assertNotNull(logLineInvoke);
 		Assertions.assertNotNull(logLineInvoke.getParameterSample());
@@ -146,7 +146,7 @@ public final class LocalCasesTest {
 	
 	@Test
 	public void test_case5() throws Exception {
-		String fileName = "sample/test_case5.log";
+		String fileName = "sample/test_case5.log";// the unique method name[query] in MedicService, invalid line number, still match the method call
 		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
 		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
@@ -155,7 +155,10 @@ public final class LocalCasesTest {
 
 	@Test
 	public void test_case6() throws Exception {
-		String[] fileNames = {"sample/test_case6.log", "sample/test_case7.log"};
+		String[] fileNames = {
+				"sample/test_case6.log", //non-pretty style
+				"sample/test_case7.log"
+				};
 		List<LogLineInvoke> logLineInvokes = LogLineHelper.readLogLineFiles(fileNames);
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvokes);
 		for(LogLineInvoke logLineInvoke : logLineInvokes) {
@@ -164,7 +167,7 @@ public final class LocalCasesTest {
 		}
 	}
 	
-	// test if it contains values. It allows other different values presence but hold critical ones from logs
+	// test if it contains values as subset. It allows other different values presence in superset but hold critical ones by logs
 	@Test
 	public void test_case8() throws Exception {
 		String fileName = "sample/test_case8.log";
@@ -172,7 +175,10 @@ public final class LocalCasesTest {
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
 		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
 		Assertions.assertTrue(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
-		Assertions.assertFalse(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
+		
+		Assertions.assertThrows(RuntimeException.class, ()->{
+			Assertions.assertFalse(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
+		});
 	}
 
 	@Test
@@ -181,7 +187,12 @@ public final class LocalCasesTest {
 		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
 		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
-		Assertions.assertFalse(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
-		Assertions.assertFalse(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
+		
+		Assertions.assertThrows(RuntimeException.class, ()->{
+			Assertions.assertFalse(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
+		});
+		Assertions.assertThrows(RuntimeException.class, ()->{
+			Assertions.assertFalse(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
+		});
 	}
 }

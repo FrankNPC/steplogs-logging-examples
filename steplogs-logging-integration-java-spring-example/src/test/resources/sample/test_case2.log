@@ -1,11 +1,11 @@
-|||5-1|JSON|
+|||||
 UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getBySessionId#37#|
 [
     {
         "sessionId":"xxx"
     }
 ]
-|||5-2|JSON|
+|||||
 UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getBySessionId#37#R|
 [
     {
