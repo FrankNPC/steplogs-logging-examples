@@ -44,6 +44,10 @@ steplogs:
       branch: main
       commit: xxxxxxx
 
+  extra-info:
+    region: use-1
+    platform: cloud=aws
+
 logging:
   file.name: log/${spring.application.name}.log
   file.attern: log/${spring.application.name}-%d{yyyy-MM-dd-HH-mm}-%i.log

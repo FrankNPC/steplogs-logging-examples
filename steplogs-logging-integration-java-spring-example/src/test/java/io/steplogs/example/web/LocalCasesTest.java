@@ -167,7 +167,7 @@ public final class LocalCasesTest {
 		}
 	}
 	
-	// test if it contains values as subset. It allows other different values presence in superset but hold critical ones by logs
+	// test if it contains values as subset. It allows some un-used values presence in superset.
 	@Test
 	public void test_case8() throws Exception {
 		String fileName = "sample/test_case8.log";
@@ -177,7 +177,7 @@ public final class LocalCasesTest {
 		Assertions.assertTrue(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
 		
 		Assertions.assertThrows(RuntimeException.class, ()->{
-			Assertions.assertFalse(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
+			Assertions.assertTrue(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
 		});
 	}
 
@@ -189,10 +189,10 @@ public final class LocalCasesTest {
 		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
 		
 		Assertions.assertThrows(RuntimeException.class, ()->{
-			Assertions.assertFalse(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
+			Assertions.assertTrue(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
 		});
 		Assertions.assertThrows(RuntimeException.class, ()->{
-			Assertions.assertFalse(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
+			Assertions.assertTrue(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
 		});
 	}
 }
