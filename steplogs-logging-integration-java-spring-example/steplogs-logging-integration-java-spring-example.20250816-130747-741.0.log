@@ -1,6 +1,10 @@
 [2025-08-16 17:07:47.0743][rLtYPtpCvcwBUnZq]
 [
     {
+        "BootInfo": {
+            "region": "use-1",
+            "platform": "cloud=aws"
+        },
         "AppNodeConfig": {
             "version": "1.2.3",
             "program": "1.2.2-1231321.jar",
@@ -17,10 +21,6 @@
             "hostId": "node-123.test.test",
             "httpHeaderIdType": 1,
             "applicationName": "steplogs-logging-integration-java-spring-example"
-        },
-        "ExtraInfo": {
-            "region": "use-1",
-            "platform": "cloud=aws"
         },
         "LoggerConfig": {
             "fileName": "./logs/steplogs-logging-integration-java-spring-example",

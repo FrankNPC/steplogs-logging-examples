@@ -44,7 +44,7 @@ steplogs:
       branch: main
       commit: xxxxxxx
 
-  extra-info:
+  boot-info:
     region: use-1
     platform: cloud=aws
 
