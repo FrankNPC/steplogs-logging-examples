@@ -180,7 +180,7 @@ Do this in spring will automatically bring up the methods from beans and run the
 		String fileName = "sample/test_case5.log";
 		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
-		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
 		Assertions.assertEquals(retVals[0], logLineInvoke.getReturnAndParameter()[0]);
 	}
 ```
@@ -194,7 +194,7 @@ Do this in spring will automatically bring up the methods from beans and run the
 		String fileName = "sample/test_case8.log";
 		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
-		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
 		Assertions.assertTrue(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
 		Assertions.assertFalse(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
 	}
@@ -215,7 +215,7 @@ Do this in spring will automatically bring up the methods from beans and run the
 		<dependency>
 			<groupId>io.steplogs</groupId>
 			<artifactId>steplogs-logger-spring-boot-starter</artifactId>
-			<version>1.0-SNAPSHOT</version> <!-- new version https://repo1.maven.org/maven2/io/steplogs/steplogs-logger-spring-boot-starter -->
+			<version>1.0-SNAPSHOT</version> <!--  new version https://repo1.maven.org/maven2/io/steplogs/steplogs-logger-spring-boot-starter -->
 		</dependency>
 ```
 
@@ -223,13 +223,13 @@ Do this in spring will automatically bring up the methods from beans and run the
  - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
     -  import LoggerAutoConfiguration.class to declare default Logging.
 
- - 3, configure web server to pick up HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header. reset log id(trace id+sequence id etc.) before or after all. No need If with LoggerAutoConfiguration in spring web. 
+ - 3, configure the http client request to write HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) header, so the next app/service/web-server can pick it up. See io.steplogs.logger.spring.LoggingHeaderClientHttpRequestInterceptor
  
- - 4, configure the http client request to write HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) header, so the next app/service can pick it up for the traces
- 
+ - 4, configure web server to pick up HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header. No need If with LoggerAutoConfiguration in spring web. 
+
  - 5, configure [steplogs-logging-agent/application.xml](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent/application.xml), to upload the logs into steplogs.io for traces
 
- - 6: check out with search, or `https://dev-portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
+ - 6: check out search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
  
 #### see example [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) ####
 
@@ -237,4 +237,5 @@ Do this in spring will automatically bring up the methods from beans and run the
 `Tip 1: Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
 
 `Tip 2: It's required to pass and read X-Step-Log-Id to/from the prev/next service so the traces can form as ![Screenshot trace](./Screenshot-trace.png)`
+
 

@@ -69,7 +69,7 @@ public final class LocalCasesTest {
 		Assertions.assertNotNull(logLineInvoke.getArgsForMethod());
 		Assertions.assertNotNull(logLineInvoke.getReturnAndParameter());
 		
-		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
 		Assertions.assertNotNull(retVals);
 		Assertions.assertTrue(retVals.length>0);
 		Assertions.assertNotNull(logLineInvoke.getReturnAndParameter());
@@ -93,7 +93,7 @@ public final class LocalCasesTest {
 		Assertions.assertNotNull(logLineInvoke.getArgsForMethod());
 		Assertions.assertNotNull(logLineInvoke.getReturnAndParameter());
 		
-		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
 		Assertions.assertNotNull(retVals);
 		Assertions.assertTrue(retVals.length>0);
 		Assertions.assertNotNull(logLineInvoke.getReturnAndParameter());
@@ -126,7 +126,7 @@ public final class LocalCasesTest {
 		Assertions.assertNotNull(logLineInvoke.getArgsForMethod());
 		Assertions.assertNotNull(logLineInvoke.getReturnAndParameter());
 		
-		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
 		Assertions.assertNotNull(retVals);
 		Assertions.assertTrue(retVals.length>0);
 		Assertions.assertNotNull(logLineInvoke.getReturnAndParameter());
@@ -140,7 +140,7 @@ public final class LocalCasesTest {
 		String fileName = "sample/test_case4.log";
 		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
-		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
 		Assertions.assertEquals(retVals[0], logLineInvoke.getReturnAndParameter()[0]);
 	}
 	
@@ -149,7 +149,7 @@ public final class LocalCasesTest {
 		String fileName = "sample/test_case5.log";// the unique method name[query] in MedicService, invalid line number, still match the method call
 		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
-		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
 		Assertions.assertEquals(retVals[0], logLineInvoke.getReturnAndParameter()[0]);
 	}
 
@@ -162,7 +162,7 @@ public final class LocalCasesTest {
 		List<LogLineInvoke> logLineInvokes = LogLineHelper.readLogLineFiles(fileNames);
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvokes);
 		for(LogLineInvoke logLineInvoke : logLineInvokes) {
-			Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+			Object[] retVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
 			Assertions.assertEquals(retVals[0], logLineInvoke.getReturnAndParameter()[0]);
 		}
 	}
@@ -173,7 +173,7 @@ public final class LocalCasesTest {
 		String fileName = "sample/test_case8.log";
 		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
-		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
 		Assertions.assertTrue(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
 		
 		Assertions.assertThrows(IllegalArgumentException.class, ()->{
@@ -186,7 +186,7 @@ public final class LocalCasesTest {
 		String fileName = "sample/test_case9.log";
 		LogLineInvoke logLineInvoke = LogLineHelper.readLogLineFile(fileName);
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
-		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
+		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getPayload());
 		
 		Assertions.assertThrows(IllegalArgumentException.class, ()->{
 			Assertions.assertTrue(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
