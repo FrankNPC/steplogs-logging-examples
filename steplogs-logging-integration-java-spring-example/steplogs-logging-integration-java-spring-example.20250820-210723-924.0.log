@@ -1,0 +1,674 @@
+[2025-08-21 01:07:23.0927][y9eNZD4GnJG89Zko]
+[
+    {
+        "BootInfo": {
+            "region": "use-1",
+            "platform": {
+                "cloud": "aws"
+            }
+        },
+        "AppNodeConfig": {
+            "version": "1.2.3",
+            "applicationName": "steplogs-logging-integration-java-spring-example",
+            "httpHeaderIdType": 1,
+            "program": "1.2.2-1231321.jar",
+            "github": {
+                "repository": "RepoOwner/steplogs-logging-integration-java-spring-example",
+                "branch": "main",
+                "commit": "xxxxxxx",
+                "sourcePaths": [
+                    "src/main/java"
+                ]
+            },
+            "internalIp": "12.2.2.2",
+            "externalIp": "12.2.2.2",
+            "hostId": "node-123.test.test"
+        },
+        "LoggerConfig": {
+            "fileName": "./logs/steplogs-logging-integration-java-spring-example",
+            "logSanitizerPatterns": [
+                "/JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)",
+                "/JSON/*Service*.java*.service.*MedicService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)",
+                "/JSON/*.java*.Medic*#*/*/MASK$4(deceases)/yyyy-MM-dd HH:mm:ss.ssss/DATE_FORMATER(timeCreated)",
+                "/HTTP/LoggingHttpHeaderHandlerInterceptor.java#io.steplogs.logger.spring.LoggingHttpHeaderHandlerInterceptor#preHandle*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)"
+            ],
+            "fileMaxLength": 536870912,
+            "logDateTimeFormat": "yyyy-MM-dd HH:mm:ss.SSS",
+            "logVersion": null,
+            "logPretty": true,
+            "printFile": true,
+            "printStdout": true,
+            "logAsync": true,
+            "logLight": false
+        }
+    }
+]
+2025-08-21 01:07:27.373|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|1|HTTP|
+LoggingHttpHeaderHandlerInterceptor.java#io.steplogs.logger.spring.LoggingHttpHeaderHandlerInterceptor#preHandle#59|
+[
+    {
+        "remoteHost": "0:0:0:0:0:0:0:1"
+    },
+    {
+        "method": "GET"
+    },
+    {
+        "requestURL": "http://localhost/api/medic/query"
+    },
+    {},
+    {
+        "session_id": [
+            "xxx"
+        ],
+        "offset": [
+            "0"
+        ],
+        "size": [
+            "123"
+        ]
+    }
+]
+2025-08-21 01:07:27.588|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|2|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#|
+[
+    {
+        "userId": 1755738447455
+    }
+]
+2025-08-21 01:07:27.588|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|3|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#R|
+[
+    "e1d2fb44-c29c-4925-93cc-99081578eaf8"
+]
+2025-08-21 01:07:27.596|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|4|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#query#28#|
+[
+    {
+        "sessionId": "xxx",
+        "page": {
+            "size": 123,
+            "offset": 0
+        }
+    }
+]
+2025-08-21 01:07:27.607|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|5|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#query#29|
+[
+    {
+        "sessionId": "xxx"
+    }
+]
+2025-08-21 01:07:28.269|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|6|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#query#29R|
+[
+    {
+        "name": "ra***ly",
+        "id": 456,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:28.270|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|7|JSON|
+MedicDAO.java#io.steplogs.example.web.dao.MedicDAO#query#17#|
+[
+    {
+        "userId": 456,
+        "page": {
+            "size": 123,
+            "offset": 0
+        }
+    }
+]
+2025-08-21 01:07:28.270|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|8|JSON|
+MedicDAO.java#io.steplogs.example.web.dao.MedicDAO#query#17#R|
+[
+    [
+        {
+            "id": 321,
+            "deceases": "idk,***ever",
+            "timeCreated": "5490-12-21 05:31:51.0051",
+            "userId": 123
+        },
+        {
+            "id": 654,
+            "deceases": "idk,***ever",
+            "timeCreated": "9011-12-11 11:03:42.0042",
+            "userId": 456
+        },
+        {
+            "id": 987,
+            "deceases": "idk,***ever",
+            "timeCreated": "12532-11-29 16:35:33.0033",
+            "userId": 789
+        }
+    ]
+]
+2025-08-21 01:07:28.271|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|9|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation#68#|
+[
+    {
+        "testString": "xxx"
+    }
+]
+2025-08-21 01:07:28.271|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|10|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation#68#R|
+[
+    "1755738448271"
+]
+2025-08-21 01:07:28.271|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|11|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38|
+[
+    {
+        "userId": 123
+    }
+]
+2025-08-21 01:07:28.277|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|12|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:28.278|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|13|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38|
+[
+    {
+        "userId": 456
+    }
+]
+2025-08-21 01:07:28.281|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|14|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:28.281|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|15|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38|
+[
+    {
+        "userId": 789
+    }
+]
+2025-08-21 01:07:28.285|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|16|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:28.285|main-http-nio-80-exec-1-40-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|17|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#query#28#R|
+[
+    [
+        {
+            "medicConditionDO": {
+                "id": 321,
+                "deceases": "idk,***ever",
+                "timeCreated": "5490-12-21 05:31:51.0051",
+                "userId": 123
+            },
+            "user": {
+                "name": "ra***ly",
+                "id": 123,
+                "driverLisenceId": "****************************",
+                "age": null
+            }
+        },
+        {
+            "medicConditionDO": {
+                "id": 654,
+                "deceases": "idk,***ever",
+                "timeCreated": "9011-12-11 11:03:42.0042",
+                "userId": 456
+            },
+            "user": {
+                "name": "ra***ly",
+                "id": 123,
+                "driverLisenceId": "****************************",
+                "age": null
+            }
+        },
+        {
+            "medicConditionDO": {
+                "id": 987,
+                "deceases": "idk,***ever",
+                "timeCreated": "12532-11-29 16:35:33.0033",
+                "userId": 789
+            },
+            "user": {
+                "name": "ra***ly",
+                "id": 123,
+                "driverLisenceId": "****************************",
+                "age": null
+            }
+        }
+    ]
+]
+2025-08-21 01:07:28.020|main-http-nio-80-exec-2-41-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|5-1|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getBySessionId#43#|
+[
+    {
+        "sessionId": "xxx"
+    }
+]
+2025-08-21 01:07:28.021|main-http-nio-80-exec-2-41-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|5-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getBySessionId#43#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 456,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:28.276|main-http-nio-80-exec-3-42-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|11-1|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#|
+[
+    {
+        "userId": 123
+    }
+]
+2025-08-21 01:07:28.276|main-http-nio-80-exec-3-42-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|11-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#29|
+[
+    "This should be remote service, will be with trace",
+    123
+]
+2025-08-21 01:07:28.276|main-http-nio-80-exec-3-42-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|11-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:28.280|main-http-nio-80-exec-4-43-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|13-1|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#|
+[
+    {
+        "userId": 456
+    }
+]
+2025-08-21 01:07:28.280|main-http-nio-80-exec-4-43-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|13-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#29|
+[
+    "This should be remote service, will be with trace",
+    456
+]
+2025-08-21 01:07:28.280|main-http-nio-80-exec-4-43-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|13-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:28.283|main-http-nio-80-exec-5-44-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|15-1|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#|
+[
+    {
+        "userId": 789
+    }
+]
+2025-08-21 01:07:28.284|main-http-nio-80-exec-5-44-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|15-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#29|
+[
+    "This should be remote service, will be with trace",
+    789
+]
+2025-08-21 01:07:28.284|main-http-nio-80-exec-5-44-5|31M9OTVK20sOGJlUvBZqWOqEPSu0eDn4|15-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:29.968|main-scheduling-1-52-5|5ICHUh72HtnxBMPVRubmwG0YtXvSduQP|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-21 01:07:29.969|main-scheduling-1-52-5|5ICHUh72HtnxBMPVRubmwG0YtXvSduQP|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-08-21 01:07:30.398|main-http-nio-80-exec-6-45-5|3TJe3z8INfcH4wAKoK8nDhZ8I7xhm2CA|1|HTTP|
+LoggingHttpHeaderHandlerInterceptor.java#io.steplogs.logger.spring.LoggingHttpHeaderHandlerInterceptor#preHandle#59|
+[
+    {
+        "remoteHost": "0:0:0:0:0:0:0:1"
+    },
+    {
+        "method": "GET"
+    },
+    {
+        "requestURL": "http://localhost/api/medic/test_async_email"
+    },
+    {},
+    {}
+]
+2025-08-21 01:07:30.399|main-http-nio-80-exec-6-45-5|3TJe3z8INfcH4wAKoK8nDhZ8I7xhm2CA|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#unHookedThreadDelivery#39#|
+[
+    {
+        "recipient": "test@email.email",
+        "verificationUrl": "http://localhost/unHookedThreadDelivery/1755738450398"
+    }
+]
+2025-08-21 01:07:30.409|main-http-nio-80-exec-6-45-5|3TJe3z8INfcH4wAKoK8nDhZ8I7xhm2CA|3|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#unHookedThreadDelivery#39#R|
+[
+    null
+]
+2025-08-21 01:07:31.265|main-http-nio-80-exec-7-46-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|1|HTTP|
+LoggingHttpHeaderHandlerInterceptor.java#io.steplogs.logger.spring.LoggingHttpHeaderHandlerInterceptor#preHandle#59|
+[
+    {
+        "remoteHost": "0:0:0:0:0:0:0:1"
+    },
+    {
+        "method": "GET"
+    },
+    {
+        "requestURL": "http://localhost/api/medic/save"
+    },
+    {},
+    {
+        "id": [
+            "123"
+        ],
+        "deceases": [
+            "unkown"
+        ]
+    }
+]
+2025-08-21 01:07:31.289|main-http-nio-80-exec-7-46-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|2|JSON|
+MedicConditionController.java#io.steplogs.example.web.controller.MedicConditionController#save#64|
+[
+    "save request paylod, should be with trace",
+    {
+        "id": 123,
+        "deceases": "unko***wn",
+        "timeCreated": "1970-01-01 00:00:00.0000",
+        "userId": 0
+    }
+]
+2025-08-21 01:07:31.290|main-http-nio-80-exec-7-46-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|3|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#query#11#|
+[
+    {
+        "userId": 1755738451290,
+        "page": null
+    }
+]
+2025-08-21 01:07:31.290|main-http-nio-80-exec-7-46-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|4|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#query#11#R|
+[
+    "2523eda5-5709-4a55-8021-a629838cf7a1"
+]
+2025-08-21 01:07:31.290|main-http-nio-80-exec-7-46-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|5|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#48#|
+[
+    {
+        "condition": {
+            "id": 123,
+            "deceases": "unko***wn",
+            "timeCreated": "1970-01-01 00:00:00.0000",
+            "userId": 0
+        }
+    }
+]
+2025-08-21 01:07:31.291|main-http-nio-80-exec-7-46-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|6|JSON|
+MedicDAO.java#io.steplogs.example.web.dao.MedicDAO#save#36#|
+[
+    {
+        "condition": {
+            "id": 123,
+            "deceases": "unko***wn",
+            "timeCreated": "1970-01-01 00:00:00.0000",
+            "userId": 0
+        }
+    }
+]
+2025-08-21 01:07:31.291|main-http-nio-80-exec-7-46-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|7|JSON|
+MedicDAO.java#io.steplogs.example.web.dao.MedicDAO#save#36#R|
+[
+    {
+        "id": 123,
+        "deceases": "unko***wn",
+        "timeCreated": "1970-01-01 00:00:00.0000",
+        "userId": 0
+    }
+]
+2025-08-21 01:07:31.291|main-http-nio-80-exec-7-46-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|8|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#54|
+[
+    {
+        "userId": 0
+    }
+]
+2025-08-21 01:07:31.298|main-http-nio-80-exec-7-46-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|9|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#54R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:31.298|main-http-nio-80-exec-7-46-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|10|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#48#R|
+[
+    {
+        "medicConditionDO": {
+            "id": 123,
+            "deceases": "unko***wn",
+            "timeCreated": "1970-01-01 00:00:00.0000",
+            "userId": 0
+        },
+        "user": {
+            "name": "ra***ly",
+            "id": 123,
+            "driverLisenceId": "****************************",
+            "age": null
+        }
+    }
+]
+2025-08-21 01:07:31.296|main-http-nio-80-exec-8-47-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|8-1|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#|
+[
+    {
+        "userId": 0
+    }
+]
+2025-08-21 01:07:31.297|main-http-nio-80-exec-8-47-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|8-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#29|
+[
+    "This should be remote service, will be with trace",
+    0
+]
+2025-08-21 01:07:31.297|main-http-nio-80-exec-8-47-5|5E2NCmrojeEWFyNgY0ZGYM7Yfj9vJskN|8-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:32.731|main-http-nio-80-exec-2-41-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|1|HTTP|
+LoggingHttpHeaderHandlerInterceptor.java#io.steplogs.logger.spring.LoggingHttpHeaderHandlerInterceptor#preHandle#59|
+[
+    {
+        "remoteHost": "0:0:0:0:0:0:0:1"
+    },
+    {
+        "method": "GET"
+    },
+    {
+        "requestURL": "http://localhost/api/medic/save"
+    },
+    {},
+    {
+        "id": [
+            "123"
+        ],
+        "deceases": [
+            "unkown"
+        ]
+    }
+]
+2025-08-21 01:07:32.738|main-http-nio-80-exec-2-41-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|2|JSON|
+MedicConditionController.java#io.steplogs.example.web.controller.MedicConditionController#save#64|
+[
+    "save request paylod, should be with trace",
+    {
+        "id": 123,
+        "deceases": "unko***wn",
+        "timeCreated": "1970-01-01 00:00:00.0000",
+        "userId": 0
+    }
+]
+2025-08-21 01:07:32.738|main-http-nio-80-exec-2-41-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|3|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#query#11#|
+[
+    {
+        "userId": 1755738452738,
+        "page": null
+    }
+]
+2025-08-21 01:07:32.738|main-http-nio-80-exec-2-41-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|4|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#query#11#R|
+[
+    "c670c7a9-7d1c-4d42-9314-8d41e41f3f51"
+]
+2025-08-21 01:07:32.738|main-http-nio-80-exec-2-41-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|5|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#48#|
+[
+    {
+        "condition": {
+            "id": 123,
+            "deceases": "unko***wn",
+            "timeCreated": "1970-01-01 00:00:00.0000",
+            "userId": 0
+        }
+    }
+]
+2025-08-21 01:07:32.738|main-http-nio-80-exec-2-41-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|6|JSON|
+MedicDAO.java#io.steplogs.example.web.dao.MedicDAO#save#36#|
+[
+    {
+        "condition": {
+            "id": 123,
+            "deceases": "unko***wn",
+            "timeCreated": "1970-01-01 00:00:00.0000",
+            "userId": 0
+        }
+    }
+]
+2025-08-21 01:07:32.738|main-http-nio-80-exec-2-41-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|7|JSON|
+MedicDAO.java#io.steplogs.example.web.dao.MedicDAO#save#36#R|
+[
+    {
+        "id": 123,
+        "deceases": "unko***wn",
+        "timeCreated": "1970-01-01 00:00:00.0000",
+        "userId": 0
+    }
+]
+2025-08-21 01:07:32.740|main-http-nio-80-exec-2-41-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|8|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#54|
+[
+    {
+        "userId": 0
+    }
+]
+2025-08-21 01:07:32.748|main-http-nio-80-exec-2-41-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|9|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#54R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:32.749|main-http-nio-80-exec-2-41-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|10|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#48#R|
+[
+    {
+        "medicConditionDO": {
+            "id": 123,
+            "deceases": "unko***wn",
+            "timeCreated": "1970-01-01 00:00:00.0000",
+            "userId": 0
+        },
+        "user": {
+            "name": "ra***ly",
+            "id": 123,
+            "driverLisenceId": "****************************",
+            "age": null
+        }
+    }
+]
+2025-08-21 01:07:32.745|main-http-nio-80-exec-3-42-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|8-1|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#|
+[
+    {
+        "userId": 0
+    }
+]
+2025-08-21 01:07:32.745|main-http-nio-80-exec-3-42-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|8-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#29|
+[
+    "This should be remote service, will be with trace",
+    0
+]
+2025-08-21 01:07:32.746|main-http-nio-80-exec-3-42-5|43v3vPa3r7Ihm0GsRSSoImwPThpPe0bB|8-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "driverLisenceId": "****************************",
+        "age": null
+    }
+]
+2025-08-21 01:07:34.977|main-scheduling-1-52-5|fszvIv6P4fzQn0NwhqzJ3wDKBr55sL2T|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|[]
+2025-08-21 01:07:34.982|main-scheduling-1-52-5|3TJe3z8INfcH4wAKoK8nDhZ8I7xhm2CA|2-1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "tes***ail",
+        "verificationUrl": "http://localhost/unHookedThreadDelivery/1755738450398"
+    }
+]
+2025-08-21 01:07:34.983|main-scheduling-1-52-5|3TJe3z8INfcH4wAKoK8nDhZ8I7xhm2CA|2-2|TEXT|SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|<html><body>Please click on the <a href='http://localhost/unHookedThreadDelivery/1755738450398'>link</a> or copy http://localhost/unHookedThreadDelivery/1755738450398 to your brower before it expires in 10 minutes.</body></html>
+2025-08-21 01:07:34.991|main-scheduling-1-52-5|3TJe3z8INfcH4wAKoK8nDhZ8I7xhm2CA|2-3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/unHookedThreadDelivery/1755738450398'>link</a> or copy http://localhost/unHookedThreadDelivery/1755738450398 to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-08-21 01:07:34.991|main-scheduling-1-52-5|3TJe3z8INfcH4wAKoK8nDhZ8I7xhm2CA|2-4|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]

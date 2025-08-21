@@ -32,6 +32,7 @@ public class MedicService {
 		}
 		List<MedicCondition> medicList = medicDAO.query(getUserRet.getId(), page);
 //		List<MedicCondition medicList = medicDAO.query(0L, page);
+		this.callSelfInvocation(sessionId);
 		if (medicList!=null) {
 			return medicList.stream().map(medic -> {
 				User userRet = userService.getById(medic.getUserId());
@@ -62,5 +63,9 @@ public class MedicService {
 		User savedUser = userService.save(user);
 		ForStaticMethod.runStatic(savedUser.getId());
 		return savedUser;
+	}
+	
+	public String callSelfInvocation(String testString) {
+		return Long.toString(System.currentTimeMillis());
 	}
 }

@@ -108,7 +108,7 @@ Sample:
  
  ```
 	public static void main(String[] args) {
-		io.steplogs.logger.boostrap.LoggingInitiation.premain(null); // must load before everything, no need in steplogs-logger-spring-boot-starter
+		//io.steplogs.logger.boostrap.LoggingInitiation.premain(null); // must load before everything. or add https://github.com/FrankNPC/steplogs-logging-examples/blob/main/steplogs-logging-integration-java-spring-example/src/main/resources/META-INF/spring.factories 
 		new SpringApplicationBuilder(ServerBootApplication.class).run(args);
 	}
 ```
@@ -200,9 +200,9 @@ Do this in spring will automatically bring up the methods from beans and run the
 	}
 ```
 
-### After all, ###
-** Search by keywords through the portal, or get X-Step-Trace-Id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja **
 
+### After all, ###
+` Search by keywords through the portal, or get X-Step-Trace-Id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja `
 
 
 
@@ -226,7 +226,7 @@ Do this in spring will automatically bring up the methods from beans and run the
  
  - 4, configure the http client request to write HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) header, so the next app/service can pick it up for the traces
  
- - 5, configure [steplogs-logging-agent/application.xml](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent), to upload the logs into steplogs.io for traces
+ - 5, configure [steplogs-logging-agent/application.xml](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent/application.xml), to upload the logs into steplogs.io for traces
 
  - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
  

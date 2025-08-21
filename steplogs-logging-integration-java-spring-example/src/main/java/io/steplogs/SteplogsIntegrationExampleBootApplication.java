@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 public class SteplogsIntegrationExampleBootApplication {
 
 	public static void main(String[] args) {
-//		io.steplogs.logger.boostrap.LoggingInitiation.premain(null);// ensure the first to run if don't use javaagent; no need if it's in spring
-		new SpringApplicationBuilder(SteplogsIntegrationExampleBootApplication.class).run(args);//, args);
+		//io.steplogs.logger.boostrap.LoggingInitiation.premain(null); // must load before everything. or add https://github.com/FrankNPC/steplogs-logging-examples/blob/main/steplogs-logging-integration-java-spring-example/src/main/resources/META-INF/spring.factories 
+		new SpringApplicationBuilder(SteplogsIntegrationExampleBootApplication.class).run(args);
 	}
 }

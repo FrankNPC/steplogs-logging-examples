@@ -21,7 +21,7 @@ steplogs:
     log-date-time-format: yyyy-MM-dd HH:mm:ss.SSS # the time on the head of the log. Leave blank will print timestamp
     log-async: true # blocking IO or NIO write files
     log-light: false # right step or light. true: MedicController.java#io.steplogs.web.controller.MedicController#query#123, false: #.MedicController#query#123
-    log-pretty: true # print pretty json, by new line and intends. close it in prd.
+    log-pretty: true # print pretty json and log, by new line and intends. close it in prd.
     log-sanitizer-patterns: >
       /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),
       /JSON/*Service*.java*.service.*MedicService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),

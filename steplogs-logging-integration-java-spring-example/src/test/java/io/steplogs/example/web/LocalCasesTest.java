@@ -176,7 +176,7 @@ public final class LocalCasesTest {
 		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
 		Assertions.assertTrue(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
 		
-		Assertions.assertThrows(RuntimeException.class, ()->{
+		Assertions.assertThrows(IllegalArgumentException.class, ()->{
 			Assertions.assertTrue(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
 		});
 	}
@@ -188,10 +188,10 @@ public final class LocalCasesTest {
 		LogLineInvokerHelper.invokeLogLineInvokers(loggingMethodIntercepter, methodToBeans, logLineInvoke);
 		Object[] retSampleVals = LogLineInvokerHelper.parseReturnObject(logLineInvoke.getMethod(), logLineInvoke.getReturnSample().getApayloads());
 		
-		Assertions.assertThrows(RuntimeException.class, ()->{
+		Assertions.assertThrows(IllegalArgumentException.class, ()->{
 			Assertions.assertTrue(LogLineInvokerHelper.containSubset(logLineInvoke.getReturnAndParameter()[0], retSampleVals[0]));
 		});
-		Assertions.assertThrows(RuntimeException.class, ()->{
+		Assertions.assertThrows(IllegalArgumentException.class, ()->{
 			Assertions.assertTrue(LogLineInvokerHelper.containSubset(retSampleVals[0], logLineInvoke.getReturnAndParameter()[0]));
 		});
 	}
