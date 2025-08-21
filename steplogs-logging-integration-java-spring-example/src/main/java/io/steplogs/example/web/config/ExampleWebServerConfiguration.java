@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -15,8 +17,8 @@ import io.steplogs.logger.Logger;
 import io.steplogs.logger.PreDefinition;
 import io.steplogs.logger.provider.LoggerProvider;
 import io.steplogs.logger.spring.AutoConfigurationSteplogsLogger;
+import io.steplogs.logger.spring.LoggingHttpHeaderHandlerInterceptor;
 import io.steplogs.logger.spring.LoggingHttpHeaderResponseAdvice;
-import io.steplogs.logger.spring.LoggingWebMvcConfigurer;
 import io.steplogs.spring.rmi.http.prodiver.AutoConfigurationServiceProvider;
 import jakarta.annotation.Resource;
 
@@ -57,10 +59,19 @@ public class ExampleWebServerConfiguration {
 		emailScheduler.runMailRunnable();
 	}
 	
+//	LoggingWebMvcConfigurer getLoggingWebMvcConfigurer() {
+//		return new LoggingWebMvcConfigurer(List.of(PreDefinition.HTTP_HEADER_STEP_LOG_ID), "/api", "/api/**");
+//	}
+
 	// to log headers and http payload
 	@Bean
-	LoggingWebMvcConfigurer getLoggingWebMvcConfigurer() {
-		return new LoggingWebMvcConfigurer(List.of(PreDefinition.HTTP_HEADER_STEP_LOG_ID), "/api", "/api/**");
+	WebMvcConfigurer webMvcConfigurer() {
+		return new WebMvcConfigurer() {
+			@Override
+			public void addInterceptors(InterceptorRegistry registry) {
+				registry.addInterceptor(new LoggingHttpHeaderHandlerInterceptor(steplogsLoggerProvider, true, List.of(PreDefinition.HTTP_HEADER_STEP_LOG_ID, PreDefinition.HTTP_HEADER_STEP_TRACE_ID, PreDefinition.HTTP_HEADER_STEP_LOG_SKIP)))
+				.addPathPatterns("/api", "/api/**");
+			}
+		};
 	}
-	
 }
