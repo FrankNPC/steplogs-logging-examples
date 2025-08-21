@@ -202,7 +202,8 @@ Do this in spring will automatically bring up the methods from beans and run the
 
 
 ### After all, ###
-` Search by keywords through the portal, or get X-Step-Trace-Id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja `
+
+> Search by keywords through the portal, or get X-Step-Trace-Id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja to link: https://dev-portal.steplogs.io/trace.html?id=aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja
 
 
 
@@ -228,7 +229,7 @@ Do this in spring will automatically bring up the methods from beans and run the
  
  - 5, configure [steplogs-logging-agent/application.xml](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent/application.xml), to upload the logs into steplogs.io for traces
 
- - 6: check out with search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
+ - 6: check out with search, or `https://dev-portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
  
 #### see example [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) ####
 
