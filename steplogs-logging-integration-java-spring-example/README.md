@@ -71,10 +71,10 @@ Sample:
 
 - 2, In method
 
-> `Annotate @Logging with catchLogging=true on the method/class to log the parameters/returns for the methods.`
+> `Annotate @Logging with catchPackages/catchClasses on the method/class to log the parameters/returns for the methods.`
 
 ```java
-@Logging(catchLogging=true) 
+@Logging(catchPackages="io.steplogs.example.web") 
 TypeABC func(String str123) { // line 234
   //do some work
   Object obj = caller.call(str123); // line 278
