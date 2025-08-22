@@ -7,7 +7,7 @@ server:
 spring:
   application:
     name: steplogs-logging-integration-java-spring-example
-    
+
 example:
   service:
     user.host: http://localhost
