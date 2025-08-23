@@ -60,7 +60,7 @@ public class ExampleWebServerConfiguration {
 	// log headers and http payload for specific paths only
 	@Bean
 	LoggingWebMvcConfigurer getLoggingWebMvcConfigurer() {
-		return new LoggingWebMvcConfigurer(steplogsLoggerProvider, List.of(PreDefinition.HTTP_HEADER_STEP_LOG_ID, PreDefinition.HTTP_HEADER_STEP_TRACE_ID, PreDefinition.HTTP_HEADER_STEP_LOG_SKIP), 
+		return new LoggingWebMvcConfigurer(steplogsLoggerProvider, true, List.of(PreDefinition.HTTP_HEADER_STEP_LOG_ID, PreDefinition.HTTP_HEADER_STEP_TRACE_ID, PreDefinition.HTTP_HEADER_STEP_LOG_SKIP), 
 				"/api", "/api/**");
 	}
 
