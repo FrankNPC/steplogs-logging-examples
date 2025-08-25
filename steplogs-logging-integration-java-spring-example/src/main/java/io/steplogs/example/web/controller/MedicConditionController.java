@@ -21,6 +21,7 @@ import io.steplogs.example.web.service.SMTPEmailScheduler;
 import io.steplogs.example.web.service.rpc.UserService;
 import io.steplogs.example.web.test.ForStaticMethod;
 import io.steplogs.logger.Logger;
+import io.steplogs.logger.provider.LoggerFactory;
 import jakarta.annotation.Resource;
 
 @RestController
@@ -30,14 +31,13 @@ public class MedicConditionController {
 	private static final ObjectMapper objectMapper = new ObjectMapper()
 			.setPropertyNamingStrategy(PropertyNamingStrategies.SnakeCaseStrategy.INSTANCE);
 	
+	private static final Logger logger = LoggerFactory.getAsyncLogger();
+	
 	@Resource
 	MedicService medicService;
 
 	@Resource
 	UserService userService;
-	
-	@Resource
-	Logger logger;
 	
 	@Resource
 	SMTPEmailScheduler emailScheduler;

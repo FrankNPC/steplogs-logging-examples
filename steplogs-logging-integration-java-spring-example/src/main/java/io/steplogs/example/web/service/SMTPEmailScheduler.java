@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import io.steplogs.logger.Logger;
 import io.steplogs.logger.annotation.Logging;
+import io.steplogs.logger.provider.LoggerFactory;
 import jakarta.annotation.Resource;
 
 @Service
@@ -16,8 +17,7 @@ public class SMTPEmailScheduler {
 	@Resource
 	SMTPEmailService smtpEmailService;
 
-	@Resource
-	Logger logger;
+	private static final Logger logger = LoggerFactory.getAsyncLogger();
 
 	@Logging(reset=true)// reset the context so each call will be new ids
 	public void runMailRunnable() {

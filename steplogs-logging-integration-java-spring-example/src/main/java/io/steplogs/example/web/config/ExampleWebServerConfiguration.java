@@ -63,5 +63,4 @@ public class ExampleWebServerConfiguration {
 		return new LoggingWebMvcConfigurer(steplogsLoggerProvider, true, List.of(PreDefinition.HTTP_HEADER_STEP_LOG_ID, PreDefinition.HTTP_HEADER_STEP_TRACE_ID, PreDefinition.HTTP_HEADER_STEP_LOG_SKIP), 
 				"/api", "/api/**");
 	}
-
 }

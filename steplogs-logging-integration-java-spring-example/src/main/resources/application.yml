@@ -20,8 +20,8 @@ steplogs:
     print-file: true # write to file
     log-date-time-format: yyyy-MM-dd HH:mm:ss.SSS # the time on the head of the log. Leave blank will print timestamp
     log-async: true # blocking IO or NIO write files
-    log-light: false # right step or light. true: MedicController.java#io.steplogs.web.controller.MedicController#query#123, false: #.MedicController#query#123
-    log-pretty: true # print pretty json and log, by new line and intends. close it in prd.
+    log-light: false # full step info, or light. true: MedicController.java#io.steplogs.web.controller.MedicController#query#123; no thread info, type JSON->J, false: #.MedicController#query#123
+    log-pretty: true # print pretty json and log, by new line and intends. close it in prd if needed.
     log-sanitizer-patterns: >
       /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),
       /JSON/*Service*.java*.service.*MedicService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),
@@ -31,11 +31,11 @@ steplogs:
   app-node:
     http-header-id-type: 1 # for http headers give log/trace id to the clients
     application-name: ${spring.application.name}
-    version: 1.2.3 # not functioning yet
-    program: 1.2.2-1231321.jar # not functioning yet
-    host-id: node-123.test.test # not functioning yet
-    internal-ip: 12.2.2.2 # not functioning yet
-    external-ip: 12.2.2.2  # not functioning yet
+    version: 1.2.3
+    program: 1.2.2-1231321.jar
+    host-id: node-123.test.test
+    internal-ip: 12.2.2.2
+    external-ip: 12.2.2.2
 
     github: # not functioning yet
       source-paths: > 

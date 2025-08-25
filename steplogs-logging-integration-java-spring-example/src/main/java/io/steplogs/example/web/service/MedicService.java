@@ -66,6 +66,27 @@ public class MedicService {
 	}
 	
 	public String callSelfInvocation(String testString) {
+		callSelfInvocation_protected(testString);
 		return Long.toString(System.currentTimeMillis());
 	}
+
+	protected String callSelfInvocation_protected(String testString) {
+		callSelfInvocation_friendly(testString);
+		return Long.toString(System.currentTimeMillis());
+	}
+
+	String callSelfInvocation_friendly(String testString) {
+		callSelfInvocation_private(testString);
+		return Long.toString(System.currentTimeMillis());
+	}
+	
+	private String callSelfInvocation_private(String testString) {
+		callSelfInvocation_final(testString);
+		return Long.toString(System.currentTimeMillis());
+	}
+	
+	final String callSelfInvocation_final(String testString) {
+		return Long.toString(System.currentTimeMillis());
+	}
+	
 }
