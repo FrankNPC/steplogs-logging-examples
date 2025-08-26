@@ -94,7 +94,8 @@ Sample:
 > 2025-08-21 01:08:30.756|main-http-nio-80-exec-4-43-5|We56EsinM00UnynirAHrnp9XXsg3avlc|12|JSON|MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38R|[{"name":"ra***ly","id":123,"driverLisenceId":"****************************","age":null}]
 
 
-`Tips: take in mind of the sanitizer, in case SearchController requires encryptionKey to be masked`
+`Tips: take in mind of the sanitizer, in case SearchController requires name/driverLisenceId to be masked`
+`Tips: line number 0 means no catcher class/package, or on interface`
 
 
 ## There are two ways to turn on the logging: ##
@@ -219,21 +220,22 @@ Do this in spring will automatically bring up the methods from beans and run the
 
 
  - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
-    -  import LoggerAutoConfiguration.class to declare default Logging.
+    -  import AutoConfigurationSteplogsLogger.class to declare default Logging.
 
  - 3, configure the http client request to write HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) header, so the next app/service/web-server can pick it up. See io.steplogs.logger.spring.LoggingHeaderClientHttpRequestInterceptor
  
- - 4, configure web server to pick up HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header. No need If with LoggerAutoConfiguration in spring web. 
+ - 4, configure web server to pick up HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header. No need If with AutoConfigurationSteplogsLogger in spring web. 
 
  - 5, configure [steplogs-logging-agent/application.xml](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent/application.xml), to upload the logs into steplogs.io for traces
 
- - 6: check out search, or `https://portal.steplogs.io/trace.html?id=[TraceId/StepLogId]`.
+ - 6: check out search, or `https://portal.steplogs.io/trace.html?id=[TraceId]`.
  
 #### see example [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) ####
 
 
 `Tip 1: Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
 
-`Tip 2: It's required to pass and read X-Step-Log-Id to/from the prev/next service so the traces can form as ![Screenshot trace](./Screenshot-trace.png)`
+`Tip 2: It's required to pass and read X-Step-Log-Id to/from the prev/next service so the traces can form as ` 
+![Screenshot trace](./Screenshot-trace.png)
 
 
