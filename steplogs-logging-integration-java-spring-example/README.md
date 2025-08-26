@@ -58,13 +58,10 @@ Object caller(){
 > log: ...|package.class#func#233#R|[TypeABC->toJson]
 
 Sample:
-> 2025-03-30 19:15:37.151|VirtualThreads--69-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|4-2|JSON|AccountServiceImpl.java#io.steplogs.profile.service.AccountServiceImpl#getBySessionId#51#|[{"session_id":"ZwQwpVLp7Ly26qP9JEu6QI8LqP5ttUgE87la4xDaqqoXB0ir"}]
+> 2025-08-21 01:08:33.791|main-http-nio-80-exec-1-40-5|5Lwgxyfqe3xaDnv23BEXPlhOdMJ1Lldj|4-1|JSON|UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#|[{"user":{"name":"br***ng","id":0,"driverLisenceId":"******","age":1001}}]
 
-> 2025-03-30 19:15:37.154|VirtualThreads--69-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|4-3|JSON|AccountServiceImpl.java#io.steplogs.profile.service.AccountServiceImpl#getBySessionId#51#R|[[{"code":0,"entity":{"email":"test@steplogs.io","id":1,"login":"test@steplogs.io","organizationId":1,"password":null,"retries":0,"sessionId":"ZwQwpVLp7Ly26qP9JEu6QI8LqP5ttUgE87la4xDaqqoXB0ir","status":1,"timeCreated":1741873352},"message":null,"reason":null,"token":null}]]
+> 2025-08-21 01:08:33.792|main-http-nio-80-exec-1-40-5|5Lwgxyfqe3xaDnv23BEXPlhOdMJ1Lldj|4-2|JSON|UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#R|[{"name":"br***ng","id":789,"driverLisenceId":"******","age":1001}]
 
-> 2025-03-30 19:15:37.165|VirtualThreads--70-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|6-2|JSON|OrganizationServiceImpl.java#io.steplogs.profile.service.OrganizationServiceImpl#getById#26#|[{"id":1}]
-
-> 2025-03-30 19:15:37.167|VirtualThreads--70-5|7EHjY7VJ7WzVp4DEvL8AOutFo3wkyqlu|6-3|JSON|OrganizationServiceImpl.java#io.steplogs.profile.service.OrganizationServiceImpl#getById#26#R|[[{"code":0,"entity":{"accountId":1,"encryptionKey":"************************************************","id":1,"name":"steplogs","status":1,"timeCreated":1741873392},"message":null,"reason":null,"token":null}]]
 
 `Tips for interface it needs AOP or proxy like spring pointcut`
 
@@ -92,9 +89,10 @@ Object call(){
 > log: ...|package.class#func#278R|[{"str456":"str456"}]
 
 Sample:
-> 2025-03-30 18:58:52.728|VirtualThreads--62-5|6xKDi88XSMMNlUdVDEuWwah3Tydcc59V|6|JSON|SearchController.java#io.steplogs.web.portal.controller.SearchController#fetchTrace#160|[1]
+> 2025-08-21 01:08:30.752|main-http-nio-80-exec-4-43-5|We56EsinM00UnynirAHrnp9XXsg3avlc|11|JSON|MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38|[{"userId":123}]
 
-> 2025-03-30 18:58:52.738|VirtualThreads--62-5|6xKDi88XSMMNlUdVDEuWwah3Tydcc59V|7|JSON|SearchController.java#io.steplogs.web.portal.controller.SearchController#fetchTrace#160R|[[{"code":0,"entity":{"accountId":1,"encryptionKey":"Tmy3v0djPw8JlkUTlfIsu79dv4RMY4jo5XdN9ScvErUXp4xD","id":1,"name":"steplogs","status":1,"timeCreated":1741873392},"message":null,"reason":null,"token":null}]]
+> 2025-08-21 01:08:30.756|main-http-nio-80-exec-4-43-5|We56EsinM00UnynirAHrnp9XXsg3avlc|12|JSON|MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38R|[{"name":"ra***ly","id":123,"driverLisenceId":"****************************","age":null}]
+
 
 `Tips: take in mind of the sanitizer, in case SearchController requires encryptionKey to be masked`
 
