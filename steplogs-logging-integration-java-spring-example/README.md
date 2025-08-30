@@ -58,9 +58,9 @@ Object caller(){
 > log: ...|package.class#func#233#R|[TypeABC->toJson]
 
 Sample:
-> 2025-08-21 01:08:33.791|main-http-nio-80-exec-1-40-5|5Lwgxyfqe3xaDnv23BEXPlhOdMJ1Lldj|4-1|JSON|UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#|[{"user":{"name":"br***ng","id":0,"driverLisenceId":"******","age":1001}}]
+> 2025-08-21 01:08:33.791|main-http-nio-80-exec-1-40-5|5Lwgxyfqe3xaDnv23BEXPlhOdMJ1Lldj|4-1|JSON|UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#|[{"user":{"name":"br\*\*\*ng","id":0,"driverLisenceId":"\*\*\*\*\*\*","age":1001}}]
 
-> 2025-08-21 01:08:33.792|main-http-nio-80-exec-1-40-5|5Lwgxyfqe3xaDnv23BEXPlhOdMJ1Lldj|4-2|JSON|UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#R|[{"name":"br***ng","id":789,"driverLisenceId":"******","age":1001}]
+> 2025-08-21 01:08:33.792|main-http-nio-80-exec-1-40-5|5Lwgxyfqe3xaDnv23BEXPlhOdMJ1Lldj|4-2|JSON|UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#R|[{"name":"br\*\*\*ng","id":789,"driverLisenceId":"\*\*\*\*\*\*","age":1001}]
 
 
 `Tips for interface it needs AOP or proxy like spring pointcut`
@@ -91,19 +91,17 @@ Object call(){
 Sample:
 > 2025-08-21 01:08:30.752|main-http-nio-80-exec-4-43-5|We56EsinM00UnynirAHrnp9XXsg3avlc|11|JSON|MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38|[{"userId":123}]
 
-> 2025-08-21 01:08:30.756|main-http-nio-80-exec-4-43-5|We56EsinM00UnynirAHrnp9XXsg3avlc|12|JSON|MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38R|[{"name":"ra***ly","id":123,"driverLisenceId":"****************************","age":null}]
+> 2025-08-21 01:08:30.756|main-http-nio-80-exec-4-43-5|We56EsinM00UnynirAHrnp9XXsg3avlc|12|JSON|MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38R|[{"name":"ra\*\*\*ly","id":123,"driverLisenceId":"\*\*\*\*\*\*","age":null}]
 
 
 `Tips: take in mind of the sanitizer, in case SearchController requires name/driverLisenceId to be masked`
 `Tips: line number 0 means no catcher class/package, or on interface`
 
 
-## There are two ways to turn on the logging: ##
+## There are three ways to turn on the logging: ##
 
- * There are two ways to turn on the logging:
- * 1: Integrate steplogs-logger-spring-boot-starter with LoggerAutoConfiguration for AOP and proxy.
- * 2: To log methods on class instance not proxy, add io.steplogs.logger.spring.LoggingInitiationSpringApplicationRunListener to META-INF/spring.factories
- * Or, load agent before any classes: 
+ * There are three ways to turn on the logging:
+ * 1: load agent before any classes: 
  
  ```
 	public static void main(String[] args) {
@@ -111,12 +109,13 @@ Sample:
 		new SpringApplicationBuilder(ServerBootApplication.class).run(args);
 	}
 ```
- * Or, load the jar with javaagent: java -javaagent:steplogs-logger-1.0.1.jar= -jar your-app.jar
-
+ * 2: load the jar with javaagent: java -javaagent:steplogs-logger-1.0.1.jar= -jar your-app.jar
+ * 3: add io.steplogs.logger.spring.LoggingInitiationSpringApplicationRunListener to META-INF/spring.factories
+ 
  * In general, above is enough,
  * X: It may not work on final methods, or interface with @Logging, or with JUnit, try proxy and AOP pointcut
- * Y: Annotate methods/classes/interfaces with @Logging, or manually add methods: io.steplogs.logger.boostrap.addTargetMethods/addTargetMethod/addClasses
-
+ * Y: Annotate methods/classes/interfaces with @Logging, or manually add methods: io.steplogs.logger.boostrap.LoggingMethodIntercepter.addTargetMethods/addTargetMethod/addClasses
+ * Z: Integrate steplogs-logger-spring-boot-starter with AutoConfigurationSteplogsLogger could work for AOP to proxy interfaces.
 
 ---
 
@@ -158,14 +157,14 @@ Sample:
 
 ### Trace ###
 
-It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID to the prev/next service to form the trace, reset the log id(trace id+sequence id etc.) before or after a thread process. See steplogs-logger-spring-boot-starter/README.md
+It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID from/to the prev/next service to form the trace, reset the log id(trace id+sequence id etc.) before or after a thread process. See steplogs-logger-spring-boot-starter/README.md
 
 
 ### Unit Test / QA improvement ###
 the idea is to check if the values appear in the sample payload with the method calls' return. For some unit tests, we don't need to exam all of returned values and json-structure exactly matched. Therefore the sample must be a subset of the returned objects. eventually we can manipulate unit tests by logs.
 
 check out LocalCasesTest and LogLineInvokerHelper how do they run unit test by logs.
-The test case file contains a pair(separated by \3\n) of log, parameters and returns samples of the method as the input to invoke the method, and output to match the return of the method invoke.
+The test case file contains a pair(separated by \3\n) of log, parameter and return samples of the method as the input to invoke the method, and output to match the return of the method invoke.
 Do this in spring will automatically bring up the methods from beans and run the invokes. Or checkout LogLineHelperTest.
 
 `Tips: the tests won't run with sanitizers.`
@@ -202,7 +201,7 @@ Do this in spring will automatically bring up the methods from beans and run the
 
 ### After all, ###
 
-> Search by keywords through the portal, or get X-Step-Trace-Id from HTTP response header like: X-Step-Trace-Id: aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja to link: https://dev-portal.steplogs.io/trace.html?id=aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja
+> get X-Step-Trace-Id from HTTP response header like: X-Step-Trace-Id to link: https://dev-portal.steplogs.io/trace.html?id=aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja; Or search by keywords through the portal.
 
 
 
