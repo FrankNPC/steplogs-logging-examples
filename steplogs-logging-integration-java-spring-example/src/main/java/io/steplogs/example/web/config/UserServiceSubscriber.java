@@ -83,7 +83,7 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 			.builder(new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient())))
 			.baseUrl(getBaseUrl())
 			
-			// Pass the log id to the next app/service to form traces through HTTP request header
+			// write step log id to the http request header to the next app/service to form traces
 			.requestInterceptor(new LoggingHeaderClientHttpRequestInterceptor(steplogsLoggerProvider))
 			.build();
 	}

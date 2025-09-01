@@ -9,9 +9,9 @@ steplogs is the next generation log and trace solution, provides seamless way to
 
 2: When you access complicated business logic cross services, tracing the payloads would be much challenging. steplogs provides logging in language support(No need http proxy/servers) to capture the entire logic traces - no need to search logs any more although we provide.
 
-3: when you sanitize sensitive/PII in the logs, the difficulty is you may do it before writing into logs, or other assistances. Simple steplogs configurations can convert to the desired mask or encryption. 
+3: when you sanitize sensitive/PII in the logs, the difficulty is you may do it before writing into logs, or other assistances. Simple steplogs configurations can convert to the desired mask or encryption without changing code.
 
-4: with well preserved logs, in batch basis painlessly testing or re-entering the methods that were failed due to bugs or errors turns debug and datafix.
+4: with well preserved logs, in batch basis painlessly testing or re-entering the methods that were failed due to bugs or errors turns troubleshooting and datafix an easy job.
 
 5: steplogs can co-exist with any logger like log4j.
 
@@ -157,11 +157,16 @@ Sample:
 
 ### Trace ###
 
-It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID from/to the prev/next service to form the trace, reset the log id(trace id+sequence id etc.) before or after a thread process. See steplogs-logger-spring-boot-starter/README.md
+It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID from/to the prev/next service to form the trace, reset the log id(trace id+sequence id etc.) before or after a thread process. See LoggingHttpHeaderResponseAdvice and steplogs-logger-spring-boot-starter/README.md
 
+configure steplogs.app-node.http-header-id-type to write HTTP_HEADER_STEP_TRACE_ID in HTTP response header, get it and access by the link: https://dev-portal.steplogs.io/trace.html?id=[X-Step-Trace-Id]; Or search by keywords through the portal.
+
+
+### Upload logs ###
+download and configure [steplogs-logging-agent](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent) to upload the logs into steplogs.io for traces.
 
 ### Unit Test / QA improvement ###
-the idea is to check if the values appear in the sample payload with the method calls' return. For some unit tests, we don't need to exam all of returned values and json-structure exactly matched. Therefore the sample must be a subset of the returned objects. eventually we can manipulate unit tests by logs.
+the idea is to check if the values appear in the sample payload with the method calls' return. For some unit tests, we don't need to exam all of returned values and json-structure exactly matched. Therefore the sample must be a subset of the returned objects after the invoke. So we can manipulate unit tests by logs.
 
 check out LocalCasesTest and LogLineInvokerHelper how do they run unit test by logs.
 The test case file contains a pair(separated by \3\n) of log, parameter and return samples of the method as the input to invoke the method, and output to match the return of the method invoke.
@@ -199,10 +204,6 @@ Do this in spring will automatically bring up the methods from beans and run the
 ```
 
 
-### After all, ###
-
-> get X-Step-Trace-Id from HTTP response header like: X-Step-Trace-Id to link: https://dev-portal.steplogs.io/trace.html?id=aVhdzs1dSLryYzSKvmcKIbdtQRwDYrja; Or search by keywords through the portal.
-
 
 
 # For steplogs-logger-spring-boot-starter integration #
@@ -225,9 +226,6 @@ Do this in spring will automatically bring up the methods from beans and run the
  
  - 4, configure web server to pick up HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header. No need If with AutoConfigurationSteplogsLogger in spring web. 
 
- - 5, configure [steplogs-logging-agent/application.xml](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-agent/application.xml), to upload the logs into steplogs.io for traces
-
- - 6: check out search, or `https://portal.steplogs.io/trace.html?id=[TraceId]`.
  
 #### see example [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) ####
 
