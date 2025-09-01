@@ -77,9 +77,10 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 				.build();
 	}
 	
+	private RestClient restClient;
 	@Override
 	public RestClient getRestClient() {
-		return RestClient
+		return restClient = restClient!=null ? restClient : RestClient
 			.builder(new RestTemplate(new HttpComponentsClientHttpRequestFactory(httpClient())))
 			.baseUrl(getBaseUrl())
 			
