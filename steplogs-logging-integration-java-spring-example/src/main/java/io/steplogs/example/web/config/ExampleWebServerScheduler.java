@@ -21,17 +21,24 @@ public class ExampleWebServerScheduler {
 	
 	@Resource
 	Logger logger;
-	
+
+//	@Bean("JobSchedulerPool")
+//	ThreadPoolTaskScheduler JobSchedulerPool() {
+//		ThreadPoolTaskScheduler threadPoolTaskScheduler = new ThreadPoolTaskScheduler();
+//		threadPoolTaskScheduler.setPoolSize(2);
+//		threadPoolTaskScheduler.setThreadNamePrefix("ExampleWebServerScheduler-");
+//		return threadPoolTaskScheduler;
+//	}
+
 	@Scheduled(fixedDelay = 15 * 1000) 
 	public void sendEmails() {
 		for(int i=0; i<10; i++) {
-//			smtpEmailService.sendVerificationUrl("somebodyemailnotknowhoisabcdxxx@whoismail.unknown", "http://localhost/verifyyouremail");
-//			logger.reset();
+			smtpEmailService.sendVerificationUrl("somebodyemailnotknowhoisabcdxxx@whoismail.unknown", "http://localhost/verifyyouremail");
+			logger.reset();
 		}
-		logger.reset();
 	}
 	
-	@Scheduled(initialDelay = 5*1000, fixedDelay = 5*1000) 
+	@Scheduled(fixedDelay = 5*1000, initialDelay = 5*1000) 
 	public void runEmailRunnable() {
 		emailScheduler.runMailRunnable();
 	}

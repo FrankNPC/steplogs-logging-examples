@@ -30,7 +30,7 @@ public class SMTPEmailScheduler {
 	private Runnable mailRunnable = null;
 	/**
 	 * If the thread is created by another un-related thread, it needs to setup the log id manually in order to trace.
-	 * In case it's the schduler thread that is created from the main thread no the http pool thread.
+	 * In case it's the scheduler thread that is created from the main thread not the http pool thread.
 	 * 
 	 * @param recipient
 	 * @param verificationUrl
