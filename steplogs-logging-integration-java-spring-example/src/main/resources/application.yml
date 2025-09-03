@@ -10,7 +10,7 @@ spring:
 
 example:
   service:
-    user.host: http://localhost
+    user.host: http://localhost/remote_api/
 
 steplogs:
   logger:

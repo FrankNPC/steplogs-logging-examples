@@ -25,8 +25,8 @@ public class ExampleWebServerScheduler {
 	@Scheduled(fixedDelay = 15 * 1000) 
 	public void sendEmails() {
 		for(int i=0; i<10; i++) {
-			smtpEmailService.sendVerificationUrl("somebodyemailnotknowhoisabcdxxx@whoismail.unknown", "http://localhost/verifyyouremail");
-			logger.reset();
+//			smtpEmailService.sendVerificationUrl("somebodyemailnotknowhoisabcdxxx@whoismail.unknown", "http://localhost/verifyyouremail");
+//			logger.reset();
 		}
 		logger.reset();
 	}
