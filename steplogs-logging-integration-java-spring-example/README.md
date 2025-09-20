@@ -41,21 +41,25 @@ It's better to start with spring, see [steplogs-logging-integration-java-spring-
 > `Annotate @Logging on the method/class to log the parameters/returns for the methods, by default`
 
 ```java
-@Logging
-TypeABC func(String str) { // line ~233
-  // first line better right next
-  //do some work
-  return TypeABC
+class ABC{
+  @Logging
+  TypeABC func(String str) { // line ~233
+    // first line better right next
+    //do some work
+    return TypeABC
+  }
 }
  
-Object caller(){
-  return func("str123");//line 456
+class DEF {
+  Object caller(){
+    return func("str123");//line 456
+  }
 }
 ```
 
-> log: ...|package.class#func#233#|[{"str":"str123"}]
+> log: ...ABC.class#func#233#|[{"str":"str123"}]
 
-> log: ...|package.class#func#233#R|[TypeABC->toJson]
+> log: ...ABC.class#func#233#R|[TypeABC->toJson]
 
 Sample:
 > 2025-08-21 01:08:33.791|main-http-nio-80-exec-1-40-5|5Lwgxyfqe3xaDnv23BEXPlhOdMJ1Lldj|4-1|JSON|UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#|[{"user":{"name":"br\*\*\*ng","id":0,"driverLisenceId":"\*\*\*\*\*\*","age":1001}}]
@@ -71,22 +75,27 @@ Sample:
 > `Annotate @Logging with catchPackages/catchClasses on the method/class to log the parameters/returns for the methods.`
 
 ```java
-@Logging(catchPackages="io.steplogs.example.web") 
-TypeABC func(String str123) { // line 234
-  //do some work
-  Object obj = caller.call(str123); // line 278
-  //do some work
-  return TypeABC // line 299
+class ABC{
+  @Logging(catchPackages="io.steplogs.example.web") 
+  TypeABC func(String str123) { // line 234
+    //do some work
+    Object obj = caller.call(str123); // line 278
+    //do some work
+    return TypeABC // line 299
+  }
 }
- 
-Object call(){
-  return func("str456");
+
+import io.steplogs.example.web;
+class DEF {
+  Object call(){
+    return TypeABC.func("str456");//334
+  }
 }
 ```
 
-> log: ...|package.class#func#278|[{"str123":"str123"}]
+> log: ...DEF.class#call#334|[{"str123":"str123"}]
 
-> log: ...|package.class#func#278R|[{"str456":"str456"}]
+> log: ...DEF.class#call#334R|[{"str456":"str456"}]
 
 Sample:
 > 2025-08-21 01:08:30.752|main-http-nio-80-exec-4-43-5|We56EsinM00UnynirAHrnp9XXsg3avlc|11|JSON|MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38|[{"userId":123}]
