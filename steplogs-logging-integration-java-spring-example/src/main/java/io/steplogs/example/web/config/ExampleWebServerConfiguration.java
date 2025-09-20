@@ -9,7 +9,6 @@ import org.springframework.core.Ordered;
 
 import io.steplogs.logger.provider.LoggerProvider;
 import io.steplogs.logger.spring.AutoConfigurationSteplogsLogger;
-import io.steplogs.logger.spring.LoggingHttpHeaderResponseAdvice;
 import io.steplogs.logger.spring.LoggingHttpRequestFilter;
 import io.steplogs.spring.rmi.http.prodiver.AutoConfigurationServiceProvider;
 import jakarta.annotation.Resource;
@@ -19,7 +18,7 @@ import jakarta.annotation.Resource;
 	AutoConfigurationSteplogsLogger.class, // to load the configs from application.xml for logging related beans
 
 	AutoConfigurationServiceProvider.class, // Turn on RPC service provider
-	LoggingHttpHeaderResponseAdvice.class, // so you can see the trace id in the http response of the web browser.
+//	LoggingHttpHeaderResponseAdvice.class, // so you can see the trace id in the http response of the web browser.
 })
 public class ExampleWebServerConfiguration {
 
@@ -37,7 +36,6 @@ public class ExampleWebServerConfiguration {
 		return reg;
 	}
 	
-	// Not recommended
 //	@Bean
 //	LoggingWebMvcConfigurer getLoggingWebMvcConfigurer() {
 //		return new LoggingWebMvcConfigurer(steplogsLoggerProvider, true, List.of(PreDefinition.HTTP_HEADER_STEP_LOG_ID, PreDefinition.HTTP_HEADER_STEP_TRACE_ID, PreDefinition.HTTP_HEADER_STEP_LOG_SKIP), 
