@@ -26,10 +26,10 @@ steplogs:
       /JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),
       /JSON/*Service*.java*.service.*MedicService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday),
       /JSON/*.java*.Medic*#*/*/MASK$4(deceases)/yyyy-MM-dd HH:mm:ss.ssss/DATE_FORMATER(timeCreated),
-      /HTTP/LoggingHttpHeaderHandlerInterceptor.java#io.steplogs.logger.spring.LoggingHttpHeaderHandlerInterceptor#preHandle*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)
+      /HTTP/LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday) 
 
   app-node:
-    http-header-id-type: 1 # for http headers give log/trace id to the clients
+    http-header-id-type: 1 # write log/trace id to the http response header; 0 nothing, 1 trace id, 2 step log id
     application-name: ${spring.application.name}
     version: 1.2.3
     program: 1.2.2-1231321.jar
@@ -37,7 +37,7 @@ steplogs:
     internal-ip: 12.2.2.2
     external-ip: 12.2.2.2
 
-    github: # not functioning yet
+    github: # not functioning yet. No need
       source-paths: > 
         src/main/java
       repository: RepoOwner/${spring.application.name}

@@ -166,7 +166,7 @@ Sample:
 
 ### Trace ###
 
-It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID from/to the prev/next service to form the trace, reset the log id(trace id+sequence id etc.) before or after a thread process. See LoggingHttpHeaderResponseAdvice and steplogs-logger-spring-boot-starter/README.md
+It's critical to pass and get the HTTP_HEADER_STEP_LOG_ID from/to the prev/next service to form the trace, reset the log id(trace id+sequence id etc.) before or after a thread process. See LoggingHttpClientHeaderWriterInterceptor/LoggingHttpRequestWebFilter and steplogs-logger-spring-boot-starter/README.md
 
 configure steplogs.app-node.http-header-id-type to write HTTP_HEADER_STEP_TRACE_ID in HTTP response header, get it and access by the link: https://dev-portal.steplogs.io/trace.html?id=[X-Step-Trace-Id]; Or search by keywords through the portal.
 
@@ -230,19 +230,15 @@ Do this in spring will automatically bring up the methods from beans and run the
  - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
     -  import AutoConfigurationSteplogsLogger.class to declare default Logging.
 
- - 3, configure http client by adding LoggingHeaderClientHttpRequestInterceptor to write header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id), so the next app/service/web-server can pick it up. 
+ - 3, configure http client by adding LoggingHttpClientHeaderWriterInterceptor to write header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id), so the next app/service/web-server can pick it up. 
 See [UserServiceSubscriber](https://github.com/FrankNPC/steplogs-logging-examples/blob/main/steplogs-logging-integration-java-spring-example/src/main/java/io/steplogs/example/web/config/UserServiceSubscriber.java#L88)
 
- - 4, configure web server by adding FilterRegistrationBean< LoggingHttpRequestFilter > to pick up header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request. 
+ - 4, configure web server by adding FilterRegistrationBean< LoggingHttpRequestWebFilter > to pick up header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request. 
 See [ExampleWebServerConfiguration](https://github.com/FrankNPC/steplogs-logging-examples/blob/main/steplogs-logging-integration-java-spring-example/src/main/java/io/steplogs/example/web/config/ExampleWebServerConfiguration.java#L32)
 
  
 #### see example [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) ####
 
-
-`Tip 1: Print X-Step-Trace-Id to the http response header might be helpful for debug, see LoggingHttpHeaderResponseAdvice`
-
-`Tip 2: It's required to pass and read X-Step-Log-Id to/from the prev/next service so the traces can form as ` 
 ![Screenshot trace](./Screenshot-trace.png)
 
 

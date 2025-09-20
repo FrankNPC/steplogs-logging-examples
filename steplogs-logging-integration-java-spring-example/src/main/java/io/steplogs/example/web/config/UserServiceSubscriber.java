@@ -19,7 +19,7 @@ import org.springframework.web.client.RestTemplate;
 import io.steplogs.example.web.service.rpc.UserService;
 import io.steplogs.logger.annotation.LoggingUnit;
 import io.steplogs.logger.provider.LoggerProvider;
-import io.steplogs.logger.spring.LoggingHeaderClientHttpRequestInterceptor;
+import io.steplogs.logger.spring.LoggingHttpClientHeaderWriterInterceptor;
 import io.steplogs.logger.spring.LoggingMethodPointcut;
 import io.steplogs.spring.rmi.http.subscriber.AbstractServiceSubscriber;
 import io.steplogs.spring.rmi.http.subscriber.ServiceClientTemplate;
@@ -85,7 +85,7 @@ public class UserServiceSubscriber<T> extends AbstractServiceSubscriber implemen
 			.baseUrl(getBaseUrl())
 			
 			// write step log id to the http request header to the next app/service to form traces
-			.requestInterceptor(new LoggingHeaderClientHttpRequestInterceptor(steplogsLoggerProvider))
+			.requestInterceptor(new LoggingHttpClientHeaderWriterInterceptor(steplogsLoggerProvider))
 			.build();
 	}
 
