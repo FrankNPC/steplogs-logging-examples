@@ -233,7 +233,7 @@ Do this in spring will automatically bring up the methods from beans and run the
  - 3, configure http client by adding LoggingHeaderClientHttpRequestInterceptor to write header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id), so the next app/service/web-server can pick it up. 
 See [UserServiceSubscriber](https://github.com/FrankNPC/steplogs-logging-examples/blob/main/steplogs-logging-integration-java-spring-example/src/main/java/io/steplogs/example/web/config/UserServiceSubscriber.java#L88)
 
- - 4, configure web server by adding FilterRegistrationBean<LoggingHttpRequestFilter> to pick up header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request. 
+ - 4, configure web server by adding FilterRegistrationBean< LoggingHttpRequestFilter > to pick up header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request. 
 See [ExampleWebServerConfiguration](https://github.com/FrankNPC/steplogs-logging-examples/blob/main/steplogs-logging-integration-java-spring-example/src/main/java/io/steplogs/example/web/config/ExampleWebServerConfiguration.java#L32)
 
  
