@@ -85,7 +85,7 @@ class ABC{
   }
 }
 
-import io.steplogs.example.web;
+package io.steplogs.example.web;
 class DEF {
   Object call(){
     return TypeABC.func("str456");//334
