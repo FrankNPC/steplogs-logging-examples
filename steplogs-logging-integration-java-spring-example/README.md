@@ -181,8 +181,6 @@ check out LocalCasesTest and LogLineInvokerHelper how do they run unit test by l
 The test case file contains a pair(separated by \3\n) of log, parameter and return samples of the method as the input to invoke the method, and output to match the return of the method invoke.
 Do this in spring will automatically bring up the methods from beans and run the invokes. Or checkout LogLineHelperTest.
 
-`Tips: the tests won't run with sanitizers.`
-
 > Full match
 
 ```java
@@ -212,6 +210,7 @@ Do this in spring will automatically bring up the methods from beans and run the
 	}
 ```
 
+`Tips: the tests won't run with sanitizers.`
 
 
 
@@ -231,9 +230,11 @@ Do this in spring will automatically bring up the methods from beans and run the
  - 2, configuration. see the explains in src/*/resource/application.xml, configure logger and app-node.
     -  import AutoConfigurationSteplogsLogger.class to declare default Logging.
 
- - 3, configure the http client request to write HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) header, so the next app/service/web-server can pick it up. See io.steplogs.logger.spring.LoggingHeaderClientHttpRequestInterceptor
- 
- - 4, configure web server to pick up HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request header. No need If with AutoConfigurationSteplogsLogger in spring web. 
+ - 3, configure http client by adding LoggingHeaderClientHttpRequestInterceptor to write header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id), so the next app/service/web-server can pick it up. 
+See [UserServiceSubscriber](https://github.com/FrankNPC/steplogs-logging-examples/blob/main/steplogs-logging-integration-java-spring-example/src/main/java/io/steplogs/example/web/config/UserServiceSubscriber.java#L88)
+
+ - 4, configure web server by adding FilterRegistrationBean<LoggingHttpRequestFilter> to pick up header HTTP_HEADER_STEP_LOG_ID(X-Step-Log-Id) from the http request. 
+See [ExampleWebServerConfiguration](https://github.com/FrankNPC/steplogs-logging-examples/blob/main/steplogs-logging-integration-java-spring-example/src/main/java/io/steplogs/example/web/config/ExampleWebServerConfiguration.java#L32)
 
  
 #### see example [steplogs-logging-integration-java-spring-example](https://github.com/FrankNPC/steplogs-logging-examples/tree/main/steplogs-logging-integration-java-spring-example) ####

@@ -10,7 +10,7 @@ import org.springframework.core.Ordered;
 import io.steplogs.logger.provider.LoggerProvider;
 import io.steplogs.logger.spring.AutoConfigurationSteplogsLogger;
 import io.steplogs.logger.spring.LoggingHttpHeaderResponseAdvice;
-import io.steplogs.logger.spring.LoggingHttpOncePerRequestFilter;
+import io.steplogs.logger.spring.LoggingHttpRequestFilter;
 import io.steplogs.spring.rmi.http.prodiver.AutoConfigurationServiceProvider;
 import jakarta.annotation.Resource;
 
@@ -28,16 +28,16 @@ public class ExampleWebServerConfiguration {
 	LoggerProvider steplogsLoggerProvider;
 
 	// pick up step log id from last app/service/http request header to form traces, and log http payload for specific paths
-    @Bean
-    FilterRegistrationBean<LoggingHttpOncePerRequestFilter> loggingResetInFilter() {
-        FilterRegistrationBean<LoggingHttpOncePerRequestFilter> reg = 
-    		new FilterRegistrationBean<>(new LoggingHttpOncePerRequestFilter(steplogsLoggerProvider, true));
-        reg.setOrder(Ordered.HIGHEST_PRECEDENCE);
-        reg.addUrlPatterns("/api", "/api/*", "/remote_api/*");
-        return reg;
-    }
+	@Bean
+	FilterRegistrationBean<LoggingHttpRequestFilter> loggingResetInFilter() {
+		FilterRegistrationBean<LoggingHttpRequestFilter> reg = new FilterRegistrationBean<>(
+				new LoggingHttpRequestFilter(steplogsLoggerProvider, true));
+		reg.setOrder(Ordered.HIGHEST_PRECEDENCE);
+		reg.addUrlPatterns("/api", "/api/*", "/remote_api/*");
+		return reg;
+	}
 	
-    // Not recommended
+	// Not recommended
 //	@Bean
 //	LoggingWebMvcConfigurer getLoggingWebMvcConfigurer() {
 //		return new LoggingWebMvcConfigurer(steplogsLoggerProvider, true, List.of(PreDefinition.HTTP_HEADER_STEP_LOG_ID, PreDefinition.HTTP_HEADER_STEP_TRACE_ID, PreDefinition.HTTP_HEADER_STEP_LOG_SKIP), 
