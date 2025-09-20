@@ -139,7 +139,7 @@ Sample:
 > Step: support wildcard match:
 >> `/JSON/*Controller.java*controller.*Controller#*/*/MASK(encryptionKey)/*/MD5(sessionId|session_id)`
 
-> placeholder: should be base 62 for [vector of MD5/SHA1/SHA256 and key for AES]; may leave it empty then it will use default *
+> placeholder: should be base 62 GMP for [vector of MD5/SHA1/SHA256 and key for AES]; may leave it empty then it will use default *
 
 > Currently supported
 
