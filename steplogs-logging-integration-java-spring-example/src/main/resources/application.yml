@@ -31,20 +31,20 @@ steplogs:
   app-node:
     http-header-id-type: 1 # write log/trace id to the http response header; 0 nothing, 1 trace id, 2 step log id
     application-name: ${spring.application.name}
-    version: 1.2.3
-    program: 1.2.2-1231321.jar
-    host-id: node-123.test.test
-    internal-ip: 12.2.2.2
-    external-ip: 12.2.2.2
+    host-id: node-123.test.test # unique, with file to identify unique file
 
-    github: # not functioning yet. No need
-      source-paths: > 
-        src/main/java
-      repository: RepoOwner/${spring.application.name}
-      branch: main
-      commit: xxxxxxx
+  github: # not functioning yet. No need
+    source-paths: > 
+      src/main/java
+    repository: RepoOwner/${spring.application.name}
+    branch: main
+    commit: xxxxxxx
 
   boot-info: # for info purpose, steplogs don't use it
+    version: 1.2.3 # the version of the app.
+    internal-ip: 12.2.2.2
+    external-ip: 12.2.2.2
+    program: 1.2.2-1231321.jar
     region: use-1
     platform: 
       cloud: aws
