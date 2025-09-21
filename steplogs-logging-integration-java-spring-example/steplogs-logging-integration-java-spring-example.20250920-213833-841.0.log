@@ -1,0 +1,1147 @@
+2025-09-21T01:38:33.845Z||gdDrGINzx5Xl1k0J||CONF||
+[
+    {
+        "BootInfo": {
+            "program": "1.2.2-1231321.jar",
+            "region": "use-1",
+            "version": "1.2.3",
+            "external-ip": "12.2.2.2",
+            "internal-ip": "12.2.2.2",
+            "platform": {
+                "cloud": "aws"
+            }
+        },
+        "AppNodeConfig": {
+            "hostId": "node-123.test.test",
+            "applicationName": "steplogs-logging-integration-java-spring-example",
+            "httpHeaderIdType": 1
+        },
+        "Github": {
+            "repository": "RepoOwner/steplogs-logging-integration-java-spring-example",
+            "branch": "main",
+            "commit": "xxxxxxx",
+            "sourcePaths": [
+                "src/main/java"
+            ]
+        },
+        "LoggerConfig": {
+            "fileName": "./logs/steplogs-logging-integration-java-spring-example",
+            "logSanitizerPatterns": [
+                "/JSON/*Service*.java*.service.*UserService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)",
+                "/JSON/*Service*.java*.service.*MedicService*#*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)",
+                "/JSON/*.java*.Medic*#*/*/MASK$4(deceases)/yyyy-MM-dd HH:mm:ss.ssss/DATE_FORMATER(timeCreated)",
+                "/HTTP/LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest*/*/MASK(driverLisenceId)/*/MASK$2(name)//SKIP(birthday)"
+            ],
+            "logLight": false,
+            "logPretty": true,
+            "printFile": true,
+            "printStdout": true,
+            "logAsync": true,
+            "logVersion": null,
+            "fileMaxLength": 536870912,
+            "logDateTimeFormat": "yyyy-MM-dd HH:mm:ss.SSS"
+        }
+    }
+]
+2025-09-21 01:38:35.106|scheduling-1|7N3dWyd3pTxqrjY0iUNLirDEtrM14lrP|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:35.109|scheduling-1|7N3dWyd3pTxqrjY0iUNLirDEtrM14lrP|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:35.111|scheduling-1|7N3dWyd3pTxqrjY0iUNLirDEtrM14lrP|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:35.111|scheduling-1|3gTeb9PGmqDBBc1lhSk4JePByu8BuijS|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:35.112|scheduling-1|3gTeb9PGmqDBBc1lhSk4JePByu8BuijS|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:35.112|scheduling-1|3gTeb9PGmqDBBc1lhSk4JePByu8BuijS|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:35.112|scheduling-1|2UC0gmDy2w6lEo56cY9mVTql4WZJjj7K|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:35.112|scheduling-1|2UC0gmDy2w6lEo56cY9mVTql4WZJjj7K|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:35.112|scheduling-1|2UC0gmDy2w6lEo56cY9mVTql4WZJjj7K|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:35.112|scheduling-1|1Q8GXNAnEtKHma6SX6LJhtRUk2OssKy8|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:35.112|scheduling-1|1Q8GXNAnEtKHma6SX6LJhtRUk2OssKy8|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:35.112|scheduling-1|1Q8GXNAnEtKHma6SX6LJhtRUk2OssKy8|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:35.112|scheduling-1|2Y8x3R5vN2yfa0KLsiWmCYmPeDLTCiyE|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:35.112|scheduling-1|2Y8x3R5vN2yfa0KLsiWmCYmPeDLTCiyE|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:35.113|scheduling-1|2Y8x3R5vN2yfa0KLsiWmCYmPeDLTCiyE|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:35.113|scheduling-1|4UoAn7DpvydWdW9oeFLxaeWBYpp1Xpo8|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:35.113|scheduling-1|4UoAn7DpvydWdW9oeFLxaeWBYpp1Xpo8|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:35.113|scheduling-1|4UoAn7DpvydWdW9oeFLxaeWBYpp1Xpo8|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:35.113|scheduling-1|4YDcqDpObUFwnoygoqDyIYdEoaEpst5h|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:35.113|scheduling-1|4YDcqDpObUFwnoygoqDyIYdEoaEpst5h|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:35.113|scheduling-1|4YDcqDpObUFwnoygoqDyIYdEoaEpst5h|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:35.113|scheduling-1|2KChsRYP1vjHbvvfAw6le3hkywLRiBul|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:35.113|scheduling-1|2KChsRYP1vjHbvvfAw6le3hkywLRiBul|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:35.113|scheduling-1|2KChsRYP1vjHbvvfAw6le3hkywLRiBul|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:35.113|scheduling-1|6IzIBggblSO8FyJcNALJXbmnIblJmiFw|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:35.114|scheduling-1|6IzIBggblSO8FyJcNALJXbmnIblJmiFw|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:35.114|scheduling-1|6IzIBggblSO8FyJcNALJXbmnIblJmiFw|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:35.114|scheduling-1|4NxpoJNsqaJWdF6uddPQmw2TvpilFDEv|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:35.114|scheduling-1|4NxpoJNsqaJWdF6uddPQmw2TvpilFDEv|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:35.114|scheduling-1|4NxpoJNsqaJWdF6uddPQmw2TvpilFDEv|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:39.976|scheduling-1|NZ57Cf2FRpduJMnOg1JTpWyzptO4h2EO|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|
+[]
+2025-09-21 01:38:39.976|scheduling-1|NZ57Cf2FRpduJMnOg1JTpWyzptO4h2EO|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-09-21 01:38:43.915|http-nio-80-exec-1|2obrVG6nZwyRexRYZDJyqBXiTGOKr310|1|HTTP|
+LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#32|
+[
+    {
+        "remoteHost": "/[0:0:0:0:0:0:0:1]:53227"
+    },
+    {
+        "method": "GET"
+    },
+    {
+        "requestURL": "http://localhost/api/user/save"
+    },
+    {
+        "headers": {}
+    },
+    {
+        "body": {
+            "name": [
+                "br***ng"
+            ],
+            "driverLisenceId": [
+                "******"
+            ],
+            "age": [
+                "1001"
+            ]
+        }
+    }
+]
+2025-09-21 01:38:44.065|http-nio-80-exec-1|2obrVG6nZwyRexRYZDJyqBXiTGOKr310|2|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#|
+[
+    {
+        "userId": 0
+    }
+]
+2025-09-21 01:38:44.066|http-nio-80-exec-1|2obrVG6nZwyRexRYZDJyqBXiTGOKr310|3|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#R|
+[
+    "e1d2fb44-c29c-4925-93cc-99081578eaf8"
+]
+2025-09-21 01:38:44.077|http-nio-80-exec-1|2obrVG6nZwyRexRYZDJyqBXiTGOKr310|4|JSON|
+UserService.java#io.steplogs.example.web.service.rpc.UserService#save#0#|
+[
+    {
+        "user": {
+            "name": "br***ng",
+            "id": 0,
+            "age": 1001,
+            "driverLisenceId": "******"
+        }
+    }
+]
+2025-09-21 01:38:44.727|http-nio-80-exec-3|2obrVG6nZwyRexRYZDJyqBXiTGOKr310|4-1|HTTP|
+LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#32|
+[
+    {
+        "remoteHost": "/127.0.0.1:53235"
+    },
+    {
+        "method": "POST"
+    },
+    {
+        "requestURL": "http://localhost/remote_api/user/save"
+    },
+    {
+        "headers": {}
+    },
+    {
+        "body": {}
+    }
+]
+2025-09-21 01:38:44.983|scheduling-1|3wSyXMU1iHMYQRo5hAXXW5ci26IvFbt7|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|
+[]
+2025-09-21 01:38:44.983|scheduling-1|3wSyXMU1iHMYQRo5hAXXW5ci26IvFbt7|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-09-21 01:38:45.084|http-nio-80-exec-1|2obrVG6nZwyRexRYZDJyqBXiTGOKr310|5|JSON|
+UserService.java#io.steplogs.example.web.service.rpc.UserService#save#0#R|
+[
+    {
+        "name": "br***ng",
+        "id": 789,
+        "age": 1001,
+        "driverLisenceId": "******"
+    }
+]
+2025-09-21 01:38:45.084|http-nio-80-exec-1|2obrVG6nZwyRexRYZDJyqBXiTGOKr310|6|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#|
+[
+    {
+        "userId": 789
+    }
+]
+2025-09-21 01:38:45.084|http-nio-80-exec-1|2obrVG6nZwyRexRYZDJyqBXiTGOKr310|7|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#R|
+[
+    "e1d2fb44-c29c-4925-93cc-99081578eaf8"
+]
+2025-09-21 01:38:45.027|http-nio-80-exec-3|2obrVG6nZwyRexRYZDJyqBXiTGOKr310|4-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#|
+[
+    {
+        "user": {
+            "name": "br***ng",
+            "id": 0,
+            "age": 1001,
+            "driverLisenceId": "******"
+        }
+    }
+]
+2025-09-21 01:38:45.028|http-nio-80-exec-3|2obrVG6nZwyRexRYZDJyqBXiTGOKr310|4-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#save#60#R|
+[
+    {
+        "name": "br***ng",
+        "id": 789,
+        "age": 1001,
+        "driverLisenceId": "******"
+    }
+]
+2025-09-21 01:38:47.653|http-nio-80-exec-5|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|1|HTTP|
+LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#32|
+[
+    {
+        "remoteHost": "/[0:0:0:0:0:0:0:1]:53250"
+    },
+    {
+        "method": "GET"
+    },
+    {
+        "requestURL": "http://localhost/api/medic/save"
+    },
+    {
+        "headers": {}
+    },
+    {
+        "body": {
+            "id": [
+                "123"
+            ],
+            "deceases": [
+                "unkown"
+            ]
+        }
+    }
+]
+2025-09-21 01:38:47.664|http-nio-80-exec-5|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|2|JSON|
+MedicConditionController.java#io.steplogs.example.web.controller.MedicConditionController#save#64|
+[
+    "save request paylod, should be with trace",
+    {
+        "id": 123,
+        "deceases": "unko***wn",
+        "timeCreated": "1970-01-01 00:00:00.0000",
+        "userId": 0
+    }
+]
+2025-09-21 01:38:47.666|http-nio-80-exec-5|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|3|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#query#11#|
+[
+    {
+        "userId": 1758418727665,
+        "page": null
+    }
+]
+2025-09-21 01:38:47.666|http-nio-80-exec-5|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|4|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#query#11#R|
+[
+    "78cd75fa-b5f7-40e8-9b2d-c2bf96e7fa38"
+]
+2025-09-21 01:38:47.673|http-nio-80-exec-5|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|5|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#48#|
+[
+    {
+        "condition": {
+            "id": 123,
+            "deceases": "unko***wn",
+            "timeCreated": "1970-01-01 00:00:00.0000",
+            "userId": 0
+        }
+    }
+]
+2025-09-21 01:38:47.674|http-nio-80-exec-5|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|6|JSON|
+MedicDAO.java#io.steplogs.example.web.dao.MedicDAO#save#36#|
+[
+    {
+        "condition": {
+            "id": 123,
+            "deceases": "unko***wn",
+            "timeCreated": "1970-01-01 00:00:00.0000",
+            "userId": 0
+        }
+    }
+]
+2025-09-21 01:38:47.674|http-nio-80-exec-5|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|7|JSON|
+MedicDAO.java#io.steplogs.example.web.dao.MedicDAO#save#36#R|
+[
+    {
+        "id": 123,
+        "deceases": "unko***wn",
+        "timeCreated": "1970-01-01 00:00:00.0000",
+        "userId": 0
+    }
+]
+2025-09-21 01:38:47.675|http-nio-80-exec-5|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|8|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#54|
+[
+    {
+        "userId": 0
+    }
+]
+2025-09-21 01:38:47.680|http-nio-80-exec-5|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|9|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#54R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "age": null,
+        "driverLisenceId": "****************************"
+    }
+]
+2025-09-21 01:38:47.681|http-nio-80-exec-5|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|10|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#save#48#R|
+[
+    {
+        "user": {
+            "name": "ra***ly",
+            "id": 123,
+            "age": null,
+            "driverLisenceId": "****************************"
+        },
+        "medicConditionDO": {
+            "id": 123,
+            "deceases": "unko***wn",
+            "timeCreated": "1970-01-01 00:00:00.0000",
+            "userId": 0
+        }
+    }
+]
+2025-09-21 01:38:47.677|http-nio-80-exec-6|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|8-1|HTTP|
+LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#32|
+[
+    {
+        "remoteHost": "/127.0.0.1:53235"
+    },
+    {
+        "method": "POST"
+    },
+    {
+        "requestURL": "http://localhost/remote_api/user/get_by_id"
+    },
+    {
+        "headers": {}
+    },
+    {
+        "body": {}
+    }
+]
+2025-09-21 01:38:47.678|http-nio-80-exec-6|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|8-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#|
+[
+    {
+        "userId": 0
+    }
+]
+2025-09-21 01:38:47.679|http-nio-80-exec-6|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|8-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#29|
+[
+    "This should be remote service, will be with trace",
+    0
+]
+2025-09-21 01:38:47.679|http-nio-80-exec-6|3WTkNaMG3Z1OWGLvic82hK5zCZpRJVjn|8-4|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "age": null,
+        "driverLisenceId": "****************************"
+    }
+]
+2025-09-21 01:38:48.710|http-nio-80-exec-7|FYGhdD7CYwyW6Gu1zi9Wyahxchn0qln5|1|HTTP|
+LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#32|
+[
+    {
+        "remoteHost": "/[0:0:0:0:0:0:0:1]:53250"
+    },
+    {
+        "method": "GET"
+    },
+    {
+        "requestURL": "http://localhost/api/medic/test_async_email"
+    },
+    {
+        "headers": {}
+    },
+    {
+        "body": {}
+    }
+]
+2025-09-21 01:38:48.713|http-nio-80-exec-7|FYGhdD7CYwyW6Gu1zi9Wyahxchn0qln5|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#unHookedThreadDelivery#39#|
+[
+    {
+        "recipient": "test@email.email",
+        "verificationUrl": "http://localhost/unHookedThreadDelivery/1758418728712"
+    }
+]
+2025-09-21 01:38:48.721|http-nio-80-exec-7|FYGhdD7CYwyW6Gu1zi9Wyahxchn0qln5|3|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#unHookedThreadDelivery#39#R|
+[
+    null
+]
+2025-09-21 01:38:49.987|scheduling-1|5eKShTyt10pDuQ1Tm25Mi1hM0GWJGuDi|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|
+[]
+2025-09-21 01:38:49.987|scheduling-1|FYGhdD7CYwyW6Gu1zi9Wyahxchn0qln5|2-1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "tes***ail",
+        "verificationUrl": "http://localhost/unHookedThreadDelivery/1758418728712"
+    }
+]
+2025-09-21 01:38:49.987|scheduling-1|FYGhdD7CYwyW6Gu1zi9Wyahxchn0qln5|2-2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/unHookedThreadDelivery/1758418728712'>link</a> or copy http://localhost/unHookedThreadDelivery/1758418728712 to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:49.987|scheduling-1|FYGhdD7CYwyW6Gu1zi9Wyahxchn0qln5|2-3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/unHookedThreadDelivery/1758418728712'>link</a> or copy http://localhost/unHookedThreadDelivery/1758418728712 to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:49.987|scheduling-1|FYGhdD7CYwyW6Gu1zi9Wyahxchn0qln5|2-4|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
+2025-09-21 01:38:50.124|scheduling-1|FYGhdD7CYwyW6Gu1zi9Wyahxchn0qln5|2-5|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:50.125|scheduling-1|FYGhdD7CYwyW6Gu1zi9Wyahxchn0qln5|2-6|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:50.125|scheduling-1|FYGhdD7CYwyW6Gu1zi9Wyahxchn0qln5|2-7|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:50.125|scheduling-1|3wGr4pAaH5TDC1F4CLmBQZMOhwcMbRZe|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:50.125|scheduling-1|3wGr4pAaH5TDC1F4CLmBQZMOhwcMbRZe|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:50.125|scheduling-1|3wGr4pAaH5TDC1F4CLmBQZMOhwcMbRZe|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:50.125|scheduling-1|4TNl4iEhOygVxp1I4I3gNrz9nxTiUqN7|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:50.125|scheduling-1|4TNl4iEhOygVxp1I4I3gNrz9nxTiUqN7|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:50.125|scheduling-1|4TNl4iEhOygVxp1I4I3gNrz9nxTiUqN7|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:50.125|scheduling-1|3YOxp9tjp2JRIculZQm45x7TnEwlXz5f|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:50.125|scheduling-1|3YOxp9tjp2JRIculZQm45x7TnEwlXz5f|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:50.125|scheduling-1|3YOxp9tjp2JRIculZQm45x7TnEwlXz5f|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:50.126|scheduling-1|5jwKEz4oLdqcmzdNGS8HxERZAJSQorbe|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:50.126|scheduling-1|5jwKEz4oLdqcmzdNGS8HxERZAJSQorbe|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:50.126|scheduling-1|5jwKEz4oLdqcmzdNGS8HxERZAJSQorbe|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:50.126|scheduling-1|5kwokaWnXD2yYn5UeLRdsZm8rfGm7HxH|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:50.126|scheduling-1|5kwokaWnXD2yYn5UeLRdsZm8rfGm7HxH|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:50.126|scheduling-1|5kwokaWnXD2yYn5UeLRdsZm8rfGm7HxH|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:50.126|scheduling-1|1gfKbdsyL60VfIFlkGFD70ch23IR4oIi|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:50.126|scheduling-1|1gfKbdsyL60VfIFlkGFD70ch23IR4oIi|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:50.126|scheduling-1|1gfKbdsyL60VfIFlkGFD70ch23IR4oIi|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:50.127|scheduling-1|5WEfHqkaUlLWm3iQQC0YOdKZr8PFmxyt|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:50.127|scheduling-1|5WEfHqkaUlLWm3iQQC0YOdKZr8PFmxyt|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:50.127|scheduling-1|5WEfHqkaUlLWm3iQQC0YOdKZr8PFmxyt|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:50.127|scheduling-1|2faXBllJWJJwmOy1P0kAxRQWrxe2klxY|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:50.127|scheduling-1|2faXBllJWJJwmOy1P0kAxRQWrxe2klxY|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:50.127|scheduling-1|2faXBllJWJJwmOy1P0kAxRQWrxe2klxY|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:50.127|scheduling-1|6j1qNqnYFp0zT6VEXIPW08xVYupCPJgD|1|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#|
+[
+    {
+        "recipient": "som***own",
+        "verificationUrl": "http://localhost/verifyyouremail"
+    }
+]
+2025-09-21 01:38:50.127|scheduling-1|6j1qNqnYFp0zT6VEXIPW08xVYupCPJgD|2|TEXT|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#21|
+<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>
+2025-09-21 01:38:50.127|scheduling-1|6j1qNqnYFp0zT6VEXIPW08xVYupCPJgD|3|JSON|
+SMTPEmailService.java#io.steplogs.example.web.service.SMTPEmailService#sendVerificationUrl#16#R|
+[
+    "<html><body>Please click on the <a href='http://localhost/verifyyouremail'>link</a> or copy http://localhost/verifyyouremail to your brower before it expires in 10 minutes.</body></html>"
+]
+2025-09-21 01:38:50.041|http-nio-80-exec-1|21h8ea1LTERGLSomPxBq5rguntjSPIrM|21-1|HTTP|
+LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#32|
+[
+    {
+        "remoteHost": "/127.0.0.1:53235"
+    },
+    {
+        "method": "POST"
+    },
+    {
+        "requestURL": "http://localhost/remote_api/user/get_by_id"
+    },
+    {
+        "headers": {}
+    },
+    {
+        "body": {}
+    }
+]
+2025-09-21 01:38:50.043|http-nio-80-exec-1|21h8ea1LTERGLSomPxBq5rguntjSPIrM|21-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#|
+[
+    {
+        "userId": 456
+    }
+]
+2025-09-21 01:38:50.043|http-nio-80-exec-1|21h8ea1LTERGLSomPxBq5rguntjSPIrM|21-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#29|
+[
+    "This should be remote service, will be with trace",
+    456
+]
+2025-09-21 01:38:50.043|http-nio-80-exec-1|21h8ea1LTERGLSomPxBq5rguntjSPIrM|21-4|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "age": null,
+        "driverLisenceId": "****************************"
+    }
+]
+2025-09-21 01:38:50.037|http-nio-80-exec-3|21h8ea1LTERGLSomPxBq5rguntjSPIrM|19-1|HTTP|
+LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#32|
+[
+    {
+        "remoteHost": "/127.0.0.1:53235"
+    },
+    {
+        "method": "POST"
+    },
+    {
+        "requestURL": "http://localhost/remote_api/user/get_by_id"
+    },
+    {
+        "headers": {}
+    },
+    {
+        "body": {}
+    }
+]
+2025-09-21 01:38:50.038|http-nio-80-exec-3|21h8ea1LTERGLSomPxBq5rguntjSPIrM|19-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#|
+[
+    {
+        "userId": 123
+    }
+]
+2025-09-21 01:38:50.038|http-nio-80-exec-3|21h8ea1LTERGLSomPxBq5rguntjSPIrM|19-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#29|
+[
+    "This should be remote service, will be with trace",
+    123
+]
+2025-09-21 01:38:50.038|http-nio-80-exec-3|21h8ea1LTERGLSomPxBq5rguntjSPIrM|19-4|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "age": null,
+        "driverLisenceId": "****************************"
+    }
+]
+2025-09-21 01:38:50.020|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|1|HTTP|
+LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#32|
+[
+    {
+        "remoteHost": "/[0:0:0:0:0:0:0:1]:53260"
+    },
+    {
+        "method": "GET"
+    },
+    {
+        "requestURL": "http://localhost/api/medic/query"
+    },
+    {
+        "headers": {}
+    },
+    {
+        "body": {
+            "session_id": [
+                "xxx"
+            ],
+            "offset": [
+                "0"
+            ],
+            "size": [
+                "123"
+            ]
+        }
+    }
+]
+2025-09-21 01:38:50.025|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|2|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#|
+[
+    {
+        "userId": 1758418730025
+    }
+]
+2025-09-21 01:38:50.026|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|3|JSON|
+ForStaticMethod.java#io.steplogs.example.web.test.ForStaticMethod#runStatic#15#R|
+[
+    "e1d2fb44-c29c-4925-93cc-99081578eaf8"
+]
+2025-09-21 01:38:50.026|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|4|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#query#28#|
+[
+    {
+        "sessionId": "xxx",
+        "page": {
+            "size": 123,
+            "offset": 0
+        }
+    }
+]
+2025-09-21 01:38:50.026|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|5|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#query#29|
+[
+    {
+        "sessionId": "xxx"
+    }
+]
+2025-09-21 01:38:50.032|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|6|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#query#29R|
+[
+    {
+        "name": "ra***ly",
+        "id": 456,
+        "age": null,
+        "driverLisenceId": "****************************"
+    }
+]
+2025-09-21 01:38:50.033|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|7|JSON|
+MedicDAO.java#io.steplogs.example.web.dao.MedicDAO#query#17#|
+[
+    {
+        "userId": 456,
+        "page": {
+            "size": 123,
+            "offset": 0
+        }
+    }
+]
+2025-09-21 01:38:50.033|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|8|JSON|
+MedicDAO.java#io.steplogs.example.web.dao.MedicDAO#query#17#R|
+[
+    [
+        {
+            "id": 321,
+            "deceases": "idk,***ever",
+            "timeCreated": "5490-12-21 05:31:51.0051",
+            "userId": 123
+        },
+        {
+            "id": 654,
+            "deceases": "idk,***ever",
+            "timeCreated": "9011-12-11 11:03:42.0042",
+            "userId": 456
+        },
+        {
+            "id": 987,
+            "deceases": "idk,***ever",
+            "timeCreated": "12532-11-29 16:35:33.0033",
+            "userId": 789
+        }
+    ]
+]
+2025-09-21 01:38:50.033|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|9|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation#68#|
+[
+    {
+        "testString": "xxx"
+    }
+]
+2025-09-21 01:38:50.033|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|10|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation_protected#73#|
+[
+    {
+        "testString": "xxx"
+    }
+]
+2025-09-21 01:38:50.034|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|11|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation_friendly#78#|
+[
+    {
+        "testString": "xxx"
+    }
+]
+2025-09-21 01:38:50.034|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|12|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation_private#83#|
+[
+    {
+        "testString": "xxx"
+    }
+]
+2025-09-21 01:38:50.034|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|13|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation_final#88#|
+[
+    {
+        "testString": "xxx"
+    }
+]
+2025-09-21 01:38:50.034|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|14|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation_final#88#R|
+[
+    "1758418730034"
+]
+2025-09-21 01:38:50.034|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|15|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation_private#83#R|
+[
+    "1758418730034"
+]
+2025-09-21 01:38:50.034|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|16|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation_friendly#78#R|
+[
+    "1758418730034"
+]
+2025-09-21 01:38:50.034|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|17|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation_protected#73#R|
+[
+    "1758418730034"
+]
+2025-09-21 01:38:50.034|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|18|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#callSelfInvocation#68#R|
+[
+    "1758418730034"
+]
+2025-09-21 01:38:50.035|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|19|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38|
+[
+    {
+        "userId": 123
+    }
+]
+2025-09-21 01:38:50.040|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|20|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "age": null,
+        "driverLisenceId": "****************************"
+    }
+]
+2025-09-21 01:38:50.040|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|21|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38|
+[
+    {
+        "userId": 456
+    }
+]
+2025-09-21 01:38:50.044|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|22|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "age": null,
+        "driverLisenceId": "****************************"
+    }
+]
+2025-09-21 01:38:50.044|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|23|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38|
+[
+    {
+        "userId": 789
+    }
+]
+2025-09-21 01:38:50.049|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|24|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#lambda$0#38R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "age": null,
+        "driverLisenceId": "****************************"
+    }
+]
+2025-09-21 01:38:50.049|http-nio-80-exec-10|21h8ea1LTERGLSomPxBq5rguntjSPIrM|25|JSON|
+MedicService.java#io.steplogs.example.web.service.MedicService#query#28#R|
+[
+    [
+        {
+            "user": {
+                "name": "ra***ly",
+                "id": 123,
+                "age": null,
+                "driverLisenceId": "****************************"
+            },
+            "medicConditionDO": {
+                "id": 321,
+                "deceases": "idk,***ever",
+                "timeCreated": "5490-12-21 05:31:51.0051",
+                "userId": 123
+            }
+        },
+        {
+            "user": {
+                "name": "ra***ly",
+                "id": 123,
+                "age": null,
+                "driverLisenceId": "****************************"
+            },
+            "medicConditionDO": {
+                "id": 654,
+                "deceases": "idk,***ever",
+                "timeCreated": "9011-12-11 11:03:42.0042",
+                "userId": 456
+            }
+        },
+        {
+            "user": {
+                "name": "ra***ly",
+                "id": 123,
+                "age": null,
+                "driverLisenceId": "****************************"
+            },
+            "medicConditionDO": {
+                "id": 987,
+                "deceases": "idk,***ever",
+                "timeCreated": "12532-11-29 16:35:33.0033",
+                "userId": 789
+            }
+        }
+    ]
+]
+2025-09-21 01:38:50.029|http-nio-80-exec-2|21h8ea1LTERGLSomPxBq5rguntjSPIrM|5-1|HTTP|
+LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#32|
+[
+    {
+        "remoteHost": "/127.0.0.1:53235"
+    },
+    {
+        "method": "POST"
+    },
+    {
+        "requestURL": "http://localhost/remote_api/user/get_by_session_id"
+    },
+    {
+        "headers": {}
+    },
+    {
+        "body": {}
+    }
+]
+2025-09-21 01:38:50.031|http-nio-80-exec-2|21h8ea1LTERGLSomPxBq5rguntjSPIrM|5-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getBySessionId#43#|
+[
+    {
+        "sessionId": "xxx"
+    }
+]
+2025-09-21 01:38:50.031|http-nio-80-exec-2|21h8ea1LTERGLSomPxBq5rguntjSPIrM|5-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getBySessionId#43#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 456,
+        "age": null,
+        "driverLisenceId": "****************************"
+    }
+]
+2025-09-21 01:38:50.046|http-nio-80-exec-4|21h8ea1LTERGLSomPxBq5rguntjSPIrM|23-1|HTTP|
+LoggingHttpRequestWebReader.java#io.steplogs.logger.spring.LoggingHttpRequestWebReader#readHttpRequest#32|
+[
+    {
+        "remoteHost": "/127.0.0.1:53235"
+    },
+    {
+        "method": "POST"
+    },
+    {
+        "requestURL": "http://localhost/remote_api/user/get_by_id"
+    },
+    {
+        "headers": {}
+    },
+    {
+        "body": {}
+    }
+]
+2025-09-21 01:38:50.047|http-nio-80-exec-4|21h8ea1LTERGLSomPxBq5rguntjSPIrM|23-2|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#|
+[
+    {
+        "userId": 789
+    }
+]
+2025-09-21 01:38:50.048|http-nio-80-exec-4|21h8ea1LTERGLSomPxBq5rguntjSPIrM|23-3|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#29|
+[
+    "This should be remote service, will be with trace",
+    789
+]
+2025-09-21 01:38:50.048|http-nio-80-exec-4|21h8ea1LTERGLSomPxBq5rguntjSPIrM|23-4|JSON|
+UserServiceImpl.java#io.steplogs.example.web.service.rpc.UserServiceImpl#getById#24#R|
+[
+    {
+        "name": "ra***ly",
+        "id": 123,
+        "age": null,
+        "driverLisenceId": "****************************"
+    }
+]
+2025-09-21 01:38:54.993|scheduling-1|6UZb1tO6brdAp822SDZYzpLcrrVO9oaR|1|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#|
+[]
+2025-09-21 01:38:54.994|scheduling-1|6UZb1tO6brdAp822SDZYzpLcrrVO9oaR|2|JSON|
+SMTPEmailScheduler.java#io.steplogs.example.web.service.SMTPEmailScheduler#runMailRunnable#23#R|
+[
+    null
+]
